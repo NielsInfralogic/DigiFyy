@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="DigiFyy.Views.BikeDetailView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:ffsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    xmlns:helper="clr-namespace:DigiFyy.Helpers"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Detail page"
+    BackgroundColor="{DynamicResource PrimaryLight}"
+    Shell.NavBarIsVisible="True">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="DetailStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="4*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+
+            <StackLayout Grid.Row="1" Padding="10">
+                <Label
+                    x:Name="UUID"
+                    AutomationProperties.HelpText="Unique FrameID"
+                    AutomationProperties.IsInAccessibleTree="true"
+                    HorizontalOptions="Center"
+                    Text="{Binding BikeInfo.FrameNumber.UID}" />
+                <Label
+                    x:Name="Model"
+                    AutomationProperties.HelpText="Modelname"
+                    AutomationProperties.IsInAccessibleTree="true"
+                    HorizontalOptions="Center"
+                    Text="{Binding BikeInfo.FrameNumber.Model}" />
+
+                <Label
+                    x:Name="Frame"
+                    AutomationProperties.HelpText="Frame type"
+                    AutomationProperties.IsInAccessibleTree="true"
+                    HorizontalOptions="Center"
+                    Text="{Binding BikeInfo.FrameNumber.Frame}" />
+
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
