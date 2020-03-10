@@ -29,11 +29,11 @@ namespace DigiFyy.Services
 
         public async void NavigateTo(Type type, string parameterName, string parameterValue, bool replaceView = false)
         {
-            if(type == typeof(BikeDetailViewModel) && string.IsNullOrEmpty(parameterValue))
+         /*   if(type == typeof(BikeDetailViewModel) && string.IsNullOrEmpty(parameterValue))
             {
                 CurrentApplication.MainPage = new AppShell();
                 return;
-            }
+            }*/
             if (!replaceView)
             {
                 await CurrentApplication.MainPage.Navigation.PushAsync(GetPageWithBindingContext(type, parameterName, parameterValue), true);

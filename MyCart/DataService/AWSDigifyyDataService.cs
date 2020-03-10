@@ -9,8 +9,8 @@ namespace DigiFyy.DataService
 {
     public class AWSDigifyyDataService : IDigifyyDataService
     {
-        AwsHttpClient awsHttpClient;
-        IAnalyticsService AnalyticsService;
+        readonly AwsHttpClient awsHttpClient;
+        readonly IAnalyticsService AnalyticsService;
         public AWSDigifyyDataService(IAnalyticsService analyticsService)
         {
             AnalyticsService = analyticsService;
@@ -21,8 +21,9 @@ namespace DigiFyy.DataService
         {
             if (userName == "" ||password == "" )
                 return new User() { Username = userName, UserID = 0, Token = "" };
-            awsHttpClient.SetRestType(RestType.LoginUser);
+
             Models.AWS.UserResponse response = await awsHttpClient.LoginUserAsync(new User() { Username = userName, Password = password });
+
             if (response == null || response?.User == null)
                 return new User() { Username = userName, UserID = 0, Token = "" };
 
@@ -33,8 +34,6 @@ namespace DigiFyy.DataService
         {
             if (userName == "" || token == "" || uuid == "")
                 return new UIDInfo() { UID = uuid, FrameNumber = null };
-
-            awsHttpClient.SetRestType(RestType.GetInfo);
 
             Models.AWS.UIDInfoResponse response = await awsHttpClient.GetInfoAsync(new UIDInfoRequest() { Username = userName, Token = token, UID = uuid });
 
@@ -49,8 +48,6 @@ namespace DigiFyy.DataService
         {
             if (userName == "" || token == "" || uuid == "" || frameNumberStatus == null)
                 return false;
-
-            awsHttpClient.SetRestType(RestType.UpdateStatus);
           
             FrameNumberStatusResponse response = await awsHttpClient.UpdateStatusAsync(new FrameNumberStatusRequest() { Username = userName, Token = token, UID = uuid, FrameNumberStatus = frameNumberStatus });
 
@@ -64,7 +61,6 @@ namespace DigiFyy.DataService
         {
             if (userName == "" || token == "" || uuid == "" )
                 return new List<Manufacturer>();
-            awsHttpClient.SetRestType(RestType.GetManufacturers);
 
             ManufacturerResponse response = await awsHttpClient.GetManufacturersAsync(new UIDInfoRequest() { Username = userName, Token = token, UID = uuid });
 
@@ -79,8 +75,7 @@ namespace DigiFyy.DataService
             if (userName == "" || token == "" || uuid == "")
                 return new List<Message>();
 
-            awsHttpClient.SetRestType(RestType.GetMessages);
-     
+       
             MessagesResponse response = await awsHttpClient.GetMessagesAsync(new UIDInfoRequest() { Username = userName, Token = token, UID = uuid });
 
             if (response == null || response?.Messages == null)
@@ -97,8 +92,6 @@ namespace DigiFyy.DataService
             if (messageIDList.Count == 0)
                 return true;
 
-            awsHttpClient.SetRestType(RestType.MarkReadMessages);
-
             StatusResponse response = await awsHttpClient.MarkReadMassagesAsync(new MarkMessageRequest() { Username = userName, Token = token, UID = uuid, MessageIDList = messageIDList });
 
             return response != null;
@@ -109,8 +102,6 @@ namespace DigiFyy.DataService
 
             if (userName == "" || token == "" || uuid == "" || uniqueID == null)
                 return new FrameNumber();
-
-            awsHttpClient.SetRestType(RestType.RegisterUID);
 
             FrameNumberResponse response = await awsHttpClient.RegisterUIDAsync(uniqueID);
 

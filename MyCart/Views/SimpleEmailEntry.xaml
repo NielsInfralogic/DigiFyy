@@ -12,7 +12,7 @@
             <converter:StringToBooleanConverter x:Key="StringToBooleanConverter" />
             <converter:ErrorValidationColorConverter x:Key="ErrorValidationColorConverter" PageVariantParameter="1" />
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="LoginStyles.xaml" />
+                <ResourceDictionary Source="Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentView.Resources>

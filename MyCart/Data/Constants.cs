@@ -76,26 +76,27 @@ namespace DigiFyy.Data
         public static string FacebookAndroidRedirectUrl = "https://www.facebook.com/connect/login_success.html";
 
         //-------------------------------------------------------------------------------------------------------
+        public static string RestUrl = "https://f1br1nlc92.execute-api.eu-north-1.amazonaws.com/Test/";
 
-        public static string RestUrl_LoginUser = "https://f1br1nlc92.execute-api.eu-north-1.amazonaws.com/Test/LoginUser";
+        public static string EndPoint_LoginUser = "LoginUser";
         public static string ApiKey_LoginUser = "GSD0L59J7A9raSY2uWoVg2GYzcpeCTzv38iAKZ18";
 
-        public static string RestUrl_GetInfo = "https://f1br1nlc92.execute-api.eu-north-1.amazonaws.com/Test/GetInfo";
+        public static string EndPoint_GetInfo = "GetInfo";
         public static string ApiKey_GetInfo = "GSD0L59J7A9raSY2uWoVg2GYzcpeCTzv38iAKZ18";
 
-        public static string RestUrl_RegisterUID = "https://f1br1nlc92.execute-api.eu-north-1.amazonaws.com/Test/RegisterUID";
+        public static string EndPoint_RegisterUID = "RegisterUID";
         public static string ApiKey_RegisterUID = "GSD0L59J7A9raSY2uWoVg2GYzcpeCTzv38iAKZ18";
 
-        public static string RestUrl_UpdateStatus = "https://f1br1nlc92.execute-api.eu-north-1.amazonaws.com/Test/UpdateStatus";
+        public static string EndPoint_UpdateStatus = "UpdateStatus";
         public static string ApiKey_UpdateStatus ="GSD0L59J7A9raSY2uWoVg2GYzcpeCTzv38iAKZ18";
 
-        public static string RestUrl_GetManufacturers = "https://f1br1nlc92.execute-api.eu-north-1.amazonaws.com/Test/GetManufacturers";
+        public static string EndPoint_GetManufacturers = "GetManufacturers";
         public static string ApiKey_GetManufacturers = "xRlQBaMdpv6I9S34AMPuO8uxzmPANLIL7aCijOow";
 
-        public static string RestUrl_GetMessages = "https://f1br1nlc92.execute-api.eu-north-1.amazonaws.com/Test/GetMessages";
+        public static string EndPoint_GetMessages = "GetMessages";
         public static string ApiKey_GetMessages = "xRlQBaMdpv6I9S34AMPuO8uxzmPANLIL7aCijOow";
 
-        public static string RestUrl_MarkReadMessages = "https://f1br1nlc92.execute-api.eu-north-1.amazonaws.com/Test/MarkReadMessages";
+        public static string EndPoint_MarkReadMessages = "MarkReadMessages";
         public static string ApiKey_MarkReadMessages = "xRlQBaMdpv6I9S34AMPuO8uxzmPANLIL7aCijOow";
 
 

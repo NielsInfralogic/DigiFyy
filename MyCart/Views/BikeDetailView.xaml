@@ -4,52 +4,188 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:converters="clr-namespace:DigiFyy.Converters"
+    xmlns:core="clr-namespace:Syncfusion.XForms.Core;assembly=Syncfusion.Core.XForms"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:ffsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
     xmlns:helper="clr-namespace:DigiFyy.Helpers"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="Detail page"
     BackgroundColor="{DynamicResource PrimaryLight}"
+    NavigationPage.HasNavigationBar="False"
     Shell.NavBarIsVisible="True">
 
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="DetailStyles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles.xaml" />
 
+            </ResourceDictionary.MergedDictionaries>
+            <converters:StatusIntegerToString x:Key="StatusConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="4*" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="1*" />
-            </Grid.RowDefinitions>
+        <RefreshView
+            Command="{Binding RefreshCommand}"
+            IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+            RefreshColor="Teal">
+            <ScrollView>
+                <StackLayout>
+                    <ffsvg:SvgCachedImage
+                        Margin="{x:OnIdiom Phone='0,0,0,0',
+                                           Desktop='0',
+                                           Tablet='0'}"
+                        BackgroundColor="White"
+                        HeightRequest="{core:OnPlatformOrientationDoubleValue Default=300,
+                                                                              AndroidPhonePortrait=200,
+                                                                              AndroidPhoneLandscape=140,
+                                                                              iOSPhonePortrait=200,
+                                                                              iOSPhoneLandscape=140}"
+                        Source="Digifyy.png"
+                        VerticalOptions="Center"
+                        WidthRequest="{x:OnIdiom Phone=200,
+                                                 Desktop=300,
+                                                 Tablet=300}" />
+                    <StackLayout
+                        Margin="{core:OnPlatformOrientationThickness PhonePortrait='20,12',
+                                                                     PhoneLandscape='150,12',
+                                                                     TabletPortrait='200,20',
+                                                                     TabletLandscape='300,20',
+                                                                     Desktop='20'}"
+                        Spacing="0"
+                        VerticalOptions="FillAndExpand"
+                        WidthRequest="{OnPlatform Default='-1',
+                                                  UWP='350'}">
+                        <Grid>
 
-            <StackLayout Grid.Row="1" Padding="10">
-                <Label
-                    x:Name="UUID"
-                    AutomationProperties.HelpText="Unique FrameID"
-                    AutomationProperties.IsInAccessibleTree="true"
-                    HorizontalOptions="Center"
-                    Text="{Binding BikeInfo.FrameNumber.UID}" />
-                <Label
-                    x:Name="Model"
-                    AutomationProperties.HelpText="Modelname"
-                    AutomationProperties.IsInAccessibleTree="true"
-                    HorizontalOptions="Center"
-                    Text="{Binding BikeInfo.FrameNumber.Model}" />
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
 
-                <Label
-                    x:Name="Frame"
-                    AutomationProperties.HelpText="Frame type"
-                    AutomationProperties.IsInAccessibleTree="true"
-                    HorizontalOptions="Center"
-                    Text="{Binding BikeInfo.FrameNumber.Frame}" />
 
-            </StackLayout>
-        </Grid>
+                            <Grid Padding="5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="5*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Style="{StaticResource LabelStyleInfoHeader}"
+                                    Text="UUID" />
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Style="{StaticResource LabelStyleInfo}"
+                                    Text="{Binding UUID, Mode=OneWay}" />
+
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Style="{StaticResource LabelStyleInfoHeader}"
+                                    Text="Brand" />
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Style="{StaticResource LabelStyleInfo}"
+                                    Text="{Binding Brand, Mode=OneWay}" />
+
+                                <Label
+                                    Grid.Row="2"
+                                    Grid.Column="0"
+                                    Style="{StaticResource LabelStyleInfoHeader}"
+                                    Text="Model" />
+                                <Label
+                                    Grid.Row="2"
+                                    Grid.Column="1"
+                                    Style="{StaticResource LabelStyleInfo}"
+                                    Text="{Binding Model, Mode=OneWay}" />
+
+                                <Label
+                                    Grid.Row="3"
+                                    Grid.Column="0"
+                                    Style="{StaticResource LabelStyleInfoHeader}"
+                                    Text="Frame" />
+                                <Label
+                                    Grid.Row="3"
+                                    Grid.Column="1"
+                                    Style="{StaticResource LabelStyleInfo}"
+                                    Text="{Binding Frame, Mode=OneWay}" />
+
+                                <Label
+                                    Grid.Row="4"
+                                    Grid.Column="0"
+                                    Style="{StaticResource LabelStyleInfoHeader}"
+                                    Text="Status" />
+                                <Label
+                                    Grid.Row="4"
+                                    Grid.Column="1"
+                                    Style="{StaticResource LabelStyleInfo}"
+                                    Text="{Binding Status, Converter={StaticResource StatusConverter}}" />
+
+                            </Grid>
+
+                            <StackLayout Grid.Row="1" Padding="10,0,0,0">
+
+                                <Label
+                                    Margin="0,16"
+                                    FontFamily="{StaticResource Montserrat-SemiBold}"
+                                    FontSize="12"
+                                    HorizontalOptions="Start"
+                                    Text="Documents"
+                                    TextColor="{DynamicResource Gray-6F}" />
+
+
+                            </StackLayout>
+                            <StackLayout Grid.Row="2" Padding="10,0,0,0">
+                                <Label
+                                    Margin="0,16"
+                                    FontFamily="{StaticResource Montserrat-SemiBold}"
+                                    FontSize="12"
+                                    HorizontalOptions="Start"
+                                    Text="Messsages"
+                                    TextColor="{DynamicResource Gray-6F}" />
+
+                            </StackLayout>
+                            <StackLayout Grid.Row="3">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <buttons:SfButton
+                                        Grid.Row="0"
+                                        Command="{Binding ReportCommand}"
+                                        Style="{StaticResource SfButtonStyle}"
+                                        Text="Report theft" />
+                                    <buttons:SfButton
+                                        Grid.Row="1"
+                                        Command="{Binding PoliceCommand}"
+                                        Style="{StaticResource SfButtonStyle}"
+                                        Text="Police/Ensurance" />
+                                    <buttons:SfButton
+                                        Grid.Row="2"
+                                        Command="{Binding PickupCommand}"
+                                        Style="{StaticResource SfButtonStyle}"
+                                        Text="Pick up my bike" />
+                                </Grid>
+                            </StackLayout>
+                        </Grid>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </RefreshView>
     </ContentPage.Content>
 </ContentPage>

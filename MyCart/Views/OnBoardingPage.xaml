@@ -14,12 +14,12 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="OnboardingStyles.xaml" />
+                <ResourceDictionary Source="Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <Grid>
+        <Grid BackgroundColor="{DynamicResource PrimaryLight}">
             <Grid.RowDefinitions>
 
                 <RowDefinition Height="3*" />
@@ -35,7 +35,7 @@
 
             <StackLayout
                 Grid.Row="0"
-                BackgroundColor="Transparent"
+                BackgroundColor="White"
                 Spacing="0"
                 VerticalOptions="Center">
 
@@ -58,10 +58,7 @@
                                              Tablet=300}" />
             </StackLayout>
 
-            <gradient:SfGradientView
-                Grid.Row="1"
-                Grid.RowSpan="4"
-                Style="{StaticResource SfGradientViewStyle}" />
+
             <!--  Label to display header  -->
             <Label
                 Grid.Row="1"
@@ -69,7 +66,7 @@
                 FontFamily="{StaticResource Montserrat-SemiBold}"
                 FontSize="20"
                 HorizontalTextAlignment="Center"
-                Style="{StaticResource LabelStyle}"
+                Style="{StaticResource LabelStyleDark}"
                 Text="{Binding Header}"
                 VerticalTextAlignment="Center" />
 
@@ -78,7 +75,7 @@
                 Grid.Row="2"
                 FontFamily="{StaticResource Montserrat-Medium}"
                 FontSize="16"
-                Style="{StaticResource LabelStyle}"
+                Style="{StaticResource LabelStyleDark}"
                 Text="{Binding Content}"
                 VerticalTextAlignment="Center" />
 
@@ -94,7 +91,7 @@
                 Command="{Binding LoginCommand}"
                 Style="{StaticResource SfButtonStyle}"
                 Text="Login" />
-            <gradient:SfGradientView Grid.Row="5" Style="{StaticResource SfGradientViewStyle}" />
+
 
         </Grid>
     </ContentPage.Content>

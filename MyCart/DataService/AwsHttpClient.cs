@@ -14,7 +14,7 @@ namespace DigiFyy.DataService
     public enum RestType { LoginUser = 1, GetInfo = 2, RegisterUID  = 3, UpdateStatus  = 4, GetManufacturers  = 5, GetMessages = 6, MarkReadMessages  = 7}
     public class AwsHttpClient
     {
-        private HttpClient client;
+        private readonly HttpClient client;
         IAnalyticsService AnalyticsService;
         public string LastErrorMessage { get; set; } = "";
 
@@ -29,13 +29,11 @@ namespace DigiFyy.DataService
                 //      UseProxy = false,
             };
 
-            LookupRestTypeParameters(restType, out string restUrl, out string apiKey);
-           
 
             client = new HttpClient(handler)
             {
                 Timeout = new TimeSpan(0, 10, 0),
-                BaseAddress = new Uri(restUrl)
+                BaseAddress = new Uri(Constants.RestUrl)
             };
 
             client.DefaultRequestHeaders.Accept.Clear();
@@ -44,69 +42,25 @@ namespace DigiFyy.DataService
             //client.DefaultRequestHeaders.Authorization =
             //      new System.Net.Http.Headers.AuthenticationHeaderValue("Basic", Convert.ToBase64String(authenticationBytes));
             //client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/xml"));
-            client.DefaultRequestHeaders.Add("x-api-key", apiKey);
+  //          client.DefaultRequestHeaders.Add("x-api-key", apiKey);
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
-
-        private void LookupRestTypeParameters(RestType restType, out string restUrl, out string apiKey)
-        {
-            restUrl = "";
-            apiKey = "";
-            switch (restType)
-            {
-                case RestType.LoginUser:
-                    restUrl = Constants.RestUrl_LoginUser;
-                    apiKey = Constants.ApiKey_LoginUser;
-                    break;
-                case RestType.GetInfo:
-                    restUrl = Constants.RestUrl_GetInfo;
-                    apiKey = Constants.ApiKey_GetInfo;
-                    break;
-                case RestType.RegisterUID:
-                    restUrl = Constants.RestUrl_RegisterUID;
-                    apiKey = Constants.ApiKey_RegisterUID;
-                    break;
-                case RestType.UpdateStatus:
-                    restUrl = Constants.RestUrl_UpdateStatus;
-                    apiKey = Constants.ApiKey_UpdateStatus;
-                    break;
-                case RestType.GetManufacturers:
-                    restUrl = Constants.RestUrl_GetManufacturers;
-                    apiKey = Constants.ApiKey_GetManufacturers;
-                    break;
-
-                case RestType.GetMessages:
-                    restUrl = Constants.RestUrl_GetMessages;
-                    apiKey = Constants.ApiKey_GetMessages;
-                    break;
-                case RestType.MarkReadMessages:
-                    restUrl = Constants.RestUrl_MarkReadMessages;
-                    apiKey = Constants.ApiKey_MarkReadMessages;
-                    break;
-            }
-        }
-
-        public void SetRestType(RestType restType)
-        {
-            LookupRestTypeParameters(restType, out string restUrl, out string apiKey);
-            client.BaseAddress = new Uri(restUrl);
-            if (client.DefaultRequestHeaders.Contains("x-api-key"))
-                client.DefaultRequestHeaders.Remove("x-api-key");
-            client.DefaultRequestHeaders.Add("x-api-key", apiKey);
-        }
-        
-
       
         public async Task<Models.AWS.UserResponse> LoginUserAsync(Models.AWS.User user)
         {
             AnalyticsService.TrackEvent("Requesting LoginUserAsync()");
+
+            if (client.DefaultRequestHeaders.Contains("x-api-key"))
+                client.DefaultRequestHeaders.Remove("x-api-key");
+            client.DefaultRequestHeaders.Add("x-api-key", Constants.ApiKey_LoginUser);
+
             LastErrorMessage = "";
             try
             {
                 string postBody = JsonConvert.SerializeObject(user);
                 //JsonSerializer(product);
 
-                HttpResponseMessage response = await client.PostAsync("", new StringContent(postBody, Encoding.UTF8, "application/json"));
+                HttpResponseMessage response = await client.PostAsync(Constants.EndPoint_LoginUser, new StringContent(postBody, Encoding.UTF8, "application/json"));
                 AnalyticsService.TrackEvent("Response: " + response.StatusCode.ToString());
 
                 if (response.IsSuccessStatusCode)
@@ -158,13 +112,17 @@ namespace DigiFyy.DataService
         public async Task<Models.AWS.UIDInfoResponse> GetInfoAsync(Models.AWS.UIDInfoRequest uIDInfoRequest)
         {
             AnalyticsService.TrackEvent("Requesting GetInfoAsync()");
+            if (client.DefaultRequestHeaders.Contains("x-api-key"))
+                client.DefaultRequestHeaders.Remove("x-api-key");
+            client.DefaultRequestHeaders.Add("x-api-key", Constants.ApiKey_GetInfo);
+            
             LastErrorMessage = "";
             try
             {
                 string postBody = JsonConvert.SerializeObject(uIDInfoRequest);
                 //JsonSerializer(product);
 
-                HttpResponseMessage response = await client.PostAsync("", new StringContent(postBody, Encoding.UTF8, "application/json"));
+                HttpResponseMessage response = await client.PostAsync(Constants.EndPoint_GetInfo, new StringContent(postBody, Encoding.UTF8, "application/json"));
                 AnalyticsService.TrackEvent("Response: " + response.StatusCode.ToString());
 
                 if (response.IsSuccessStatusCode)
@@ -215,12 +173,16 @@ namespace DigiFyy.DataService
         public async Task<Models.AWS.FrameNumberResponse> RegisterUIDAsync(Models.AWS.UniqueID uniqueID)
         {
             AnalyticsService.TrackEvent("Requesting RegisterUID()");
+            if (client.DefaultRequestHeaders.Contains("x-api-key"))
+                client.DefaultRequestHeaders.Remove("x-api-key");
+            client.DefaultRequestHeaders.Add("x-api-key", Constants.ApiKey_RegisterUID);
+
             LastErrorMessage = "";
             try
             {
                 string postBody = JsonConvert.SerializeObject(uniqueID);
 
-                HttpResponseMessage response = await client.PostAsync("", new StringContent(postBody, Encoding.UTF8, "application/json"));
+                HttpResponseMessage response = await client.PostAsync(Constants.EndPoint_RegisterUID, new StringContent(postBody, Encoding.UTF8, "application/json"));
                 AnalyticsService.TrackEvent("Response: " + response.StatusCode.ToString());
 
                 if (response.IsSuccessStatusCode)
@@ -271,13 +233,17 @@ namespace DigiFyy.DataService
         public async Task<Models.AWS.FrameNumberStatusResponse> UpdateStatusAsync(Models.AWS.FrameNumberStatusRequest frameNumberStatusRequest)
         {
             AnalyticsService.TrackEvent("Requesting UpdateStatus()");
+            if (client.DefaultRequestHeaders.Contains("x-api-key"))
+                client.DefaultRequestHeaders.Remove("x-api-key");
+            client.DefaultRequestHeaders.Add("x-api-key", Constants.ApiKey_UpdateStatus);
+
             LastErrorMessage = "";
             try
             {
                 string postBody = JsonConvert.SerializeObject(frameNumberStatusRequest);
                 //JsonSerializer(product);
 
-                HttpResponseMessage response = await client.PostAsync("", new StringContent(postBody, Encoding.UTF8, "application/json"));
+                HttpResponseMessage response = await client.PostAsync(Constants.EndPoint_UpdateStatus, new StringContent(postBody, Encoding.UTF8, "application/json"));
                 AnalyticsService.TrackEvent("Response: " + response.StatusCode.ToString());
 
                 if (response.IsSuccessStatusCode)
@@ -328,12 +294,15 @@ namespace DigiFyy.DataService
         public async Task<Models.AWS.ManufacturerResponse> GetManufacturersAsync(Models.AWS.UIDInfoRequest uIDInfoRequest)
         {
             AnalyticsService.TrackEvent("Requesting GetManufacturersAsync()");
+            if (client.DefaultRequestHeaders.Contains("x-api-key"))
+                client.DefaultRequestHeaders.Remove("x-api-key");
+            client.DefaultRequestHeaders.Add("x-api-key", Constants.ApiKey_GetManufacturers);
             LastErrorMessage = "";
             try
             {
                 string postBody = JsonConvert.SerializeObject(uIDInfoRequest);
 
-                HttpResponseMessage response = await client.PostAsync("", new StringContent(postBody, Encoding.UTF8, "application/json"));
+                HttpResponseMessage response = await client.PostAsync(Constants.EndPoint_GetManufacturers, new StringContent(postBody, Encoding.UTF8, "application/json"));
                 AnalyticsService.TrackEvent("Response: " + response.StatusCode.ToString());
 
                 if (response.IsSuccessStatusCode)
@@ -384,13 +353,17 @@ namespace DigiFyy.DataService
         public async Task<Models.AWS.MessagesResponse> GetMessagesAsync(Models.AWS.UIDInfoRequest uIDInfoRequest)
         {
             AnalyticsService.TrackEvent("Requesting GetMessages()");
+            if (client.DefaultRequestHeaders.Contains("x-api-key"))
+                client.DefaultRequestHeaders.Remove("x-api-key");
+            client.DefaultRequestHeaders.Add("x-api-key", Constants.ApiKey_GetMessages);
+
             LastErrorMessage = "";
             try
             {
                 string postBody = JsonConvert.SerializeObject(uIDInfoRequest);
                 //JsonSerializer(product);
 
-                HttpResponseMessage response = await client.PostAsync("", new StringContent(postBody, Encoding.UTF8, "application/json"));
+                HttpResponseMessage response = await client.PostAsync(Constants.EndPoint_GetMessages, new StringContent(postBody, Encoding.UTF8, "application/json"));
                 AnalyticsService.TrackEvent("Response: " + response.StatusCode.ToString());
 
                 if (response.IsSuccessStatusCode)
@@ -441,13 +414,17 @@ namespace DigiFyy.DataService
         public async Task<Models.AWS.StatusResponse> MarkReadMassagesAsync(Models.AWS.MarkMessageRequest request)
         {
             AnalyticsService.TrackEvent("Requesting GetMessages()");
+            if (client.DefaultRequestHeaders.Contains("x-api-key"))
+                client.DefaultRequestHeaders.Remove("x-api-key");
+            client.DefaultRequestHeaders.Add("x-api-key", Constants.ApiKey_MarkReadMessages);
+
             LastErrorMessage = "";
             try
             {
                 string postBody = JsonConvert.SerializeObject(request);
                 //JsonSerializer(product);
 
-                HttpResponseMessage response = await client.PostAsync("", new StringContent(postBody, Encoding.UTF8, "application/json"));
+                HttpResponseMessage response = await client.PostAsync(Constants.EndPoint_MarkReadMessages, new StringContent(postBody, Encoding.UTF8, "application/json"));
                 AnalyticsService.TrackEvent("Response: " + response.StatusCode.ToString());
 
                 if (response.IsSuccessStatusCode)

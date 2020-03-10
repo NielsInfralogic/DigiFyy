@@ -121,6 +121,7 @@ namespace DigiFyy.ViewModels
             {
                 return;
             }
+            IsBusy = true;
 
             var result = await DataStore.LoginUser(Email, Password);
 
@@ -129,8 +130,12 @@ namespace DigiFyy.ViewModels
                 Preferences.Set("Token", result.Token);
                 Preferences.Set("Email", Email);
                 Preferences.Set("Password", Password);
-                NavigationService.NavigateTo(typeof(BikeDetailViewModel), Preferences.Get("UUID",""), string.Empty, true);
+
+                Preferences.Set("UUID", "1234567654323456765432-aasdfgfdsa");
+                IsBusy = false;
+                NavigationService.NavigateTo(typeof(BikeDetailViewModel), Preferences.Get("UUID",""), string.Empty, false);
             }
+            IsBusy = false;
         }        
 
         /// <summary>
