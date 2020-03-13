@@ -212,7 +212,6 @@ namespace DigiFyy.ViewModels
             }
         }
 
-
         private void SocialLoggedInGoogle(object obj)
         {
             string clientId = null;
@@ -271,8 +270,6 @@ namespace DigiFyy.ViewModels
                     Debug.WriteLine("OAuthLoginPresenter inner exception error: " + ex.InnerException.Message);
             }
         }
-
-
 
         [Obsolete]
         async void OnAuthCompleted(object sender, AuthenticatorCompletedEventArgs e)

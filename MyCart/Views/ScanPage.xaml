@@ -9,6 +9,7 @@
     xmlns:ffsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
     xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:trans="clr-namespace:DigiFyy.Helpers"
     BackgroundColor="{DynamicResource PrimaryLight}"
     NavigationPage.HasNavigationBar="False"
     Shell.NavBarIsVisible="False">
@@ -46,7 +47,7 @@
                 HeightRequest="40"
                 HorizontalOptions="End"
                 Opacity="{Binding IsLoginButtonVisible}"
-                Text="Login"
+                Text="{trans:Translate Login}"
                 TextColor="{x:DynamicResource Gray-6F}"
                 VerticalOptions="StartAndExpand"
                 WidthRequest="80" />
@@ -73,7 +74,7 @@
                     FontFamily="{StaticResource Montserrat-Medium}"
                     FontSize="16"
                     Style="{StaticResource LabelStyle}"
-                    Text="Waiting for scan.."
+                    Text="{trans:Translate WaitingForScan}"
                     VerticalTextAlignment="Center" />
             </StackLayout>
 
@@ -93,7 +94,7 @@
                 Command="{Binding UseCommand}"
                 IsEnabled="False"
                 Style="{StaticResource SfButtonStyle}"
-                Text="Use scanned UUID" />
+                Text="{trans:Translate UseScannedUUID}" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>

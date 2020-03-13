@@ -1,8 +1,11 @@
 ﻿using DigiFyy.Helpers;
 using DigiFyy.Services;
 using DigiFyy.ViewModels;
+using Plugin.Multilingual;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
+using System.Resources;
 using System.Text;
 using System.Windows.Input;
 
@@ -13,13 +16,6 @@ namespace DigiFyy.ViewModels
         #region Fields
 
         readonly INavigationService navigationService;
-
-        string header = string.Empty;
-        public string Header
-        {
-            get { return header; }
-            set { SetProperty(ref header, value); }
-        }
 
         string content = string.Empty;
         public string Content
@@ -38,16 +34,19 @@ namespace DigiFyy.ViewModels
         public OnBoardingViewModel(INavigationService _navigationService, IAnalyticsService analyticsService) : base(_navigationService, analyticsService)
         {
             navigationService = _navigationService;
-            
-            Header = "Digital Bike Frame Number";
-            Content = "";
-            ImagePath = "Digifyy.png";
+
+            Translate();
 
             this.ScanCommand = new Command(this.ScanNFC);
             this.LoginCommand = new Command(this.ToLoginPage);
         }
 
-        
+        private void Translate()
+        {
+            var resmgr = new ResourceManager("DigiFyy.Resources.AppResources", typeof(TranslateExtension).GetTypeInfo().Assembly);
+            var ci = CrossMultilingual.Current.CurrentCultureInfo;
+            Content = resmgr.GetString("ContentHeader", ci);
+        }
 
         #region Commands
 

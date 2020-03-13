@@ -12,18 +12,19 @@ namespace DigiFyy
     {
         public ICommand LogoutCommand => new Command(GoToLogout);
 
-        NavigationService navigationService = (NavigationService)TypeLocator.Instance.Resolve(typeof(INavigationService));
+        readonly NavigationService navigationService = (NavigationService)TypeLocator.Instance.Resolve(typeof(INavigationService));
 
         public AppShell()
         {
             InitializeComponent();
 
             FlyoutItem item = new FlyoutItem() { Title = "Home" };
-            ShellContent content = new ShellContent();
-
-            //Home Page
-            content.Title = "Home";
-            content.Content = navigationService.GetPageWithBindingContext(typeof(BikeDetailViewModel), Preferences.Get("UID",""), string.Empty);
+            ShellContent content = new ShellContent
+            {
+                //Home Page
+                Title = "Home",
+                Content = navigationService.GetPageWithBindingContext(typeof(BikeDetailViewModel), Preferences.Get("UUID", ""), string.Empty)
+            };
             item.Items.Add(content);
             this.Items.Add(item);
 

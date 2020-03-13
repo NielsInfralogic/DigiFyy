@@ -10,6 +10,7 @@
     xmlns:core="clr-namespace:Syncfusion.XForms.Core;assembly=Syncfusion.Core.XForms"
     xmlns:ffsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
     xmlns:local="clr-namespace:DigiFyy.Views"
+    xmlns:trans="clr-namespace:DigiFyy.Helpers"
     BackgroundColor="{DynamicResource PrimaryLight}"
     NavigationPage.HasNavigationBar="False"
     Shell.NavBarIsVisible="False">
@@ -84,7 +85,7 @@
                             FontSize="20"
                             HorizontalTextAlignment="Center"
                             Style="{StaticResource LabelStyle}"
-                            Text="Log In"
+                            Text="{trans:Translate SignIn}"
                             TextColor="{DynamicResource Gray-56}" />
 
                         <!--  Entry to get email ID from user  -->
@@ -114,7 +115,7 @@
                             FontFamily="{StaticResource Montserrat-SemiBold}"
                             FontSize="12"
                             HorizontalOptions="End"
-                            Text="FORGOT PASSWORD?"
+                            Text="{trans:Translate ForgotPassword}"
                             TextColor="{DynamicResource Gray-6F}">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding ForgotPasswordCommand}" CommandParameter="{x:Reference ForgotPasswordLabel}" />
@@ -127,7 +128,7 @@
                             Margin="0,16"
                             Command="{Binding LoginCommand}"
                             Style="{StaticResource SfButtonStyle}"
-                            Text="LOG IN" />
+                            Text="{trans:Translate Login}" />
 
 
                         <Label
@@ -135,7 +136,7 @@
                             FontFamily="{StaticResource Montserrat-Medium}"
                             HorizontalTextAlignment="Center"
                             Style="{StaticResource LabelStyle}"
-                            Text="Or create an account using social media"
+                            Text="{trans:Translate CreateSocialMediaAccount}"
                             TextColor="{DynamicResource Gray-6F}" />
 
                         <!--  Login through facebook account  -->
@@ -160,7 +161,7 @@
                                     <Label
                                         FontFamily="{StaticResource Montserrat-Medium}"
                                         FontSize="16"
-                                        Text="Login with Facebook"
+                                        Text="{trans:Translate LoginWithFacebook}"
                                         TextColor="{DynamicResource Gray-White}" />
                                 </StackLayout>
                             </buttons:SfButton.Content>
@@ -188,7 +189,7 @@
                                     <Label
                                         FontFamily="{StaticResource Montserrat-Medium}"
                                         FontSize="16"
-                                        Text="Login with Google"
+                                        Text="{trans:Translate LoginWithGoogle}"
                                         TextColor="{DynamicResource Gray-White}" />
                                 </StackLayout>
                             </buttons:SfButton.Content>
@@ -226,7 +227,7 @@
                             HorizontalOptions="CenterAndExpand"
                             HorizontalTextAlignment="Center"
                             Style="{StaticResource LabelStyle}"
-                            Text="Don't have an account?"
+                            Text="{trans:Translate DontHaveAnAccount}"
                             TextColor="{DynamicResource Gray-56}"
                             VerticalTextAlignment="Center" />
 
@@ -235,7 +236,7 @@
                             Command="{Binding SignUpCommand}"
                             CornerRadius="4"
                             Style="{StaticResource SfFlatButtonStyle}"
-                            Text="Sign Up" />
+                            Text="{trans:Translate SignUp}" />
 
                     </StackLayout>
                     <StackLayout
@@ -244,7 +245,7 @@
                         Orientation="Vertical"
                         VerticalOptions="Center">
                         <ActivityIndicator IsRunning="True" />
-                        <Label Text="Logging in.." />
+                        <Label Text="{trans:Translate LoggingIn}" />
                     </StackLayout>
                 </StackLayout>
             </StackLayout>

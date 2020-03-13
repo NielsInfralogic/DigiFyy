@@ -5,7 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Title="FruitBasket"
+    Title="Shell"
     mc:Ignorable="d">
 
     <!--
@@ -36,12 +36,12 @@
                 Aspect="AspectFill"
                 HeightRequest="200"
                 HorizontalOptions="FillAndExpand"
-                Source="xamarin.jpg" />
+                Source="Digifyy.jpg" />
             <Label
                 Margin="20"
                 HorizontalOptions="End"
                 HorizontalTextAlignment="Center"
-                Text="Essential UI Kit"
+                Text="Digifyy"
                 VerticalOptions="End"
                 VerticalTextAlignment="Center" />
         </Grid>

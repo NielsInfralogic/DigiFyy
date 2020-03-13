@@ -11534,193 +11534,97 @@ namespace DigiFyy.Droid
 			public const int digifyy = 2131165326;
 			
 			// aapt resource value: 0x7F07008F
-			public const int DivingWatch = 2131165327;
+			public const int dropdownbuttonimage = 2131165327;
 			
 			// aapt resource value: 0x7F070090
-			public const int DivingWatch1 = 2131165328;
+			public const int ic_arrow_back = 2131165328;
 			
 			// aapt resource value: 0x7F070091
-			public const int DivingWatch2 = 2131165329;
+			public const int ic_mtrl_chip_checked_black = 2131165329;
 			
 			// aapt resource value: 0x7F070092
-			public const int DivingWatch3 = 2131165330;
+			public const int ic_mtrl_chip_checked_circle = 2131165330;
 			
 			// aapt resource value: 0x7F070093
-			public const int DivingWatch4 = 2131165331;
-			
-			// aapt resource value: 0x7F070094
-			public const int DressWatch = 2131165332;
+			public const int ic_mtrl_chip_close_circle = 2131165331;
 			
 			// aapt resource value: 0x7F070095
-			public const int DressWatch1 = 2131165333;
+			public const int inputlayout_togglecollapseicon = 2131165333;
 			
 			// aapt resource value: 0x7F070096
-			public const int DressWatch2 = 2131165334;
+			public const int inputlayout_togglevisibleicon = 2131165334;
+			
+			// aapt resource value: 0x7F070094
+			public const int input_layout_drop_down_icon = 2131165332;
 			
 			// aapt resource value: 0x7F070097
-			public const int DressWatch3 = 2131165335;
+			public const int mtrl_snackbar_background = 2131165335;
 			
 			// aapt resource value: 0x7F070098
-			public const int DressWatch4 = 2131165336;
+			public const int mtrl_tabs_default_indicator = 2131165336;
 			
 			// aapt resource value: 0x7F070099
-			public const int dropdownbuttonimage = 2131165337;
+			public const int navigation_empty_icon = 2131165337;
 			
 			// aapt resource value: 0x7F07009A
-			public const int EmptyCart = 2131165338;
+			public const int NFC = 2131165338;
 			
 			// aapt resource value: 0x7F07009B
-			public const int Glass = 2131165339;
+			public const int NoInternet = 2131165339;
 			
 			// aapt resource value: 0x7F07009C
-			public const int Hand_bag = 2131165340;
+			public const int notification_action_background = 2131165340;
 			
 			// aapt resource value: 0x7F07009D
-			public const int ic_arrow_back = 2131165341;
+			public const int notification_bg = 2131165341;
 			
 			// aapt resource value: 0x7F07009E
-			public const int ic_mtrl_chip_checked_black = 2131165342;
+			public const int notification_bg_low = 2131165342;
 			
 			// aapt resource value: 0x7F07009F
-			public const int ic_mtrl_chip_checked_circle = 2131165343;
+			public const int notification_bg_low_normal = 2131165343;
 			
 			// aapt resource value: 0x7F0700A0
-			public const int ic_mtrl_chip_close_circle = 2131165344;
-			
-			// aapt resource value: 0x7F0700A2
-			public const int inputlayout_togglecollapseicon = 2131165346;
-			
-			// aapt resource value: 0x7F0700A3
-			public const int inputlayout_togglevisibleicon = 2131165347;
+			public const int notification_bg_low_pressed = 2131165344;
 			
 			// aapt resource value: 0x7F0700A1
-			public const int input_layout_drop_down_icon = 2131165345;
+			public const int notification_bg_normal = 2131165345;
+			
+			// aapt resource value: 0x7F0700A2
+			public const int notification_bg_normal_pressed = 2131165346;
+			
+			// aapt resource value: 0x7F0700A3
+			public const int notification_icon_background = 2131165347;
 			
 			// aapt resource value: 0x7F0700A4
-			public const int MilitaryWatch = 2131165348;
+			public const int notification_template_icon_bg = 2131165348;
 			
 			// aapt resource value: 0x7F0700A5
-			public const int MilitaryWatch1 = 2131165349;
+			public const int notification_template_icon_low_bg = 2131165349;
 			
 			// aapt resource value: 0x7F0700A6
-			public const int MilitaryWatch2 = 2131165350;
+			public const int notification_tile_bg = 2131165350;
 			
 			// aapt resource value: 0x7F0700A7
-			public const int MilitaryWatch3 = 2131165351;
+			public const int notify_panel_notification_icon_bg = 2131165351;
 			
 			// aapt resource value: 0x7F0700A8
-			public const int mtrl_snackbar_background = 2131165352;
+			public const int tab_about = 2131165352;
 			
 			// aapt resource value: 0x7F0700A9
-			public const int mtrl_tabs_default_indicator = 2131165353;
+			public const int tab_feed = 2131165353;
 			
 			// aapt resource value: 0x7F0700AA
-			public const int navigation_empty_icon = 2131165354;
+			public const int tooltip_frame_dark = 2131165354;
 			
 			// aapt resource value: 0x7F0700AB
-			public const int NFC = 2131165355;
+			public const int tooltip_frame_light = 2131165355;
 			
 			// aapt resource value: 0x7F0700AC
-			public const int NoInternet = 2131165356;
+			public const int xamarin = 2131165356;
 			
 			// aapt resource value: 0x7F0700AD
-			public const int notification_action_background = 2131165357;
-			
-			// aapt resource value: 0x7F0700AE
-			public const int notification_bg = 2131165358;
-			
-			// aapt resource value: 0x7F0700AF
-			public const int notification_bg_low = 2131165359;
-			
-			// aapt resource value: 0x7F0700B0
-			public const int notification_bg_low_normal = 2131165360;
-			
-			// aapt resource value: 0x7F0700B1
-			public const int notification_bg_low_pressed = 2131165361;
-			
-			// aapt resource value: 0x7F0700B2
-			public const int notification_bg_normal = 2131165362;
-			
-			// aapt resource value: 0x7F0700B3
-			public const int notification_bg_normal_pressed = 2131165363;
-			
-			// aapt resource value: 0x7F0700B4
-			public const int notification_icon_background = 2131165364;
-			
-			// aapt resource value: 0x7F0700B5
-			public const int notification_template_icon_bg = 2131165365;
-			
-			// aapt resource value: 0x7F0700B6
-			public const int notification_template_icon_low_bg = 2131165366;
-			
-			// aapt resource value: 0x7F0700B7
-			public const int notification_tile_bg = 2131165367;
-			
-			// aapt resource value: 0x7F0700B8
-			public const int notify_panel_notification_icon_bg = 2131165368;
-			
-			// aapt resource value: 0x7F0700B9
-			public const int ProfileImage1 = 2131165369;
-			
-			// aapt resource value: 0x7F0700BA
-			public const int ProfileImage2 = 2131165370;
-			
-			// aapt resource value: 0x7F0700BB
-			public const int Shoes = 2131165371;
-			
-			// aapt resource value: 0x7F0700BC
-			public const int tab_about = 2131165372;
-			
-			// aapt resource value: 0x7F0700BD
-			public const int tab_feed = 2131165373;
-			
-			// aapt resource value: 0x7F0700BE
-			public const int tooltip_frame_dark = 2131165374;
-			
-			// aapt resource value: 0x7F0700BF
-			public const int tooltip_frame_light = 2131165375;
-			
-			// aapt resource value: 0x7F0700C0
-			public const int Traval_bag = 2131165376;
-			
-			// aapt resource value: 0x7F0700C1
-			public const int Wallet = 2131165377;
-			
-			// aapt resource value: 0x7F0700C2
-			public const int Watch = 2131165378;
-			
-			// aapt resource value: 0x7F0700C3
-			public const int Watch1 = 2131165379;
-			
-			// aapt resource value: 0x7F0700C4
-			public const int Watch2 = 2131165380;
-			
-			// aapt resource value: 0x7F0700C5
-			public const int Watch3 = 2131165381;
-			
-			// aapt resource value: 0x7F0700C6
-			public const int Watch4 = 2131165382;
-			
-			// aapt resource value: 0x7F0700C7
-			public const int Watch_cat = 2131165383;
-			
-			// aapt resource value: 0x7F0700C8
-			public const int WristWatch = 2131165384;
-			
-			// aapt resource value: 0x7F0700C9
-			public const int WristWatch1 = 2131165385;
-			
-			// aapt resource value: 0x7F0700CA
-			public const int WristWatch2 = 2131165386;
-			
-			// aapt resource value: 0x7F0700CB
-			public const int WristWatch3 = 2131165387;
-			
-			// aapt resource value: 0x7F0700CC
-			public const int xamarin = 2131165388;
-			
-			// aapt resource value: 0x7F0700CD
-			public const int xamarin_logo = 2131165389;
+			public const int xamarin_logo = 2131165357;
 			
 			static Drawable()
 			{

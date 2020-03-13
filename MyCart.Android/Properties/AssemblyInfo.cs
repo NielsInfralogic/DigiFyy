@@ -9,7 +9,7 @@ using Android.App;
 [assembly: AssemblyTitle("DigiFyy.Android")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Digifyy")]
 [assembly: AssemblyProduct("DigiFyy.Android")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]

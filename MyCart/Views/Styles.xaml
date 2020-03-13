@@ -6,6 +6,7 @@
     xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     xmlns:control="clr-namespace:DigiFyy.Controls"
+    xmlns:converter="clr-namespace:DigiFyy.Converters"
     xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
     xmlns:graphics="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms">
 
@@ -13,6 +14,22 @@
     <Color x:Key="BorderBackgroundColor">#20FFFFFF</Color>
     <Color x:Key="GradientStartColor">#ECFCEF</Color>
     <Color x:Key="GradientEndColor">#ECFCEF</Color>
+    <x:String x:Key="DropDownButtonIcon">&#xe70b;</x:String>
+
+    <Color x:Key="Transparent">Transparent</Color>
+    <x:String x:Key="Back">&#xe709;</x:String>
+    <x:String x:Key="Search">&#xe705;</x:String>
+    <x:String x:Key="Share">&#xe704;</x:String>
+    <x:String x:Key="Next">&#xe71a;</x:String>
+    <x:String x:Key="Account">&#xe70e;</x:String>
+    <x:String x:Key="Bell">&#xe700;</x:String>
+    <x:String x:Key="Mail">&#xe70e;</x:String>
+    <x:String x:Key="Help">&#xe72c;</x:String>
+
+
+
+    <converter:DynamicResourceToColorConverter x:Key="DynamicResourceToColorConverter" />
+
 
     <!--  Common style for content pages  -->
     <Style x:Key="ContentPageStyle" TargetType="ContentPage">
@@ -22,6 +39,8 @@
                 Android="LoginBackground.png"
                 WinPhone="LoginBackground.png" />
         </Setter>
+        <Setter Property="BackgroundColor" Value="{OnIdiom Default={DynamicResource Gray-White}, Desktop={DynamicResource Gray-F4}, Converter={StaticResource DynamicResourceToColorConverter}}" />
+
     </Style>
 
     <!--  Common style for labels  -->
@@ -45,7 +64,7 @@
         <Setter Property="LineHeight" Value="{OnPlatform Android=1.25, Default=-1}" />
         <Setter Property="TextColor" Value="{DynamicResource Black}" />
         <Setter Property="FontSize" Value="14" />
-        <Setter Property="HeightRequest" Value="40" />
+        <Setter Property="HeightRequest" Value="35" />
 
         <Setter Property="BackgroundColor" Value="White" />
         <Setter Property="Margin" Value="0,5,0,5" />
@@ -59,7 +78,7 @@
         <Setter Property="LineHeight" Value="{OnPlatform Android=1.25, Default=-1}" />
         <Setter Property="TextColor" Value="{DynamicResource Gray-AB}" />
         <Setter Property="FontSize" Value="14" />
-        <Setter Property="HeightRequest" Value="40" />
+        <Setter Property="HeightRequest" Value="35" />
 
         <Setter Property="BackgroundColor" Value="{DynamicResource Gray-F4}" />
         <Setter Property="Margin" Value="0,5,0,5" />
@@ -106,6 +125,19 @@
         <Setter Property="VerticalTextAlignment" Value="Center" />
     </Style>
 
+    <!--  Common style for flat buttons  -->
+    <Style x:Key="SfNumberButtonStyler" TargetType="buttons:SfButton">
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="TextColor" Value="{DynamicResource Gray-6F}" />
+        <Setter Property="BackgroundColor" Value="{DynamicResource PrimaryDarkColor}" />
+        <Setter Property="FontFamily" Value="{StaticResource Montserrat-SemiBold}" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="CornerRadius" Value="12" />
+        <Setter Property="VerticalTextAlignment" Value="Center" />
+        <Setter Property="Margin" Value="3,6,3,6" />
+        <Setter Property="Padding" Value="6,0,6,0" />
+    </Style>
+
     <!--  Common style for borders  -->
     <Style x:Key="SfBorderStyle" TargetType="border:SfBorder">
         <Setter Property="BackgroundColor" Value="{StaticResource BorderBackgroundColor}" />
@@ -129,6 +161,60 @@
                 </graphics:SfLinearGradientBrush>
             </Setter.Value>
         </Setter>
+    </Style>
+
+    <!--  Common style for BoxView  -->
+    <Style x:Key="BoxViewStyle" TargetType="BoxView">
+        <Setter Property="HeightRequest" Value="1" />
+        <Setter Property="Color" Value="{DynamicResource Gray-200}" />
+        <Setter Property="VerticalOptions" Value="Center" />
+    </Style>
+
+    <!--  Common style for seperators  -->
+    <Style x:Key="SeparatorStyle" TargetType="BoxView">
+        <Setter Property="HeightRequest" Value="1" />
+        <Setter Property="BackgroundColor" Value="{DynamicResource Gray-200}" />
+    </Style>
+
+    <!--  Common style for navigation bar buttons  -->
+    <Style x:Key="NavigationBarButtonStyle" TargetType="buttons:SfButton">
+        <Setter Property="TextColor" Value="{DynamicResource Gray-600}" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="WidthRequest" Value="38" />
+        <Setter Property="HeightRequest" Value="38" />
+        <Setter Property="CornerRadius" Value="4" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="HorizontalOptions" Value="Fill" />
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="BorderWidth" Value="0" />
+        <Setter Property="FontFamily" Value="{StaticResource FontIcons}" />
+    </Style>
+
+
+    <!--  Common style for icon buttons  -->
+    <Style x:Key="IconButtonStyle" TargetType="buttons:SfButton">
+        <Setter Property="TextColor" Value="{DynamicResource Gray-600}" />
+        <Setter Property="BackgroundColor" Value="{StaticResource Transparent}" />
+        <Setter Property="FontFamily" Value="{StaticResource FontIcons}" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="VerticalTextAlignment" Value="Center" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="HeightRequest" Value="40" />
+        <Setter Property="WidthRequest" Value="40" />
+    </Style>
+
+    <!--  Common style for icon label  -->
+    <Style x:Key="IconLabelStyle" TargetType="Label">
+        <Setter Property="Margin" Value="16,8" />
+        <Setter Property="TextColor" Value="{DynamicResource Gray-600}" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="FontFamily" Value="{StaticResource FontIcons}" />
     </Style>
 
 </ResourceDictionary>

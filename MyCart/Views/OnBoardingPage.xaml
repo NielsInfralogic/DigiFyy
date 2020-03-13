@@ -7,10 +7,12 @@
     xmlns:core="clr-namespace:Syncfusion.XForms.Core;assembly=Syncfusion.Core.XForms"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:ffsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
-    xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:trans="clr-namespace:DigiFyy.Helpers"
     NavigationPage.HasNavigationBar="False"
-    Shell.NavBarIsVisible="False">
+    Shell.NavBarIsVisible="True"
+    mc:Ignorable="d">
+
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -18,6 +20,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentPage.Resources>
+
     <ContentPage.Content>
         <Grid BackgroundColor="{DynamicResource PrimaryLight}">
             <Grid.RowDefinitions>
@@ -51,7 +54,7 @@
                                                                           AndroidPhoneLandscape=140,
                                                                           iOSPhonePortrait=200,
                                                                           iOSPhoneLandscape=140}"
-                    Source="{Binding ImagePath}"
+                    Source="Digifyy.png"
                     VerticalOptions="Center"
                     WidthRequest="{x:OnIdiom Phone=200,
                                              Desktop=300,
@@ -67,7 +70,7 @@
                 FontSize="20"
                 HorizontalTextAlignment="Center"
                 Style="{StaticResource LabelStyleDark}"
-                Text="{Binding Header}"
+                Text="{trans:Translate DigitalBikeFrameNumber}"
                 VerticalTextAlignment="Center" />
 
             <!--  Label to display content  -->
@@ -84,15 +87,15 @@
                 Grid.Row="3"
                 Command="{Binding ScanCommand}"
                 Style="{StaticResource SfButtonStyle}"
-                Text="Scan my bike" />
+                Text="{trans:Translate ScanMyBike}" />
 
             <button:SfButton
                 Grid.Row="4"
                 Command="{Binding LoginCommand}"
                 Style="{StaticResource SfButtonStyle}"
-                Text="Login" />
+                Text="{trans:Translate Login}" />
 
-
+            <BoxView Grid.Row="5" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>

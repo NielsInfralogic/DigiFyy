@@ -53,7 +53,12 @@ namespace DigiFyy.Services
             MappingPageAndViewModel.Add(typeof(ResetPasswordViewModel), typeof(SimpleResetPasswordPage));
             MappingPageAndViewModel.Add(typeof(BikeDetailViewModel), typeof(BikeDetailView));
             MappingPageAndViewModel.Add(typeof(AboutUsViewModel), typeof(AboutUsSimplePage));
-            MappingPageAndViewModel.Add(typeof(ScanViewModel), typeof(ScanPage));           
+            MappingPageAndViewModel.Add(typeof(ScanViewModel), typeof(ScanPage));
+
+            MappingPageAndViewModel.Add(typeof(DocumentsViewModel), typeof(DocumentsPage));
+            MappingPageAndViewModel.Add(typeof(ShowPositionViewModel), typeof(ShowPositionPage));
+            MappingPageAndViewModel.Add(typeof(MessagesViewModel), typeof(MessagesPage));
+            MappingPageAndViewModel.Add(typeof(SettingsViewModel), typeof(SettingsPage));
         }
 
         public Page GetPageWithBindingContext(Type type, string parameterName, string parameterValue)

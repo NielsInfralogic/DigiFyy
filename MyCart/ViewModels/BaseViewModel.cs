@@ -9,17 +9,21 @@ using DigiFyy.Services;
 using DigiFyy.Models;
 using DigiFyy.DataService;
 
+
 namespace DigiFyy.ViewModels
 {
     public class ViewModelBase : INotifyPropertyChanged
     {
         public IDigifyyDataService DataStore;
 
+
         protected INavigationService NavigationService { get; private set; }
         protected IAnalyticsService AnalyticsService { get; private set; }
 
         public ViewModelBase(INavigationService navigationService, IAnalyticsService analyticsService)
         {
+
+
             NavigationService = navigationService;
             AnalyticsService = analyticsService;
 

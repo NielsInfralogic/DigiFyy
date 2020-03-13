@@ -15,6 +15,26 @@ namespace DigiFyy.ViewModels
 
         public string ImagePath { get; set; } = "Digifyy.png";
 
+
+        private int _documentCount;
+        public int DocumentCount
+        {
+            get { return _documentCount; }
+            set { SetProperty(ref _documentCount, value); }
+        }
+
+        public bool ShowDocumentCount { get { return DocumentCount > 0; } }
+        public bool ShowMessageCount { get { return MessageCount > 0; } }
+
+        private int _messageCount; 
+        public int MessageCount 
+        { 
+            get { return _messageCount; }
+            set { SetProperty(ref _messageCount, value); }
+        }
+
+
+
         private string _brand;
         public string Brand
         {
@@ -82,7 +102,18 @@ namespace DigiFyy.ViewModels
             }
         }
 
-        private  List<Message> messages;
+        private string _extras;
+        public string Extras
+        {
+            get
+            {
+                return _extras;
+            }
+            set
+            {
+                SetProperty(ref _extras, value);
+            }
+        }
 
         #endregion
 
@@ -90,17 +121,51 @@ namespace DigiFyy.ViewModels
 
         public BikeDetailViewModel(INavigationService navigationService, IAnalyticsService analyticsService) : base(navigationService, analyticsService)
         {
-          // BikeInfo = new Bike();
+            // BikeInfo = new Bike();
             //       if (uuid != "")
             //        Preferences.Set("UUID", uuid);
+            this.MessagesCommand = new Helpers.Command(this.MessagesClicked);
+            this.DocumentsCommand = new Helpers.Command(this.DocumentsClicked);
 
             LookupBikeInfo();
         }
         #endregion
 
+        #region Commands
         Command _refreshCommand;
         public Command RefreshCommand => _refreshCommand ?? (_refreshCommand = new Command(LookupBikeInfo));
 
+        public Helpers.Command MessagesCommand { get; set; }
+        public Helpers.Command DocumentsCommand { get; set; }
+
+
+        /// <summary>
+        /// Invoked when the MessageClicked button is clicked.
+        /// </summary>
+        /// <param name="obj">The Object</param>
+        private async void MessagesClicked(object obj)
+        {
+            NavigationService.NavigateTo(typeof(MessagesViewModel), string.Empty, string.Empty, false);
+        }
+
+        /// <summary>
+        /// Invoked when the MessageClicked button is clicked.
+        /// </summary>
+        /// <param name="obj">The Object</param>
+        private async void DocumentsClicked(object obj)
+        {
+            NavigationService.NavigateTo(typeof(DocumentsViewModel), string.Empty, string.Empty, false);
+        }
+
+        /// <summary>
+        /// Invoked when the MessageClicked button is clicked.
+        /// </summary>
+        /// <param name="obj">The Object</param>
+        private async void MessageClicked(object obj)
+        {
+            NavigationService.NavigateTo(typeof(MessagesViewModel), string.Empty, string.Empty, false);
+        }
+        #endregion
 
         private async void LookupBikeInfo()
         {
@@ -119,15 +184,35 @@ namespace DigiFyy.ViewModels
             {
                 try
                 {
-
                     UIDInfo result = await DataStore.GetInfo(user, token, uuid);
-                    IsBusy = false;
-
+                   
                     Brand = result.FrameNumber.Manufacturer;
                     Model = result.FrameNumber.Model;
                     UUID = result.FrameNumber.UID;
-                    this.Frame = result.FrameNumber.Frame;
+                    Frame = result.FrameNumber.Frame;
                     Status = result.FrameNumberStatus.Status;
+                    string extras = "";
+                    foreach(FrameNumberExtra ext in result.FrameNumberExtras)
+                    {
+                        if (extras != "")
+                            extras += ", ";
+                        string thisExtra = "";
+                        if (ext.ExtraBrand != "")
+                            thisExtra = thisExtra + " ";
+                        if (ext.ExtraModel != "")
+                            thisExtra = ext.ExtraModel + " ";
+                        if (ext.ExtraType != "")
+                            thisExtra = ext.ExtraType;
+                        extras += thisExtra.Trim();
+                    }
+                    Extras = extras;
+                    DocumentCount = result.FrameNumberDocuments.Count;
+
+                    List<Message> messages = await DataStore.GetMessages(user, token, uuid);
+                    MessageCount = messages.Count;
+
+                    IsBusy = false;
+
                 }
                 catch (Exception e)
                 {
@@ -146,38 +231,13 @@ namespace DigiFyy.ViewModels
 
         }
 
-       /* public override void Init(Bike parameter)
-        {
-            AnalyticsService.TrackEvent("Bike Detail Page", new Dictionary<string, string>
-                {
-                   { "UUID", parameter.FrameNumber.UID }
-                });
-
-            BikeInfo = parameter;
-        }*/
-
         #region Public properties
 
-
-
-        public List<Message> Messages
-        {
-            get
-            {
-                return this.messages;
-            }
-
-            set
-            {
-                SetProperty(ref messages, value);
-            }
-        }
+       
 
         #endregion
 
-        #region Commands
 
 
-        #endregion
     }
 }

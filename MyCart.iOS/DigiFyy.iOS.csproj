@@ -139,35 +139,41 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Plugin.Multilingual">
+      <Version>1.0.2</Version>
+    </PackageReference>
     <PackageReference Include="Plugin.NFC">
-      <Version>0.1.14</Version>
+      <Version>0.1.15</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.Buttons">
-      <Version>17.4.0.53</Version>
+      <Version>17.4.0.55</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.Cards">
-      <Version>17.4.0.53</Version>
+      <Version>17.4.0.55</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.Core">
-      <Version>17.4.0.53</Version>
+      <Version>17.4.0.55</Version>
+    </PackageReference>
+    <PackageReference Include="Syncfusion.Xamarin.DataSource">
+      <Version>17.4.0.55</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.Expander">
-      <Version>17.4.0.53</Version>
+      <Version>17.4.0.55</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfBadgeView">
-      <Version>17.4.0.53</Version>
+      <Version>17.4.0.55</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfComboBox">
-      <Version>17.4.0.53</Version>
+      <Version>17.4.0.55</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfListView">
-      <Version>17.4.0.53</Version>
+      <Version>17.4.0.55</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfRating">
-      <Version>17.4.0.53</Version>
+      <Version>17.4.0.55</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfRotator">
-      <Version>17.4.0.53</Version>
+      <Version>17.4.0.55</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.FFImageLoading.Forms">
       <Version>2.4.11.982</Version>
@@ -176,7 +182,7 @@
       <Version>2.4.11.982</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="4.5.0.356" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.5.0" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.5.1" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
@@ -201,249 +207,6 @@
     <BundleResource Include="Resources\EmptyCart.svg" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\DivingWatch%404x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DivingWatch1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DivingWatch1%400.75x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DivingWatch1%401.5x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DivingWatch1%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DivingWatch1%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DivingWatch1%404x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DivingWatch2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DivingWatch2%400.75x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DivingWatch2%401.5x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DivingWatch2%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DivingWatch2%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DivingWatch2%404x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DivingWatch3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DivingWatch3%400.75x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DivingWatch3%401.5x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DivingWatch3%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DivingWatch3%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DivingWatch3%404x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DivingWatch4.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DivingWatch4%400.75x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DivingWatch4%401.5x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DivingWatch4%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DivingWatch4%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DivingWatch4%404x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DressWatch.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DressWatch%400.75x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DressWatch%401.5x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DressWatch%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DressWatch%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DressWatch%404x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DressWatch1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DressWatch1%400.75x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DressWatch1%401.5x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DressWatch1%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DressWatch1%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DressWatch1%404x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DressWatch2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DressWatch2%400.75x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DressWatch2%401.5x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DressWatch2%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DressWatch2%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DressWatch2%404x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DressWatch3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DressWatch3%400.75x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DressWatch3%401.5x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DressWatch3%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DressWatch3%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DressWatch3%404x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DressWatch4.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DressWatch4%400.75x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DressWatch4%401.5x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DressWatch4%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DressWatch4%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DressWatch4%404x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Glass.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Hand_bag.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\MilitaryWatch.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\MilitaryWatch%400.75x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\MilitaryWatch%401.5x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\MilitaryWatch%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\MilitaryWatch%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\MilitaryWatch%404x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\MilitaryWatch1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\MilitaryWatch1%400.75x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\MilitaryWatch1%401.5x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\MilitaryWatch1%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\MilitaryWatch1%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\MilitaryWatch1%404x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\MilitaryWatch2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\MilitaryWatch2%400.75x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\MilitaryWatch2%401.5x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\MilitaryWatch2%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\MilitaryWatch2%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\MilitaryWatch2%404x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\MilitaryWatch3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\MilitaryWatch3%400.75x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\MilitaryWatch3%401.5x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\MilitaryWatch3%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\MilitaryWatch3%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\MilitaryWatch3%404x.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\ProfileImage1.png" />
   </ItemGroup>
   <ItemGroup>
@@ -453,193 +216,7 @@
     <BundleResource Include="Resources\Shoes.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Traval_bag.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Wallet.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Watch.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Watch%400.75x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Watch%401.5x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Watch%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Watch%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Watch%404x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Watch_cat.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Watch1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Watch1%400.75x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Watch1%401.5x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Watch1%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Watch1%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Watch1%404x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Watch2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Watch2%400.75x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Watch2%401.5x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Watch2%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Watch2%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Watch2%404x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Watch3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Watch3%400.75x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Watch3%401.5x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Watch3%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Watch3%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Watch3%404x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Watch4.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Watch4%400.75x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Watch4%401.5x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Watch4%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Watch4%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Watch4%404x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\WristWatch.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\WristWatch%400.75x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\WristWatch%401.5x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\WristWatch%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\WristWatch%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\WristWatch%404x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\WristWatch1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\WristWatch1%400.75x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\WristWatch1%401.5x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\WristWatch1%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\WristWatch1%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\WristWatch1%404x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\WristWatch2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\WristWatch2%400.75x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\WristWatch2%401.5x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\WristWatch2%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\WristWatch2%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\WristWatch2%404x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\WristWatch3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\WristWatch3%400.75x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\WristWatch3%401.5x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\WristWatch3%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\WristWatch3%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\WristWatch3%404x.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\xamarin.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DivingWatch%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DivingWatch%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DivingWatch%401.5x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DivingWatch%400.75x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\DivingWatch.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\digifyy.png" />

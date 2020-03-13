@@ -37,6 +37,11 @@ namespace DigiFyy.Services
             containerBuilder.RegisterType<BikeDetailViewModel>();
             containerBuilder.RegisterType<AboutUsViewModel>();
             containerBuilder.RegisterType<ScanViewModel>();
+            containerBuilder.RegisterType<DocumentsViewModel>();
+            containerBuilder.RegisterType<ShowPositionViewModel>();
+            containerBuilder.RegisterType<MessagesViewModel>();
+            containerBuilder.RegisterType<SettingsViewModel>();
+
         }
 
         public object Resolve(Type type, NamedParameter namedParameter = null)

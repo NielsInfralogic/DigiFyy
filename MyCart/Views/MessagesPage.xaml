@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="DigiFyy.Views.MessagesPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:xforms="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+    BackgroundColor="{DynamicResource Gray-White}"
+    NavigationPage.HasNavigationBar="False"
+    mc:Ignorable="d">
+
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="64" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <StackLayout
+                x:Name="TitleView"
+                Grid.Row="0"
+                Padding="16,8"
+                BackgroundColor="{DynamicResource Gray-White}"
+                HorizontalOptions="FillAndExpand"
+                Orientation="Horizontal"
+                Spacing="0">
+
+                <StackLayout
+                    x:Name="Title"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="True"
+                    Orientation="Horizontal"
+                    Spacing="0"
+                    VerticalOptions="FillAndExpand">
+
+                    <!--  Back button command  -->
+                    <buttons:SfButton
+                        x:Name="backButton"
+                        Command="{Binding BackButtonCommand}"
+                        CommandParameter="{x:Reference backButton}"
+                        CornerRadius="4"
+                        Style="{StaticResource IconButtonStyle}"
+                        Text="{StaticResource Back}" />
+
+                    <!--  Songs page Title  -->
+                    <Label
+                        Margin="16,0"
+                        FontFamily="{StaticResource Montserrat-Medium}"
+                        FontSize="16"
+                        HeightRequest="24"
+                        HorizontalOptions="CenterAndExpand"
+                        LineHeight="1.25"
+                        Text="Songs"
+                        TextColor="{DynamicResource Gray-900}"
+                        VerticalOptions="Center"
+                        VerticalTextAlignment="Center" />
+
+                </StackLayout>
+            </StackLayout>
+
+
+            <StackLayout Grid.Row="1" Spacing="0">
+                <!--  Seperator  -->
+                <BoxView Style="{StaticResource BoxViewStyle}" />
+
+                <xforms:SfListView
+                    x:Name="MessagePageList"
+                    AllowSwiping="True"
+                    AutoFitMode="Height"
+                    FocusBorderThickness="0"
+                    IsScrollBarVisible="false"
+                    ItemSpacing="0"
+                    ItemsSource="{Binding Messages}"
+                    RowSpacing="0"
+                    SelectionBackgroundColor="Transparent"
+                    TapCommand="{Binding ItemSelectedCommand}"
+                    VerticalOptions="FillAndExpand">
+
+                    <xforms:SfListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout>
+                                    <Grid ColumnSpacing="0" RowSpacing="0">
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackLayout
+                                            Grid.Column="0"
+                                            HorizontalOptions="FillAndExpand"
+                                            Spacing="0"
+                                            VerticalOptions="FillAndExpand">
+                                            <!--  Name of the Song  -->
+                                            <Label
+                                                Margin="16,13,0,0"
+                                                FontFamily="{StaticResource Montserrat-Medium}"
+                                                FontSize="16"
+                                                HeightRequest="24"
+                                                LineHeight="{OnPlatform Android=1.5,
+                                                                        Default=-1}"
+                                                Text="{Binding SenderName}"
+                                                TextColor="{DynamicResource Gray-900}" />
+
+                                            <!--  Composer of the song  -->
+                                            <Label
+                                                Margin="16,0,0,12"
+                                                FontFamily="{StaticResource Montserrat-Medium}"
+                                                FontSize="14"
+                                                HeightRequest="21"
+                                                LineHeight="{OnPlatform Android=1.25,
+                                                                        Default=-1}"
+                                                Text="{Binding MessageTime}"
+                                                TextColor="{DynamicResource Gray-700}" />
+                                        </StackLayout>
+
+                                        <!--  Menu button  -->
+                                        <buttons:SfButton
+                                            x:Name="MenuButton"
+                                            Grid.Column="1"
+                                            Margin="16,0"
+                                            Style="{StaticResource MoreButton}"
+                                            Text="{StaticResource More}" />
+
+                                    </Grid>
+                                    <!--  Seperator  -->
+                                    <BoxView Style="{StaticResource BoxViewStyle}" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </xforms:SfListView.ItemTemplate>
+                </xforms:SfListView>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
