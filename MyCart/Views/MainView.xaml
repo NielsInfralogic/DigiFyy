@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage
+    x:Class="DigiFyy.Views.MainView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:plugin="clr-namespace:Plugin.Badge.Abstractions;assembly=Plugin.Badge.Abstractions"
+    xmlns:trans="clr-namespace:DigiFyy.Helpers"
+    xmlns:viewModels="clr-namespace:DigiFyy.ViewModels;assembly=DigiFyy"
+    xmlns:views="clr-namespace:DigiFyy.Views;assembly=DigiFyy"
+    android:TabbedPage.ToolbarPlacement="Bottom"
+    viewModels:ViewModelLocator.AutoWireViewModel="True"
+    NavigationPage.HasNavigationBar="False">
+    <!--  <TabbedPage.ToolbarItems>
+        <ToolbarItem
+            Command="{Binding HomeCommand}"
+            IconImageSource="app_home.png"
+            Text="Home" />
+        <ToolbarItem
+            Command="{Binding DetailsCommand}"
+            IconImageSource="app_feed.png"
+            Text="Settings" />
+        <ToolbarItem
+            Command="{Binding MessagesCommand}"
+            IconImageSource="app_alert.png"
+            Text="Settings" />
+        <ToolbarItem
+            Command="{Binding SettingsCommand}"
+            IconImageSource="app_settings.png"
+            Text="Settings" />
+    </TabbedPage.ToolbarItems>-->
+
+
+    <!--  Home (scan,see my bike)  -->
+    <views:HomeView x:Name="HomePage" />
+    <!--  Settings  -->
+    <views:ScanView x:Name="ScanPage" />
+    <!--  Details  -->
+    <views:BikeDetailView x:Name="BikeDetailPage" />
+    <!--  Messages  -->
+    <views:MessagesView x:Name="MessagesPage" plugin:TabBadge.BadgeText="{Binding BadgeCount}" />
+    <!--  Settings  -->
+    <views:SettingsView x:Name="SettingsPage" />
+
+</TabbedPage>

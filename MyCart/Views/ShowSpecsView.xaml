@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="DigiFyy.Views.ShowSpecsView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behavior="clr-namespace:DigiFyy.Behaviors"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:core="clr-namespace:Syncfusion.XForms.Core;assembly=Syncfusion.Core.XForms"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:trans="clr-namespace:DigiFyy.Helpers"
+    xmlns:viewModels="clr-namespace:DigiFyy.ViewModels;assembly=DigiFyy"
+    xmlns:xforms="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+    x:Name="specsView"
+    viewModels:ViewModelLocator.AutoWireViewModel="True"
+    NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <Grid ColumnSpacing="0" RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <StackLayout
+                x:Name="TitleView"
+                Grid.Row="0"
+                Margin="{OnPlatform Android='0,00,0,0',
+                                    iOS='0,40,0,0'}"
+                Padding="4,4"
+                BackgroundColor="{DynamicResource PrimaryLight}"
+                HeightRequest="40"
+                HorizontalOptions="FillAndExpand"
+                Orientation="Horizontal"
+                Spacing="0">
+
+                <StackLayout
+                    x:Name="Title"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="True"
+                    Orientation="Horizontal"
+                    Spacing="0"
+                    VerticalOptions="FillAndExpand">
+
+                    <!--  Back button command  -->
+                    <buttons:SfButton
+                        x:Name="backButton"
+                        BackgroundColor="Transparent"
+                        Command="{Binding BackButtonCommand}"
+                        CommandParameter="{x:Reference backButton}"
+                        ImageSource="back.png"
+                        ShowIcon="True"
+                        Text=""
+                        VerticalTextAlignment="Center" />
+
+                    <!--  page Title  -->
+                    <Label Style="{DynamicResource LabelStylePageTitle}" Text="{trans:Translate Specifications}" />
+
+                </StackLayout>
+            </StackLayout>
+            <StackLayout Grid.Row="1" Orientation="Vertical">
+                <ffimageloading:CachedImage
+                    Margin="{x:OnIdiom Phone='0,20,0,0',
+                                       Desktop='0',
+                                       Tablet='0'}"
+                    BackgroundColor="{Binding White}"
+                    HeightRequest="{core:OnPlatformOrientationDoubleValue Default=160,
+                                                                          AndroidPhonePortrait=160,
+                                                                          AndroidPhoneLandscape=140,
+                                                                          iOSPhonePortrait=160,
+                                                                          iOSPhoneLandscape=140}"
+                    Source="{Binding ImagePath}"
+                    VerticalOptions="Center"
+                    WidthRequest="{x:OnIdiom Phone=160,
+                                             Desktop=300,
+                                             Tablet=300}">
+                    <ffimageloading:CachedImage.Transformations>
+                        <fftransformations:CircleTransformation />
+                    </ffimageloading:CachedImage.Transformations>
+
+                </ffimageloading:CachedImage>
+
+                <Label
+                    Style="{DynamicResource LabelStylePageTitle}"
+                    Text="{Binding BrandModel}"
+                    TextColor="{DynamicResource Gray-700}" />
+            </StackLayout>
+
+            <StackLayout Grid.Row="2" Margin="0,15,0,0">
+                <StackLayout
+                    HorizontalOptions="Center"
+                    IsVisible="{Binding IsBusy}"
+                    Orientation="Vertical"
+                    VerticalOptions="Center">
+                    <ActivityIndicator IsRunning="True" />
+                </StackLayout>
+                <xforms:SfListView
+                    x:Name="SpecsList"
+                    AllowSwiping="True"
+                    AutoFitMode="Height"
+                    IsScrollBarVisible="False"
+                    ItemSpacing="3"
+                    ItemsSource="{Binding Specs}"
+                    SelectionBackgroundColor="{DynamicResource PrimaryDarkenColor}"
+                    VerticalOptions="FillAndExpand">
+
+                    <xforms:SfListView.Behaviors>
+                        <behavior:SfListViewTapBehavior Command="{Binding Path=BindingContext.ItemSelectedCommand, Source={x:Reference specsView}}" />
+                    </xforms:SfListView.Behaviors>
+
+                    <xforms:SfListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Spacing="0">
+
+                                    <Grid ColumnSpacing="0" RowSpacing="0">
+
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="2" />
+                                        </Grid.RowDefinitions>
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+
+
+                                        <!--  Extra Name  -->
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="0"
+                                            Margin="10,3,20,3"
+                                            FontFamily="{StaticResource CenturyGothic-Bold}"
+                                            FontSize="20"
+                                            Text="{Binding SpecPartType}"
+                                            TextColor="{DynamicResource HyperLink}"
+                                            WidthRequest="40" />
+
+
+                                        <!--  Extra Name  -->
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            Margin="0,4,10,3"
+                                            FontFamily="{StaticResource CenturyGothic-Bold}"
+                                            FontSize="18"
+                                            HorizontalOptions="EndAndExpand"
+                                            HorizontalTextAlignment="End"
+                                            Text="{Binding SpecPartName}"
+                                            TextColor="{DynamicResource Gray-900}" />
+
+                                        <border:SfBorder
+                                            Grid.Row="0"
+                                            Grid.Column="2"
+                                            Margin="0,0,0,3"
+                                            HorizontalOptions="FillAndExpand"
+                                            Style="{StaticResource SfBorderStyle}">
+                                            <Label
+                                                FontSize="18"
+                                                HorizontalOptions="FillAndExpand"
+                                                Style="{StaticResource LabelStyleInfo}"
+                                                Text="{Binding SpecPartDetails}"
+                                                WidthRequest="180" />
+                                        </border:SfBorder>
+                                        <!--  Seperator  -->
+                                        <BoxView
+                                            Grid.Row="1"
+                                            Grid.ColumnSpan="3"
+                                            Style="{DynamicResource SeparatorStyle}" />
+
+                                    </Grid>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </xforms:SfListView.ItemTemplate>
+                </xforms:SfListView>
+
+            </StackLayout>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

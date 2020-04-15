@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace DigiFyy.Helpers
 {
+
     public class Command : ICommand
     {
         readonly Func<object, bool> _canExecute;
@@ -48,5 +50,8 @@ namespace DigiFyy.Helpers
         {
             _execute(parameter);
         }
+
+
     }
 }
+

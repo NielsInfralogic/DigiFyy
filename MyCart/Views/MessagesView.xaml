@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="DigiFyy.Views.MessagesView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behavior="clr-namespace:DigiFyy.Behaviors"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:converters="clr-namespace:DigiFyy.Converters"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:trans="clr-namespace:DigiFyy.Helpers"
+    xmlns:viewModels="clr-namespace:DigiFyy.ViewModels;assembly=DigiFyy"
+    xmlns:xforms="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+    x:Name="messagesview"
+    Title="{trans:Translate Messages}"
+    viewModels:ViewModelLocator.AutoWireViewModel="True"
+    IconImageSource="tab_alert.png">
+
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="1" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <StackLayout
+                x:Name="TitleView"
+                Grid.Row="0"
+                Margin="{OnPlatform Android='0,0,0,0',
+                                    iOS='0,40,0,0'}"
+                Padding="16,8"
+                BackgroundColor="{DynamicResource PrimaryLight}"
+                HorizontalOptions="FillAndExpand"
+                Orientation="Horizontal"
+                Spacing="0">
+
+                <StackLayout
+                    x:Name="Title"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="True"
+                    Orientation="Horizontal"
+                    Spacing="0"
+                    VerticalOptions="FillAndExpand">
+                    <Label Style="{DynamicResource LabelStylePageTitle}" Text="{trans:Translate Messages}" />
+
+                </StackLayout>
+            </StackLayout>
+            <BoxView Grid.Row="1" Style="{DynamicResource SeparatorStyle}" />
+
+            <StackLayout Grid.Row="2" Spacing="0">
+
+                <xforms:SfListView
+                    x:Name="MessagePageList"
+                    AllowSwiping="True"
+                    AutoFitMode="Height"
+                    FocusBorderThickness="0"
+                    IsScrollBarVisible="false"
+                    ItemSpacing="0"
+                    ItemsSource="{Binding Messages}"
+                    RowSpacing="0"
+                    SelectionBackgroundColor="{DynamicResource TappedBackgroundColor}"
+                    VerticalOptions="FillAndExpand">
+
+                    <xforms:SfListView.Behaviors>
+                        <behavior:SfListViewTapBehavior Command="{Binding Path=BindingContext.ItemSelectedCommand, Source={x:Reference messagesview}}" />
+                    </xforms:SfListView.Behaviors>
+                    <xforms:SfListView.RightSwipeTemplate>
+                        <DataTemplate x:Name="RightSwipeTemplate">
+                            <Grid
+                                BackgroundColor="CadetBlue"
+                                HorizontalOptions="Fill"
+                                VerticalOptions="Fill">
+                                <Grid HorizontalOptions="Center" VerticalOptions="Center">
+                                    <Label
+                                        Grid.Column="0"
+                                        Margin="0,5,0,0"
+                                        BackgroundColor="Transparent"
+                                        FontSize="13"
+                                        HeightRequest="38"
+                                        Text="Mark as Read"
+                                        TextColor="White"
+                                        WidthRequest="78" />
+                                </Grid>
+                            </Grid>
+                        </DataTemplate>
+                    </xforms:SfListView.RightSwipeTemplate>
+
+                    <xforms:SfListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout>
+                                    <Grid
+                                        ColumnSpacing="0"
+                                        HeightRequest="72"
+                                        RowSpacing="0">
+
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <!--  Account Icon  -->
+                                        <Label
+                                            Grid.RowSpan="3"
+                                            Margin="17,0"
+                                            FontFamily="{StaticResource FontIcons}"
+                                            FontSize="18"
+                                            Text="{StaticResource Mail}"
+                                            TextColor="{DynamicResource Gray-600}"
+                                            VerticalOptions="CenterAndExpand" />
+
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            Margin="0,5,0,0"
+                                            FontFamily="{StaticResource CenturyGothic-Bold}"
+                                            FontSize="16"
+                                            HeightRequest="24"
+                                            HorizontalOptions="StartAndExpand"
+                                            Text="{Binding SenderName}"
+                                            TextColor="{DynamicResource Gray-900}" />
+
+                                        <Label
+                                            Grid.Row="1"
+                                            Grid.Column="1"
+                                            Margin="0,5,0,0"
+                                            FontFamily="{StaticResource CenturyGothic-Bold}"
+                                            FontSize="16"
+                                            HeightRequest="24"
+                                            HorizontalOptions="FillAndExpand"
+                                            Text="{Binding MessageText}"
+                                            TextColor="{DynamicResource Gray-900}" />
+                                        <Label
+                                            Grid.Row="2"
+                                            Grid.Column="1"
+                                            Grid.ColumnSpan="2"
+                                            Margin="0,0,0,14"
+                                            FontFamily="{StaticResource CenturyGothic-Bold}"
+                                            FontSize="14"
+                                            HeightRequest="21"
+                                            LineHeight="{OnPlatform Android=1.25,
+                                                                    Default=-1}"
+                                            Text="{Binding MessageTime, StringFormat='{0:G}'}"
+                                            TextColor="{DynamicResource Gray-700}" />
+
+                                        <!--  More Button  -->
+                                        <buttons:SfButton
+                                            Grid.RowSpan="3"
+                                            Grid.Column="2"
+                                            Margin="15,0,15,0"
+                                            BackgroundColor="{DynamicResource Transparent}"
+                                            FontFamily="{StaticResource FontIcons}"
+                                            FontSize="18"
+                                            HeightRequest="38"
+                                            HorizontalOptions="End"
+                                            HorizontalTextAlignment="End"
+                                            Text="{StaticResource MoreIcon}"
+                                            TextColor="{DynamicResource Gray-600}"
+                                            VerticalOptions="Center"
+                                            WidthRequest="38" />
+
+                                    </Grid>
+                                    <!--  Seperator  -->
+                                    <BoxView Style="{StaticResource BoxViewStyle}" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </xforms:SfListView.ItemTemplate>
+                </xforms:SfListView>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

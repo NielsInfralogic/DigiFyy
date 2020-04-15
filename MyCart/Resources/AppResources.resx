@@ -117,14 +117,44 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Accept" xml:space="preserve">
+    <value>Accept</value>
+  </data>
+  <data name="AddExtra" xml:space="preserve">
+    <value>Register part(s) for my bike</value>
+  </data>
+  <data name="AddProfileImage" xml:space="preserve">
+    <value>Add profile image</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="Bike" xml:space="preserve">
+    <value>Bike</value>
+  </data>
   <data name="BikeDetails" xml:space="preserve">
     <value>Bike details</value>
+  </data>
+  <data name="BikeIDColon" xml:space="preserve">
+    <value>Bike ID:</value>
+  </data>
+  <data name="BikePosition" xml:space="preserve">
+    <value>Last registered position</value>
   </data>
   <data name="Brand" xml:space="preserve">
     <value>Brand</value>
   </data>
+  <data name="BrandColon" xml:space="preserve">
+    <value>Brand:</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
   <data name="ChangeLanguage" xml:space="preserve">
     <value>Change language</value>
+  </data>
+  <data name="ChangeStatus" xml:space="preserve">
+    <value>Change status</value>
   </data>
   <data name="ContentHeader" xml:space="preserve">
     <value>Digifyy A/S (C) 2020</value>
@@ -132,8 +162,26 @@
   <data name="CreateSocialMediaAccount" xml:space="preserve">
     <value>Or create an account using social media</value>
   </data>
+  <data name="CurrentLoginStatus" xml:space="preserve">
+    <value>Login state</value>
+  </data>
+  <data name="CurrentRegistrationStatus" xml:space="preserve">
+    <value>Registration state</value>
+  </data>
+  <data name="Deny" xml:space="preserve">
+    <value>Deny</value>
+  </data>
+  <data name="Deregister" xml:space="preserve">
+    <value>Deregister</value>
+  </data>
   <data name="DigitalBikeFrameNumber" xml:space="preserve">
     <value>Digital Bike Frame Number</value>
+  </data>
+  <data name="DocsButton" xml:space="preserve">
+    <value>Docs</value>
+  </data>
+  <data name="Document" xml:space="preserve">
+    <value>Document</value>
   </data>
   <data name="Documents" xml:space="preserve">
     <value>Documents</value>
@@ -145,10 +193,13 @@
     <value>Extras</value>
   </data>
   <data name="ForgotPassword" xml:space="preserve">
-    <value>FORGOT PASSWORD?</value>
+    <value>Forgot password?</value>
   </data>
   <data name="Frame" xml:space="preserve">
     <value>Frame</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
   </data>
   <data name="LoggingIn" xml:space="preserve">
     <value>Logging in..</value>
@@ -162,17 +213,74 @@
   <data name="LoginWithGoogle" xml:space="preserve">
     <value>Login with Google</value>
   </data>
-  <data name="Messsages" xml:space="preserve">
-    <value>Messsages</value>
+  <data name="Logout" xml:space="preserve">
+    <value>Log out</value>
+  </data>
+  <data name="Messages" xml:space="preserve">
+    <value>Messages</value>
   </data>
   <data name="Model" xml:space="preserve">
     <value>Model</value>
   </data>
+  <data name="ModelColon" xml:space="preserve">
+    <value>Model:</value>
+  </data>
+  <data name="NotLoggedIn" xml:space="preserve">
+    <value>Not logged in</value>
+  </data>
+  <data name="OnSignupWith" xml:space="preserve">
+    <value>On sign up with</value>
+  </data>
+  <data name="OrLoginWith" xml:space="preserve">
+    <value>Or login with</value>
+  </data>
+  <data name="Parts" xml:space="preserve">
+    <value>Parts</value>
+  </data>
+  <data name="PartsButton" xml:space="preserve">
+    <value>Parts</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password:</value>
+  </data>
+  <data name="PickPhoto" xml:space="preserve">
+    <value>Pick photo</value>
+  </data>
   <data name="PickUpMyBike" xml:space="preserve">
     <value>Pick up my bike</value>
   </data>
+  <data name="Pictures" xml:space="preserve">
+    <value>Pictures</value>
+  </data>
   <data name="PoliceEnsurance" xml:space="preserve">
     <value>Police/Ensurance</value>
+  </data>
+  <data name="Position" xml:space="preserve">
+    <value>Position</value>
+  </data>
+  <data name="ProductionYearColon" xml:space="preserve">
+    <value>Year:</value>
+  </data>
+  <data name="Reclaim" xml:space="preserve">
+    <value>Reclaim</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="RegisterBike" xml:space="preserve">
+    <value>Register bike</value>
+  </data>
+  <data name="RepeatPassword" xml:space="preserve">
+    <value>Repeat:</value>
+  </data>
+  <data name="ReportLocation" xml:space="preserve">
+    <value>Report location</value>
+  </data>
+  <data name="ReportStolen" xml:space="preserve">
+    <value>Report stolen</value>
+  </data>
+  <data name="ReportStolenFound" xml:space="preserve">
+    <value>Report found</value>
   </data>
   <data name="ReportTheft" xml:space="preserve">
     <value>Report theft</value>
@@ -180,22 +288,124 @@
   <data name="Save" xml:space="preserve">
     <value>Save</value>
   </data>
+  <data name="Scan" xml:space="preserve">
+    <value>Scan</value>
+  </data>
+  <data name="ScanAgain" xml:space="preserve">
+    <value>Scan again</value>
+  </data>
   <data name="ScanMyBike" xml:space="preserve">
-    <value>Scan my bike</value>
+    <value>Scan bike</value>
+  </data>
+  <data name="SeeMyBike" xml:space="preserve">
+    <value>See my bikes</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="SerialNumber" xml:space="preserve">
+    <value>Serial number</value>
+  </data>
+  <data name="SetPositionHere" xml:space="preserve">
+    <value>Store present position</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="ShareButton" xml:space="preserve">
+    <value>Share</value>
+  </data>
+  <data name="ShowPosition" xml:space="preserve">
+    <value>Show position</value>
   </data>
   <data name="SignIn" xml:space="preserve">
     <value>Sign in</value>
   </data>
   <data name="SignUp" xml:space="preserve">
-    <value>Sign Up</value>
+    <value>Sign up</value>
+  </data>
+  <data name="Specifications" xml:space="preserve">
+    <value>Specifications</value>
+  </data>
+  <data name="SpecsButton" xml:space="preserve">
+    <value>Specs</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>Status</value>
   </data>
+  <data name="StatusColon" xml:space="preserve">
+    <value>Status:</value>
+  </data>
+  <data name="StatusFound" xml:space="preserve">
+    <value>Found</value>
+  </data>
+  <data name="StatusNotRegistered" xml:space="preserve">
+    <value>Not registered</value>
+  </data>
+  <data name="StatusRegistered" xml:space="preserve">
+    <value>Registered</value>
+  </data>
+  <data name="StatusStolen" xml:space="preserve">
+    <value>Reported stolen!</value>
+  </data>
+  <data name="StatusUnknown" xml:space="preserve">
+    <value>Unknown</value>
+  </data>
+  <data name="TakePhoto" xml:space="preserve">
+    <value>Take photo</value>
+  </data>
+  <data name="TakePhotoOfInvoice" xml:space="preserve">
+    <value>Take invoice photo</value>
+  </data>
+  <data name="TakePhotoOrSelect" xml:space="preserve">
+    <value>Please take photo or select from picture library</value>
+  </data>
+  <data name="TakePhotoToRegisterText" xml:space="preserve">
+    <value>To register your bike, please take a photo of your purchase receipt.</value>
+  </data>
+  <data name="ThisCodeEmail" xml:space="preserve">
+    <value>This code has also been sent to your email</value>
+  </data>
+  <data name="ToRegisterTakePhoto" xml:space="preserve">
+    <value>To register your bike, please take a photo of your purchase receipt</value>
+  </data>
+  <data name="ToSellYourBike" xml:space="preserve">
+    <value>To sell your bike, you need to deregister your ownership. Upon deregistration, you will be provided with a token that can be used by the buyer to register themselves as the owner.</value>
+  </data>
+  <data name="TryAgain" xml:space="preserve">
+    <value>Try again</value>
+  </data>
+  <data name="Unregister" xml:space="preserve">
+    <value>Unregister</value>
+  </data>
+  <data name="Unregistred" xml:space="preserve">
+    <value>Unregistred</value>
+  </data>
+  <data name="UpdateDate" xml:space="preserve">
+    <value>Updated</value>
+  </data>
+  <data name="Uploading" xml:space="preserve">
+    <value>Uploading..</value>
+  </data>
+  <data name="UsePhoto" xml:space="preserve">
+    <value>Use photo</value>
+  </data>
   <data name="UseScannedUUID" xml:space="preserve">
     <value>Use scanned UUID</value>
   </data>
+  <data name="UUIDNotRegistered" xml:space="preserve">
+    <value>UUID not scanned yet</value>
+  </data>
   <data name="WaitingForScan" xml:space="preserve">
     <value>Waiting for scan..</value>
+  </data>
+  <data name="WeLikeToReportLocation" xml:space="preserve">
+    <value>We like to report the location of the bike. May se send your locationdetails?</value>
+  </data>
+  <data name="WillSendInstructions" xml:space="preserve">
+    <value>We'll send instructions on how to reset your password to the email address you have registered with us</value>
+  </data>
+  <data name="YourBikeHasBeenDeregistered" xml:space="preserve">
+    <value>Your bike has now been deregistered. Use the code below to register again or provide to the new owner. The code is valid for 10 days.</value>
   </data>
 </root>

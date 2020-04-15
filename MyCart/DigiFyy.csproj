@@ -15,29 +15,34 @@
     <Warning Text="$(MSBuildProjectFile) is Multilingual build enabled, but the Multilingual App Toolkit is unavailable during the build. If building with Visual Studio, please check to ensure that toolkit is properly installed." />
   </Target>
   <ItemGroup>
-    <PackageReference Include="Autofac" Version="5.1.2" />
-    <PackageReference Include="Microsoft.AppCenter" Version="3.0.0" />
-    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="3.0.0" />
-    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="3.0.0" />
-    <PackageReference Include="Microsoft.Data.Sqlite" Version="3.1.2" />
+    <PackageReference Include="AWSSDK.CognitoIdentity" Version="3.3.101.62" />
+    <PackageReference Include="AWSSDK.S3" Version="3.3.110.50" />
+    <PackageReference Include="Microsoft.AppCenter" Version="3.1.0" />
+    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="3.1.0" />
+    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="3.1.0" />
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="3.1.3" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Plugin.Badge" Version="2.2.1" />
     <PackageReference Include="Plugin.Multilingual" Version="1.0.2" />
-    <PackageReference Include="Plugin.NFC" Version="0.1.15" />
-    <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="17.4.0.55" />
-    <PackageReference Include="Syncfusion.Xamarin.Cards" Version="17.4.0.55" />
-    <PackageReference Include="Syncfusion.Xamarin.Core" Version="17.4.0.55" />
-    <PackageReference Include="Syncfusion.Xamarin.DataSource" Version="17.4.0.55" />
-    <PackageReference Include="Syncfusion.Xamarin.Expander" Version="17.4.0.55" />
-    <PackageReference Include="Syncfusion.Xamarin.SfBadgeView" Version="17.4.0.55" />
-    <PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="17.4.0.55" />
-    <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="17.4.0.55" />
-    <PackageReference Include="Syncfusion.Xamarin.SfRating" Version="17.4.0.55" />
-    <PackageReference Include="Syncfusion.Xamarin.SfRotator" Version="17.4.0.55" />
+    <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="18.1.0.44" />
+    <PackageReference Include="Syncfusion.Xamarin.Cards" Version="18.1.0.44" />
+    <PackageReference Include="Syncfusion.Xamarin.Core" Version="18.1.0.44" />
+    <PackageReference Include="Syncfusion.Xamarin.DataSource" Version="18.1.0.44" />
+    <PackageReference Include="Syncfusion.Xamarin.Expander" Version="18.1.0.44" />
+    <PackageReference Include="Syncfusion.Xamarin.SfBadgeView" Version="18.1.0.44" />
+    <PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="18.1.0.44" />
+    <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="18.1.0.44" />
+    <PackageReference Include="Syncfusion.Xamarin.SfPdfViewer" Version="18.1.0.44" />
+    <PackageReference Include="Syncfusion.Xamarin.SfRating" Version="18.1.0.44" />
+    <PackageReference Include="Syncfusion.Xamarin.SfRotator" Version="18.1.0.44" />
+    <PackageReference Include="Xam.Plugin.Media" Version="5.0.1" />
     <PackageReference Include="Xamarin.Auth" Version="1.7.0" />
     <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
     <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.11.982" />
-    <PackageReference Include="Xamarin.Forms" Version="4.5.0.356" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.5.1" />
+    <PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.Forms" Version="4.5.0.617" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.5.2" />
+    <PackageReference Include="Xamarin.Forms.Maps" Version="4.5.0.617" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Resources\AppResources.Designer.cs">
@@ -45,23 +50,77 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
+    <Compile Update="Views\AboutUsSimpleView.xaml.cs">
+      <DependentUpon>AboutUsSimpleView.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\AboutUsStyles.xaml.cs">
       <DependentUpon>AboutUsStyles.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\ErrorStyles.xaml.cs">
-      <DependentUpon>ErrorStyles.xaml</DependentUpon>
+    <Compile Update="Views\DeregisterView.xaml.cs">
+      <DependentUpon>DeregisterView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\LoginSignupView.xaml.cs">
+      <DependentUpon>LoginSignupView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ImageViewerView.xaml.cs">
+      <DependentUpon>ImageViewerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ShowSpecsView.xaml.cs">
+      <DependentUpon>ShowSpecsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ShowPartsView.xaml.cs">
+      <DependentUpon>ShowPartsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\AddExtraView.xaml.cs">
+      <DependentUpon>AddExtraView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\AddPictureView.xaml.cs">
+      <DependentUpon>AddPictureView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\BikeDetailView.xaml.cs">
+      <DependentUpon>BikeDetailView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\DocumentsView.xaml.cs">
+      <DependentUpon>DocumentsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\HomeView.xaml.cs">
+      <DependentUpon>HomeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\NoInternetConnectionView.xaml.cs">
+      <DependentUpon>NoInternetConnectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\PdfViewerView.xaml.cs">
+      <DependentUpon>PdfViewerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ScanView.xaml.cs">
+      <DependentUpon>ScanView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\SettingsView.xaml.cs">
+      <DependentUpon>SettingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ShowPositionView.xaml.cs">
+      <DependentUpon>ShowPositionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ForgotPasswordView.xaml.cs">
+      <DependentUpon>ForgotPasswordView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\LoginView.xaml.cs">
+      <DependentUpon>LoginView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ResetPasswordView.xaml.cs">
+      <DependentUpon>ResetPasswordView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\SignUpView.xaml.cs">
+      <DependentUpon>SignUpView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\MessagesView.xaml.cs">
+      <DependentUpon>MessagesView.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\Styles.xaml.cs">
       <DependentUpon>Styles.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\LoginStyles.xaml.cs">
-      <DependentUpon>LoginStyles.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\OnBoardingPage.xaml.cs">
-      <DependentUpon>OnBoardingPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\OnboardingStyles.xaml.cs">
-      <DependentUpon>OnboardingStyles.xaml</DependentUpon>
+    <Compile Update="Views\MainView.xaml.cs">
+      <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -72,62 +131,69 @@
     <EmbeddedResource Update="Themes\LightTheme.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\DocumentsPage.xaml">
+    <EmbeddedResource Update="Views\AddExtraView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\MessagesPage.xaml">
+    <EmbeddedResource Update="Views\AddPictureView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\SettingsPage.xaml">
+    <EmbeddedResource Update="Views\CustomNavigationView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DocumentsView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\HomeView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\MessagesView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\PdfViewerView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\SettingsView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Styles.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\ScanPage.xaml">
+    <EmbeddedResource Update="Views\ScanView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\AboutUsSimplePage.xaml">
+    <EmbeddedResource Update="Views\AboutUsSimpleView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\AboutUsStyles.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\NoInternetConnectionPage.xaml">
+    <EmbeddedResource Update="Views\NoInternetConnectionView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\ErrorStyles.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\ShowPositionPage.xaml">
+    <EmbeddedResource Update="Views\ShowPositionView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\SimpleEmailEntry.xaml">
+    <EmbeddedResource Update="Views\ForgotPasswordView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\SimpleForgotPasswordPage.xaml">
+    <EmbeddedResource Update="Views\LoginView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\SimpleLoginPage.xaml">
+    <EmbeddedResource Update="Views\ResetPasswordView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\SimpleResetPasswordPage.xaml">
+    <EmbeddedResource Update="Views\SignUpView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\SimpleSignUpPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\LoginStyles.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\OnBoardingPage.xaml">
+    <EmbeddedResource Update="Views\MainView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\OnboardingStyles.xaml">
-      <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="TinyIoC\" />
     <Folder Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\LocalNugets\Plugin.NFC\src\Plugin.NFC\Plugin.NFC.csproj" />
   </ItemGroup>
 </Project>

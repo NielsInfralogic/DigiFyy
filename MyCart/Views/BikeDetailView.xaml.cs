@@ -18,5 +18,10 @@ namespace DigiFyy.Views
         {
             InitializeComponent();
         }
+
+        private void SfButton_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }

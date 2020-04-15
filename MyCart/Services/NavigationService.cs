@@ -4,94 +4,178 @@ using Xamarin.Forms;
 using DigiFyy.Views;
 using DigiFyy.Services;
 using DigiFyy.ViewModels;
+using System.Threading.Tasks;
+using Xamarin.Essentials;
+using System.Linq;
+using System.ComponentModel;
+using System.Globalization;
+using System.Reflection;
 
 namespace DigiFyy.Services
 {
     public class NavigationService : INavigationService
     {
-        protected readonly Dictionary<Type, Type> MappingPageAndViewModel = new Dictionary<Type, Type>();
+        protected readonly Dictionary<Type, Type> MappingPageAndViewModel;
 
-        protected Application CurrentApplication
+        protected Application CurrentApplication => Application.Current;
+
+        public ViewModelBase PreviousPageViewModel
         {
-            get { return Application.Current; }
+            get
+            {
+                var mainPage = Application.Current.MainPage as CustomNavigationView;
+                var viewModel = mainPage.Navigation.NavigationStack[mainPage.Navigation.NavigationStack.Count - 2].BindingContext;
+                return viewModel as ViewModelBase;
+            }
         }
 
         public NavigationService()
         {
-          
+            MappingPageAndViewModel = new Dictionary<Type, Type>();
             SetPageViewModelMappings();
         }
 
-        public async void NavigateBack()
+        public Task InitializeAsync()
         {
-            await CurrentApplication.MainPage.Navigation.PopAsync(true);
+            // if (string.IsNullOrEmpty(_settingsService.AuthAccessToken))
+          //  if (string.IsNullOrEmpty(Preferences.Get("Token", "")))
+        //        return NavigateToAsync<LoginPageViewModel>();
+         //   else
+                return NavigateToAsync<MainViewModel>();
         }
 
-        public async void NavigateTo(Type type, string parameterName, string parameterValue, bool replaceView = false)
+        public Task NavigateToAsync<TViewModel>() where TViewModel : ViewModelBase
         {
-         /*   if(type == typeof(BikeDetailViewModel) && string.IsNullOrEmpty(parameterValue))
+            return InternalNavigateToAsync(typeof(TViewModel), null);
+        }
+
+        public Task NavigateToAsync<TViewModel>(object parameter) where TViewModel : ViewModelBase
+        {
+            return InternalNavigateToAsync(typeof(TViewModel), parameter);
+        }
+
+        public Task RemoveLastFromBackStackAsync()
+        {
+            var mainPage = Application.Current.MainPage as CustomNavigationView;
+
+            if (mainPage != null)
             {
-                CurrentApplication.MainPage = new AppShell();
-                return;
-            }*/
-            if (!replaceView)
+                mainPage.Navigation.RemovePage(
+                    mainPage.Navigation.NavigationStack[mainPage.Navigation.NavigationStack.Count - 2]);
+            }
+
+            return Task.FromResult(true);
+        }
+
+        public Task RemoveBackStackAsync()
+        {
+            var mainPage = Application.Current.MainPage as CustomNavigationView;
+
+            if (mainPage != null)
             {
-                await CurrentApplication.MainPage.Navigation.PushAsync(GetPageWithBindingContext(type, parameterName, parameterValue), true);
+                for (int i = 0; i < mainPage.Navigation.NavigationStack.Count - 1; i++)
+                {
+                    var page = mainPage.Navigation.NavigationStack[i];
+                    mainPage.Navigation.RemovePage(page);
+                }
+            }
+
+            return Task.FromResult(true);
+        }
+
+
+
+        private async Task InternalNavigateToAsync(Type viewModelType, object parameter)
+        {
+            Page page = CreatePage(viewModelType);
+
+            if (page is MainView)
+            {
+                Application.Current.MainPage = new CustomNavigationView(page);
             }
             else
             {
-                CurrentApplication.MainPage = new NavigationPage(GetPageWithBindingContext(type, parameterName, parameterValue));
+                CustomNavigationView navigationPage = Application.Current.MainPage as CustomNavigationView;
+                if (navigationPage != null)
+                {
+                    await navigationPage.PushAsync(page);
+                }
+                else
+                {
+                    Application.Current.MainPage = new CustomNavigationView(page);
+                }
             }
+
+            // Pass parameter in..
+
+            await (page.BindingContext as ViewModelBase).InitializeAsync(parameter);
+        }
+
+        private Type GetPageTypeForViewModel(Type viewModelType)
+        {
+            if (MappingPageAndViewModel.ContainsKey(viewModelType))
+            {
+                return MappingPageAndViewModel[viewModelType];
+                //                throw new KeyNotFoundException($"No map for ${viewModelType} was found on navigation mappings");
+            }
+
+            // else - try name mapping directy..          
+
+            var pageName = viewModelType.FullName.Replace("ViewModel", "View");
+            var viewModelAssemblyName = viewModelType.GetTypeInfo().Assembly.FullName;
+            var pageAssemblyName = string.Format(CultureInfo.InvariantCulture, "{0}, {1}", pageName, viewModelAssemblyName);
+            var pageType = Type.GetType(pageAssemblyName);
+            return pageType;
+        }
+
+        public Page CreatePage(Type viewModelType)
+        {
+            Type pageType = GetPageTypeForViewModel(viewModelType);
+            if (pageType == null)
+            {
+                throw new Exception($"Cannot locate page type for {viewModelType}");
+            }
+
+            Page page = Activator.CreateInstance(pageType) as Page;
+            return page;
         }
 
         private void SetPageViewModelMappings()
         {
-            MappingPageAndViewModel.Add(typeof(OnBoardingViewModel), typeof(OnBoardingPage));
-            MappingPageAndViewModel.Add(typeof(LoginPageViewModel), typeof(SimpleLoginPage));
-            MappingPageAndViewModel.Add(typeof(SignUpPageViewModel), typeof(SimpleSignUpPage));
-            MappingPageAndViewModel.Add(typeof(ForgotPasswordViewModel), typeof(SimpleForgotPasswordPage));
-            MappingPageAndViewModel.Add(typeof(ResetPasswordViewModel), typeof(SimpleResetPasswordPage));
+            MappingPageAndViewModel.Add(typeof(MainViewModel), typeof(MainView));
+            MappingPageAndViewModel.Add(typeof(LoginViewModel), typeof(LoginView));
+            MappingPageAndViewModel.Add(typeof(SignUpViewModel), typeof(SignUpView));
+            MappingPageAndViewModel.Add(typeof(ForgotPasswordViewModel), typeof(ForgotPasswordView));
+            MappingPageAndViewModel.Add(typeof(ResetPasswordViewModel), typeof(ResetPasswordView));
             MappingPageAndViewModel.Add(typeof(BikeDetailViewModel), typeof(BikeDetailView));
-            MappingPageAndViewModel.Add(typeof(AboutUsViewModel), typeof(AboutUsSimplePage));
-            MappingPageAndViewModel.Add(typeof(ScanViewModel), typeof(ScanPage));
+            MappingPageAndViewModel.Add(typeof(AboutUsViewModel), typeof(AboutUsSimpleView));
+            MappingPageAndViewModel.Add(typeof(ScanViewModel), typeof(ScanView));
+            
+            MappingPageAndViewModel.Add(typeof(ShowPartsViewModel), typeof(ShowPartsView));
+            MappingPageAndViewModel.Add(typeof(ShowSpecsViewModel), typeof(ShowSpecsView));
+            MappingPageAndViewModel.Add(typeof(DocumentsViewModel), typeof(DocumentsView));
+            MappingPageAndViewModel.Add(typeof(ShowPositionViewModel), typeof(ShowPositionView));
+            MappingPageAndViewModel.Add(typeof(MessagesViewModel), typeof(MessagesView));
+            MappingPageAndViewModel.Add(typeof(SettingsViewModel), typeof(SettingsView));
+            MappingPageAndViewModel.Add(typeof(PdfViewerViewModel), typeof(PdfViewerView));
+            MappingPageAndViewModel.Add(typeof(ImageViewerViewModel), typeof(ImageViewerView));
+            MappingPageAndViewModel.Add(typeof(AddPictureViewModel), typeof(AddPictureView));
+            MappingPageAndViewModel.Add(typeof(AddExtraViewModel), typeof(AddExtraView));
+            MappingPageAndViewModel.Add(typeof(HomeViewModel), typeof(HomeView));
+            MappingPageAndViewModel.Add(typeof(DeregisterViewModel), typeof(DeregisterView));
+            MappingPageAndViewModel.Add(typeof(LoginSignupViewModel), typeof(LoginSignupView));
 
-            MappingPageAndViewModel.Add(typeof(DocumentsViewModel), typeof(DocumentsPage));
-            MappingPageAndViewModel.Add(typeof(ShowPositionViewModel), typeof(ShowPositionPage));
-            MappingPageAndViewModel.Add(typeof(MessagesViewModel), typeof(MessagesPage));
-            MappingPageAndViewModel.Add(typeof(SettingsViewModel), typeof(SettingsPage));
         }
 
-        public Page GetPageWithBindingContext(Type type, string parameterName, string parameterValue)
+        public async Task GoBackAsync()
         {
-            Type pageType = GetPageForViewModel(type);
-
-            if (pageType == null)
+            CustomNavigationView navigationPage = Application.Current.MainPage as CustomNavigationView;
+            if (navigationPage != null)
             {
-                throw new Exception($"Mapping type for {type} is not a page");
+                await navigationPage.PopAsync();
             }
 
-            Page page = Activator.CreateInstance(pageType) as Page;
-
-            if (string.IsNullOrEmpty(parameterName))
-            {
-                page.BindingContext = TypeLocator.Instance.Resolve(type) as ViewModelBase;
-            }
-            else
-            {
-                page.BindingContext = TypeLocator.Instance.Resolve(type, new Autofac.NamedParameter(parameterName, parameterValue)) as ViewModelBase;
-            }
-
-            return page;
         }
 
-        private Type GetPageForViewModel(Type viewModelType)
-        {
-            if (!MappingPageAndViewModel.ContainsKey(viewModelType))
-            {
-                throw new KeyNotFoundException($"No map for ${viewModelType} was found on navigation mappings");
-            }
-
-            return MappingPageAndViewModel[viewModelType];
-        }
     }
 }

@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="DigiFyy.Views.AddExtraView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:trans="clr-namespace:DigiFyy.Helpers"
+    xmlns:viewModels="clr-namespace:DigiFyy.ViewModels;assembly=DigiFyy" xmlns:xforms="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" xmlns:behavior="clr-namespace:DigiFyy.Behaviors"
+    viewModels:ViewModelLocator.AutoWireViewModel="True"
+    NavigationPage.HasNavigationBar="False"
+    x:Name="extrasView">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <Grid ColumnSpacing="0" RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="48" />
+                <RowDefinition Height="1" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <StackLayout
+                x:Name="TitleView"
+                Grid.Row="0"
+                Padding="4,4"
+                BackgroundColor="{DynamicResource PrimaryLight}"
+                HeightRequest="40"
+                HorizontalOptions="FillAndExpand"
+                Orientation="Horizontal"
+                Spacing="0"
+                Margin="{OnPlatform Android='0,0,0,0',
+                                        iOS='0,40,0,0'}">
+
+                <StackLayout
+                    x:Name="Title"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="True"
+                    Orientation="Horizontal"
+                    Spacing="0"
+                    VerticalOptions="FillAndExpand">
+
+                    <!--  Back button command  -->
+                      <buttons:SfButton
+                        x:Name="backButton"
+                        BackgroundColor="Transparent"
+                        Command="{Binding BackButtonCommand}"
+                        CommandParameter="{x:Reference backButton}"
+                        ImageSource="back.png"
+                        ShowIcon="True"
+                        Text=""
+                        VerticalTextAlignment="Center" />
+
+                    <!--   page Title  -->
+                    <Label
+                        Style="{DynamicResource LabelStylePageTitle}"
+                        Text="{trans:Translate PartsButton}" />
+                    
+                </StackLayout>
+            </StackLayout>
+            <BoxView Grid.Row="1" Style="{DynamicResource SeparatorStyle}" />
+
+            <StackLayout Grid.Row="2">
+                <xforms:SfListView
+                    x:Name="ExtrasList"
+                    AllowSwiping="True"
+                    AutoFitMode="Height"
+                    IsScrollBarVisible="False"
+                    ItemSpacing="3"
+                    ItemsSource="{Binding Extras}"
+                    SelectionBackgroundColor="{DynamicResource PrimaryDarkenColor}"
+                    VerticalOptions="FillAndExpand">
+
+                    <xforms:SfListView.Behaviors>
+                        <behavior:SfListViewTapBehavior Command="{Binding Path=BindingContext.ItemSelectedCommand, Source={x:Reference extrasView}}" />
+                    </xforms:SfListView.Behaviors>
+                    <xforms:SfListView.RightSwipeTemplate>
+                        <DataTemplate x:Name="RightSwipeTemplate">
+                            <Grid 
+                                BackgroundColor="#DC595F" 
+                                HorizontalOptions="Fill" 
+                                VerticalOptions="Fill">
+                                <Grid VerticalOptions="Center" HorizontalOptions="Center">
+                                    <Image 
+                                    Grid.Column="0"
+                                    Grid.Row="0"
+                                    HeightRequest="35"
+                                    WidthRequest="35"
+                                    BackgroundColor="Transparent"
+                                    BindingContextChanged="rightImage_BindingContextChanged"
+                                    Source="Delete.png" />
+                                </Grid>
+                            </Grid>
+                        </DataTemplate>
+                    </xforms:SfListView.RightSwipeTemplate>
+                    <xforms:SfListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Spacing="0">
+
+                                    <Grid
+                                        ColumnSpacing="0"
+                                        HeightRequest="72"
+                                        RowSpacing="0">
+
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="2" />
+                                        </Grid.RowDefinitions>
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+
+                                      
+
+                                        <!--  Extra Name  -->
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="0"
+                                            Margin="0,14,0,0"
+                                            FontFamily="{StaticResource CenturyGothic-Bold}"
+                                            FontSize="14"
+                                            HeightRequest="24"
+                                            Text="{Binding ExtraType}"
+                                            TextColor="{DynamicResource Gray-900}" />
+
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            Margin="0,0,0,0"
+                                            FontFamily="{StaticResource CenturyGothic-Bold}"
+                                            FontSize="6"
+                                            HeightRequest="12"
+                                            Text="{Binding ExtraBrand}"
+                                            TextColor="{DynamicResource Gray-700}" />
+
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="2"
+                                            Margin="0,0,0,0"
+                                            FontFamily="{StaticResource CenturyGothic-Bold}"
+                                            FontSize="6"
+                                            HeightRequest="12"
+                                            Text="{Binding ExtraModel}"
+                                            TextColor="{DynamicResource Gray-700}" />
+                                     
+                                        <!--  Seperator  -->
+                                        <BoxView
+                                            Grid.Row="1"
+                                            Grid.ColumnSpan="3"
+                                            Style="{DynamicResource SeparatorStyle}" />
+
+                                    </Grid>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </xforms:SfListView.ItemTemplate>
+                </xforms:SfListView>
+
+            </StackLayout>
+            
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

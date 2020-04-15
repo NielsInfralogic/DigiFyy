@@ -11,4 +11,23 @@ namespace DigiFyy.Models.AWS
         public string ExtraModel { get; set; } = "";
 
     }
+
+    public class FrameNumberExtraRequest
+    {
+        public string UID { get; set; } = "";
+        public string Username { get; set; } = "";
+        public string Token { get; set; } = "";
+        public bool DeleteExtra { get; set; } = false;
+
+        public FrameNumberExtra FrameNumberExtra { get; set; } = null;
+
+    }
+
+    public class FrameNumberExtraResponse
+    {
+        public int Status { get; set; } = -1;
+        public string Message { get; set; } = "";
+        public FrameNumberExtra FrameNumberExtra { get; set; } = null;
+    }
+
 }

@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="DigiFyy.Views.ImageViewerView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:local="clr-namespace:DigiFyy.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:syncfusion="clr-namespace:Syncfusion.SfPdfViewer.XForms;assembly=Syncfusion.SfPdfViewer.XForms"
+    xmlns:trans="clr-namespace:DigiFyy.Helpers"
+    xmlns:viewModels="clr-namespace:DigiFyy.ViewModels;assembly=DigiFyy"
+    viewModels:ViewModelLocator.AutoWireViewModel="True"
+    NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <Grid ColumnSpacing="0" RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="1" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <StackLayout
+                x:Name="TitleView"
+                Grid.Row="0"
+                Margin="{OnPlatform Android='0,0,0,0',
+                                    iOS='0,40,0,0'}"
+                Padding="4,4"
+                BackgroundColor="{DynamicResource PrimaryLight}"
+                HeightRequest="40"
+                HorizontalOptions="FillAndExpand"
+                Orientation="Horizontal"
+                Spacing="0">
+
+                <StackLayout
+                    x:Name="Title"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="True"
+                    Orientation="Horizontal"
+                    Spacing="0"
+                    VerticalOptions="FillAndExpand">
+
+                    <!--  Back button command  -->
+                    <buttons:SfButton
+                        x:Name="backButton"
+                        BackgroundColor="Transparent"
+                        Command="{Binding BackButtonCommand}"
+                        CommandParameter="{x:Reference backButton}"
+                        ImageSource="back.png"
+                        ShowIcon="True"
+                        Text=""
+                        VerticalTextAlignment="Center" />
+
+
+                    <!--  Documents page Title  -->
+                    <Label Style="{DynamicResource LabelStylePageTitle}" Text="{Binding ImageTitle}" />
+
+                </StackLayout>
+            </StackLayout>
+            <BoxView Grid.Row="1" Style="{DynamicResource SeparatorStyle}" />
+
+            <Grid x:Name="imageViewGrid" Grid.Row="2">
+
+                <ffimageloading:CachedImage
+                    Margin="{x:OnIdiom Phone='10,10,10,10',
+                                       Desktop='0',
+                                       Tablet='0'}"
+                    BackgroundColor="{Binding White}"
+                    HorizontalOptions="FillAndExpand"
+                    Source="{Binding ImageUrl}"
+                    VerticalOptions="FillAndExpand" />
+
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="DigiFyy.Views.ShowPositionView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:converters="clr-namespace:DigiFyy.Converters"
+    xmlns:core="clr-namespace:Syncfusion.XForms.Core;assembly=Syncfusion.Core.XForms"
+    xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:trans="clr-namespace:DigiFyy.Helpers"
+    xmlns:viewModels="clr-namespace:DigiFyy.ViewModels;assembly=DigiFyy"
+    Title="Position"
+    viewModels:ViewModelLocator.AutoWireViewModel="True"
+    NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <converters:StatusIntegerToString x:Key="StatusConverter" />
+            <converters:IntegerToColorConverter x:Key="StatusColorConverter" />
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+
+
+        <StackLayout>
+
+            <StackLayout
+                x:Name="TitleView"
+                Margin="{OnPlatform Android='0,0,0,0',
+                                    iOS='0,40,0,0'}"
+                Padding="4,4"
+                BackgroundColor="{DynamicResource PrimaryLight}"
+                HeightRequest="40"
+                HorizontalOptions="FillAndExpand"
+                Orientation="Horizontal"
+                Spacing="0">
+
+                <StackLayout
+                    x:Name="Title"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="True"
+                    Orientation="Horizontal"
+                    Spacing="0"
+                    VerticalOptions="FillAndExpand">
+
+                    <!--  Back button command  -->
+                    <button:SfButton
+                        x:Name="backButton"
+                        BackgroundColor="Transparent"
+                        Command="{Binding BackButtonCommand}"
+                        CommandParameter="{x:Reference backButton}"
+                        ImageSource="back.png"
+                        ShowIcon="True"
+                        Text=""
+                        VerticalTextAlignment="Center" />
+
+                    <Label Style="{DynamicResource LabelStylePageTitle}" Text="{trans:Translate Position}" />
+
+                </StackLayout>
+            </StackLayout>
+
+            <Image
+                Margin="{x:OnIdiom Phone='0,0,0,0',
+                                   Desktop='0',
+                                   Tablet='0'}"
+                BackgroundColor="Transparent"
+                HeightRequest="{core:OnPlatformOrientationDoubleValue Default=160,
+                                                                      AndroidPhonePortrait=160,
+                                                                      AndroidPhoneLandscape=140,
+                                                                      iOSPhonePortrait=160,
+                                                                      iOSPhoneLandscape=140}"
+                Source="digifyy_bikelogo.png"
+                VerticalOptions="Center"
+                WidthRequest="{x:OnIdiom Phone=160,
+                                         Desktop=300,
+                                         Tablet=300}" />
+            <StackLayout
+                Margin="10,0,10,0"
+                Spacing="0"
+                VerticalOptions="FillAndExpand"
+                WidthRequest="{OnPlatform Default='-1',
+                                          UWP='350'}">
+                <Grid>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="300" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label
+                        Grid.Row="0"
+                        Grid.ColumnSpan="2"
+                        Margin="0,0,0,0"
+                        FontFamily="{StaticResource CenturyGothic-Bold}"
+                        FontSize="24"
+                        HorizontalTextAlignment="Center"
+                        Style="{StaticResource LabelStyleDark}"
+                        Text="{trans:Translate BikePosition}"
+                        TextColor="{DynamicResource Gray-900}" />
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Style="{StaticResource LabelStyleInfoHeader}"
+                        Text="{trans:Translate Status}" />
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Style="{StaticResource LabelStyleInfo}"
+                        Text="{Binding FrameNumberStatus.Status, Converter={StaticResource StatusConverter}}"
+                        TextColor="{Binding FrameNumberStatus.Status, Converter={StaticResource StatusColorConverter}}" />
+                    <Label
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Style="{StaticResource LabelStyleInfoHeader}"
+                        Text="{trans:Translate UpdateDate}" />
+                    <Label
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Style="{StaticResource LabelStyleInfo}"
+                        Text="{Binding FrameNumberStatus.LastUpdateTime, StringFormat='{0:G}'}" />
+
+                    <maps:Map
+                        x:Name="map"
+                        Grid.Row="3"
+                        Grid.ColumnSpan="2"
+                        HorizontalOptions="Fill"
+                        VerticalOptions="Fill" MapType="Hybrid"  IsShowingUser="true">
+
+                    </maps:Map>
+
+
+                    <button:SfButton
+                        x:Name="UsePhoto"
+                        Grid.Row="4"
+                        Grid.ColumnSpan="2"
+                        Margin="0,5,0,0"
+                        Command="{Binding UpdatePostionCommand}"
+                        Style="{StaticResource SfButtonRoundSmallStyle}">
+                        <button:SfButton.Content>
+                            <StackLayout Orientation="Horizontal">
+                                <Label
+                                    FontSize="18"
+                                    HorizontalOptions="CenterAndExpand"
+                                    HorizontalTextAlignment="Center"
+                                    LineBreakMode="WordWrap"
+                                    Text="{trans:Translate ReportLocation}"
+                                    TextColor="White"
+                                    VerticalOptions="Center"
+                                    WidthRequest="{OnPlatform Android='80',
+                                                              iOS='80',
+                                                              UWP='70'}" />
+                            </StackLayout>
+                        </button:SfButton.Content>
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal">
+                                    <VisualState.Setters>
+                                        <Setter Property="BackgroundColor" Value="{DynamicResource RoundButtonRed}" />
+                                    </VisualState.Setters>
+                                </VisualState>
+
+                                <VisualState x:Name="Pressed">
+                                    <VisualState.Setters>
+                                        <Setter Property="BackgroundColor" Value="{DynamicResource RoundButtonGreen}" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </button:SfButton>
+
+                </Grid>
+
+            </StackLayout>
+        </StackLayout>
+
+    </ContentPage.Content>
+
+</ContentPage>

@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigiFyy.iOS", "MyCart.iOS\D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigiFyy", "MyCart\DigiFyy.csproj", "{0624931D-CC09-4040-AB00-6DA884599BDF}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plugin.NFC", "..\LocalNugets\Plugin.NFC\src\Plugin.NFC\Plugin.NFC.csproj", "{BD0323C5-5957-4F26-A1E4-8FA6854E6646}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +75,18 @@ Global
 		{0624931D-CC09-4040-AB00-6DA884599BDF}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{0624931D-CC09-4040-AB00-6DA884599BDF}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{0624931D-CC09-4040-AB00-6DA884599BDF}.Release|iPhoneSimulator.Deploy.0 = Release|Any CPU
+		{BD0323C5-5957-4F26-A1E4-8FA6854E6646}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD0323C5-5957-4F26-A1E4-8FA6854E6646}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD0323C5-5957-4F26-A1E4-8FA6854E6646}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{BD0323C5-5957-4F26-A1E4-8FA6854E6646}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{BD0323C5-5957-4F26-A1E4-8FA6854E6646}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{BD0323C5-5957-4F26-A1E4-8FA6854E6646}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{BD0323C5-5957-4F26-A1E4-8FA6854E6646}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD0323C5-5957-4F26-A1E4-8FA6854E6646}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD0323C5-5957-4F26-A1E4-8FA6854E6646}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{BD0323C5-5957-4F26-A1E4-8FA6854E6646}.Release|iPhone.Build.0 = Release|Any CPU
+		{BD0323C5-5957-4F26-A1E4-8FA6854E6646}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{BD0323C5-5957-4F26-A1E4-8FA6854E6646}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

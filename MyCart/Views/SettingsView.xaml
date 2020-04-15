@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="DigiFyy.Views.SettingsView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviors="clr-namespace:DigiFyy.Behaviors"
+    xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
+    xmlns:core="clr-namespace:Syncfusion.XForms.Core;assembly=Syncfusion.Core.XForms"
+    xmlns:trans="clr-namespace:DigiFyy.Helpers"
+    xmlns:viewModels="clr-namespace:DigiFyy.ViewModels;assembly=DigiFyy"
+    Title="{trans:Translate Settings}"
+    viewModels:ViewModelLocator.AutoWireViewModel="True"
+    BackgroundColor="{DynamicResource Gray-White}"
+    IconImageSource="tab_settings.png">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <StackLayout BackgroundColor="{DynamicResource PrimaryLight}" Orientation="Horizontal">
+
+
+                    <Label
+                        Margin="80,5,0,0"
+                        FontFamily="{StaticResource CenturyGothic-Bold}"
+                        FontSize="22"
+                        HorizontalOptions="CenterAndExpand"
+                        LineHeight="{OnPlatform Android=1.5,
+                                                Default=-1}"
+                        Text="{trans:Translate Settings}"
+                        VerticalOptions="Center" />
+
+
+                    <!--  Save button  -->
+                    <button:SfButton
+                        Margin="{core:OnPlatformOrientationThickness AndroidPhonePortrait='0,10,10,0',
+                                                                     AndroidPhoneLandscape='0,10,10,0',
+                                                                     iOSPhonePortrait='0,20,10,0',
+                                                                     iOSPhoneLandscape='0,10,10,0'}"
+                        BackgroundColor="Transparent"
+                        Command="{Binding SaveCommand}"
+                       
+                        FontFamily="{StaticResource CenturyGothic-Bold}"
+                        FontSize="16"
+                        HeightRequest="40"
+                        HorizontalOptions="End"
+                        Text="{trans:Translate Save}"
+                        TextColor="{x:StaticResource Red}"
+                        VerticalOptions="StartAndExpand"
+                        WidthRequest="80" />
+
+                </StackLayout>
+
+                <StackLayout
+                    HorizontalOptions="Center"
+                    IsVisible="{Binding IsBusy}"
+                    Orientation="Vertical"
+                    VerticalOptions="Center">
+                    <ActivityIndicator IsRunning="True" />
+                    <Label Text="" />
+                </StackLayout>
+
+                <Label Style="{StaticResource HeaderLabelStyle}" Text="Login email" />
+                <Entry
+                    Margin="12,0,0,0"
+                    Placeholder="email"
+                    Text="{Binding Email, Mode=TwoWay}" />
+
+                <BoxView Style="{StaticResource SeparatorStyle}" />
+
+
+                <StackLayout
+                    IsEnabled="{Binding UserIsLoggedIn}"
+                    Orientation="Horizontal"
+                    Style="{StaticResource SettingsStackLayoutStyle}">
+                    <Label Style="{StaticResource HeaderLabelStyle}" Text="Use fake UUID" />
+                    <button:SfSwitch IsOn="{Binding UseFakeUUID}" VisualType="Material" />
+                </StackLayout>
+                <StackLayout Style="{StaticResource SettingsStackLayoutStyle}">
+                    <Label Style="{StaticResource HeaderLabelStyle}" Text="Fake UUID" />
+                    <Entry
+                        Margin="12,0,0,0"
+                        IsEnabled="{Binding UseFakeUUID}"
+                        Placeholder="uuid"
+                        Text="{Binding UUID, Mode=TwoWay}" />
+                </StackLayout>
+
+
+
+                <BoxView Style="{StaticResource SeparatorStyle}" />
+
+                <StackLayout Orientation="Horizontal" Style="{StaticResource SettingsStackLayoutStyle}">
+                    <Label Style="{StaticResource HeaderLabelStyle}" Text="{trans:Translate ChangeLanguage}" />
+                    <combobox:SfComboBox
+                        x:Name="LanguageCombo"
+                        Margin="12,0,12,0"
+                        DataSource="{Binding Languages, Mode=TwoWay}"
+                        DisplayMemberPath="DisplayName"
+                        HeightRequest="40"
+                        SelectedValue="{Binding SelectedLanguage}"
+                        WidthRequest="120">
+                        <combobox:SfComboBox.Behaviors>
+                            <behaviors:EventToCommandBehavior Command="{Binding SelectionChangedCommand}" EventName="SelectionChanged" />
+                        </combobox:SfComboBox.Behaviors>
+                    </combobox:SfComboBox>
+                </StackLayout>
+
+                <BoxView Style="{StaticResource SeparatorStyle}" />
+                <StackLayout
+                    Margin="10,10,10,10"
+                    Orientation="Vertical"
+                    >
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            HorizontalOptions="Start"
+                            Style="{StaticResource SettingsLabelStyle}"
+                            Text="{trans:Translate CurrentLoginStatus}" />
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            FontAttributes="Italic"
+                            HorizontalOptions="StartAndExpand"
+                            Style="{StaticResource SettingsLabelStyle}"
+                            Text="{Binding LoggedInText}" />
+                        <button:SfButton
+                            Grid.Row="0"
+                            Grid.Column="2"
+                            BackgroundColor="{DynamicResource RoundButtonBlue}"
+                            Command="{Binding LogoutCommand}"
+                            CornerRadius="5"
+                            HorizontalOptions="EndAndExpand"
+                            IsEnabled="{Binding UserIsLoggedIn}"
+                            Text="{trans:Translate Logout}"
+                            WidthRequest="80" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Style="{StaticResource SettingsLabelStyle}"
+                            Text="{trans:Translate CurrentRegistrationStatus}" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            FontAttributes="Italic"
+                            Style="{StaticResource SettingsLabelStyle}"
+                            Text="{Binding RegistrationText}" />
+                        <button:SfButton
+                            Grid.Row="1"
+                            Grid.Column="2"
+                            BackgroundColor="{DynamicResource RoundButtonBlue}"
+                            Command="{Binding UnregisterCommand}"
+                            CornerRadius="5"
+                            HorizontalOptions="EndAndExpand"
+                            Text="Unregister"
+                            WidthRequest="80" />
+                    </Grid>
+
+
+                </StackLayout>
+
+            </StackLayout>
+
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

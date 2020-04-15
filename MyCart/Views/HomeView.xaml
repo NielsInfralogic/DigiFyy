@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="DigiFyy.Views.HomeView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:core="clr-namespace:Syncfusion.XForms.Core;assembly=Syncfusion.Core.XForms"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:trans="clr-namespace:DigiFyy.Helpers"
+    xmlns:viewModels="clr-namespace:DigiFyy.ViewModels;assembly=DigiFyy"
+    Title="{trans:Translate Home}"
+    viewModels:ViewModelLocator.AutoWireViewModel="True"
+    IconImageSource="tab_home.png"
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <Grid BackgroundColor="{DynamicResource White}">
+            <Grid.RowDefinitions>
+
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+
+            <StackLayout
+                Grid.Row="0"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="Center">
+                <Image
+                    Margin="{OnPlatform Android='0,10,0,0',
+                                        iOS='0,40,0,0'}"
+                    BackgroundColor="Transparent"
+                    HeightRequest="{core:OnPlatformOrientationDoubleValue Default=100,
+                                                                          AndroidPhonePortrait=70,
+                                                                          AndroidPhoneLandscape=70,
+                                                                          iOSPhonePortrait=70,
+                                                                          iOSPhoneLandscape=70}"
+                    Source="DigifyyLogo.png"
+                    VerticalOptions="Center" />
+                <Image
+                    Margin="0,0,0,0"
+                    BackgroundColor="Transparent"
+                    HeightRequest="{core:OnPlatformOrientationDoubleValue Default=20,
+                                                                          AndroidPhonePortrait=20,
+                                                                          AndroidPhoneLandscape=7,
+                                                                          iOSPhonePortrait=20,
+                                                                          iOSPhoneLandscape=7}"
+                    Source="digifyyline.png"
+                    VerticalOptions="Center" />
+            </StackLayout>
+            <Image
+                Grid.Row="1"
+                Margin="{x:OnIdiom Phone='0,0,0,0',
+                                   Desktop='0',
+                                   Tablet='0'}"
+                BackgroundColor="Transparent"
+                HeightRequest="{core:OnPlatformOrientationDoubleValue Default=225,
+                                                                      AndroidPhonePortrait=225,
+                                                                      AndroidPhoneLandscape=140,
+                                                                      iOSPhonePortrait=225,
+                                                                      iOSPhoneLandscape=140}"
+                Source="digifyy_bikelogo.png"
+                VerticalOptions="Center"
+                WidthRequest="{x:OnIdiom Phone=200,
+                                         Desktop=300,
+                                         Tablet=300}" />
+
+
+            <StackLayout
+                Grid.Row="2"
+                Margin="5,0,5,0"
+                HorizontalOptions="CenterAndExpand"
+                Orientation="Horizontal"
+                VerticalOptions="CenterAndExpand">
+                <button:SfButton
+                    Margin="5,15,5,15"
+                    Command="{Binding ScanCommand}"
+                    Style="{StaticResource SfButtonRoundStyle}">
+                    <button:SfButton.Content>
+                        <Label
+                            FontSize="28"
+                            HorizontalOptions="CenterAndExpand"
+                            HorizontalTextAlignment="Center"
+                            LineBreakMode="WordWrap"
+                            Text="{trans:Translate ScanMyBike}"
+                            TextColor="White"
+                            VerticalOptions="Center"
+                            WidthRequest="{OnPlatform Android='80',
+                                                      iOS='80',
+                                                      UWP='70'}" />
+                    </button:SfButton.Content>
+
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{DynamicResource RoundButtonBlue}" />
+                                </VisualState.Setters>
+                            </VisualState>
+
+                            <VisualState x:Name="Pressed">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{DynamicResource RoundButtonGreen}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                </button:SfButton>
+
+                <button:SfButton
+                    Margin="5,15,5,15"
+                    Command="{Binding SeeBikesCommand}"
+                    IsEnabled="{Binding Registered}"
+                    Style="{StaticResource SfButtonRoundStyle}">
+                    <button:SfButton.Content>
+                        <Label
+                            FontSize="28"
+                            HorizontalOptions="CenterAndExpand"
+                            HorizontalTextAlignment="Center"
+                            LineBreakMode="WordWrap"
+                            Text="{trans:Translate SeeMyBike}"
+                            TextColor="White"
+                            VerticalOptions="Center"
+                            WidthRequest="{OnPlatform Android='96',
+                                                      iOS='80',
+                                                      UWP='70'}" />
+                    </button:SfButton.Content>
+
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup x:Name="CommonStates">
+
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{DynamicResource RoundButtonBlue}" />
+                                </VisualState.Setters>
+                            </VisualState>
+
+
+                            <VisualState x:Name="Pressed">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{DynamicResource RoundButtonGreen}" />
+                                </VisualState.Setters>
+                            </VisualState>
+
+                            <VisualState x:Name="Disabled">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{DynamicResource RoundButtonGray}" />
+                                </VisualState.Setters>
+                            </VisualState>
+
+
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                </button:SfButton>
+
+            </StackLayout>
+            <StackLayout
+                Grid.Row="3"
+                HorizontalOptions="Center"
+                IsVisible="{Binding IsBusy}"
+                Orientation="Vertical"
+                VerticalOptions="Center">
+                <ActivityIndicator IsRunning="True" />
+                <Label Text="{trans:Translate LoggingIn}" />
+            </StackLayout>
+
+            <StackLayout
+                Grid.Row="4"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="End">
+                <Label
+                    Margin="0,0,20,0"
+                    FontSize="10"
+                    HorizontalOptions="End"
+                    Style="{DynamicResource LabelStyleDark}"
+                    Text="{Binding UserStateText}" />
+                <Image
+                    Margin="{x:OnIdiom Phone='0,0,0,0',
+                                       Desktop='0',
+                                       Tablet='0'}"
+                    BackgroundColor="Transparent"
+                    HeightRequest="{core:OnPlatformOrientationDoubleValue Default=20,
+                                                                          AndroidPhonePortrait=20,
+                                                                          AndroidPhoneLandscape=7,
+                                                                          iOSPhonePortrait=20,
+                                                                          iOSPhoneLandscape=7}"
+                    Source="digifyyline.png"
+                    VerticalOptions="Center" />
+
+            </StackLayout>
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>

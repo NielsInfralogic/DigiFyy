@@ -24,10 +24,9 @@ namespace DigiFyy.Converters
             var margin = new Thickness(0);
             if (value != null)
             {
-                int itemCount;
-                int.TryParse(value.ToString(), out itemCount);
+                int.TryParse(value.ToString(), out int itemCount);
                 if (itemCount >= 0)
-                    return margin = new Thickness(0, -15, 0, 0);
+                     margin = new Thickness(0, -15, 0, 0);
             }
             return margin;
         }

@@ -12,9 +12,11 @@ namespace DigiFyy.Models.AWS
         public string Frame { get; set; } = "";
 
         public DateTime ProductionDate { get; set; } = DateTime.MinValue;
+        public string ManufacturerSKU { get; set; } = "";
         public DateTime LastUpdateTime { get; set; } = DateTime.MinValue;
 
         public string Owner { get; set; } = "";
+
     }
 
     public class FrameNumberResponse

@@ -1,14 +1,28 @@
 ﻿using DigiFyy.Helpers;
 using DigiFyy.Services;
+using System.Collections.Generic;
+using Xamarin.Essentials;
 
 namespace DigiFyy.ViewModels
 {
     /// <summary>
     /// ViewModel for forgot password page.
     /// </summary>
-    public class ForgotPasswordViewModel : LoginViewModelBase
+    public class ForgotPasswordViewModel : ViewModelBase
     {
-        readonly IDialogService DialogService;
+        private string email;
+        public string Email
+        {
+            get
+            {
+                return this.email;
+            }
+
+            set
+            {
+                SetProperty(ref email, value);
+            }
+        }
 
         #region Constructor
 
@@ -16,12 +30,9 @@ namespace DigiFyy.ViewModels
         /// <summary>
         /// Initializes a new instance of the <see cref="ForgotPasswordViewModel" /> class.
         /// </summary>
-        public ForgotPasswordViewModel(INavigationService navigationService, IAnalyticsService analyticsService, IDialogService dialogService) : base(navigationService, analyticsService)
-   
+        public ForgotPasswordViewModel()
         {
-            DialogService = dialogService;
-
-            this.SignUpCommand = new Command(this.SignUpClicked);
+           
             this.SendCommand = new Command(this.SendClicked);
         }
 
@@ -47,9 +58,16 @@ namespace DigiFyy.ViewModels
         /// Invoked when the Send button is clicked.
         /// </summary>
         /// <param name="obj">The Object</param>
-        private void SendClicked(object obj)
+        private async void SendClicked(object obj)
         {
-            // Do something
+            string email = Email != "" ? Email : Preferences.Get("Email", "");
+               
+            // TODO - send email 
+            if (email != "")
+            {
+                EmailSender emailSender = new EmailSender();
+                await emailSender.SendEmail("Digifyy reset password", "Test message only...", new List<string> { email });
+            }
         }
 
         /// <summary>

@@ -15,6 +15,9 @@ using System.Linq;
 using Foundation;
 using UIKit;
 using DigiFyy.Models;
+using Syncfusion.SfPdfViewer.iOS;
+using Syncfusion.SfPdfViewer.XForms.iOS;
+using Syncfusion.SfRangeSlider.XForms.iOS;
 
 namespace DigiFyy.iOS
 {
@@ -33,7 +36,8 @@ namespace DigiFyy.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjAzMTIzQDMxMzcyZTM0MmUzMFBqOXYxWmNWc1VNVHBFUjZGQ1VMZGdkRGFKR3ZxUWNFbnFaTUFHVUtYenM9");
+            
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjMyNTM4QDMxMzgyZTMxMmUzMGk5SnZMR3JhaWRBSzY0cEFCaDhQVGI0WDQ2ZDcrbTVYQVJWMmRyR0dybjA9");
 
             global::Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
             global::Xamarin.Forms.Forms.Init();
@@ -52,6 +56,11 @@ namespace DigiFyy.iOS
             SfGradientViewRenderer.Init();
             SfBorderRenderer.Init();
             SfButtonRenderer.Init();
+            SfPdfDocumentViewRenderer.Init();
+            SfRangeSliderRenderer.Init();
+            Xamarin.FormsMaps.Init();
+
+
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

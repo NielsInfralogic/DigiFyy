@@ -3,8 +3,10 @@ using DigiFyy.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Runtime.Serialization;
 using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -12,61 +14,73 @@ namespace DigiFyy.ViewModels
 {
     public class DocumentsViewModel : ViewModelBase
     {
-        public DocumentsViewModel(INavigationService navigationService, IAnalyticsService analyticsService) : base(navigationService, analyticsService)
+
+        private ObservableCollection<FrameNumberDocument> _documents = new ObservableCollection<FrameNumberDocument>();
+        public ObservableCollection<FrameNumberDocument> Documents
+        {
+            get => _documents;
+            set
+            {
+                _documents = value;
+                SetProperty(ref _documents, value);
+            }
+        }
+
+        public Helpers.Command BackButtonCommand { get; set; }
+
+
+        public DocumentsViewModel()
+        {
+            
+            this.BackButtonCommand = new Helpers.Command(this.BackButtonClicked);
+
+        }
+
+        private async void BackButtonClicked(object obj)
         {           
-            LookupDocumentsInfo();
+            await NavigationService.GoBackAsync();
         }
 
-        private async void LookupDocumentsInfo()
+        
+
+
+
+        private Command itemSelectedCommand;
+        /// <summary>
+        /// Gets or sets the command that will be executed when an item is selected.
+        /// </summary>
+        public Command ItemSelectedCommand
         {
-            if (IsBusy)
-            {
+            get { return this.itemSelectedCommand ?? (this.itemSelectedCommand = new Command(this.ItemSelected)); }
+        }
+
+        //        public override void Init(object navigationData)
+        public override async Task InitializeAsync(object navigationData)
+        {            
+            if (navigationData == null)
                 return;
-            }
-
-            IsBusy = true;
-
-            string uuid = Preferences.Get("UUID", "");
-            string user = Preferences.Get("Email", "");
-            string token = Preferences.Get("Token", "");
-
-            if (token != "" && user != "" && uuid != "")
-            {
-                try
-                {
-
-                  /*  UIDInfo result = await DataStore.GetInfo(user, token, uuid);
-                    IsBusy = false;
-
-                    Brand = result.FrameNumber.Manufacturer;
-                    Model = result.FrameNumber.Model;
-                    UUID = result.FrameNumber.UID;
-                    this.Frame = result.FrameNumber.Frame;
-                    Status = result.FrameNumberStatus.Status;*/
-                }
-                catch (Exception e)
-                {
-                    AnalyticsService.TrackError(e, new Dictionary<string, string>
-                    {
-                        { "Method", "DocumentsViewModel..LookupBikeInfo" }
-                    });
-                }
-
-            }
-            IsBusy = false;
+            if (navigationData is List<Models.AWS.FrameNumberDocument>)
+                (navigationData as List<Models.AWS.FrameNumberDocument>).ForEach(p => _documents.Add(p));
+            Documents = _documents;
         }
 
-        private Command<object> itemTappedCommand;
 
-
-        public Command<object> ItemTappedCommand
+        private async void ItemSelected(object attachedObject)
         {
-            get
-            {
-                return this.itemTappedCommand ?? (this.itemTappedCommand = new Command<object>(this.NavigateToNextPage));
-            }
-        }
+            if (attachedObject == null)
+                return;
 
+            if (attachedObject is FrameNumberDocument document)
+            {
+                //await NavigationService.NavigateTo(typeof(PdfViewerViewModel), "PDF", document.DocumentUrl);
+                string ext = Path.GetExtension(document.DocumentUrl).ToLower().Replace(".", "");
+                if (ext == "pdf")
+                    await NavigationService.NavigateToAsync<PdfViewerViewModel>(document);
+                else
+                    await NavigationService.NavigateToAsync<ImageViewerViewModel>(document);
+            }
+
+        }        
 
         public ObservableCollection<FrameNumberDocument> DocumentsList { get; set; }
 
@@ -77,6 +91,7 @@ namespace DigiFyy.ViewModels
         private void NavigateToNextPage(object selectedItem)
         {
             // Do something
+            FrameNumberDocument selectedDoc = selectedItem as FrameNumberDocument;
         }
     }
 }

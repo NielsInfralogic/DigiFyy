@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -11,7 +12,7 @@ namespace DigiFyy.ViewModels
 {
     public class MessagesViewModel : ViewModelBase
     {
-        private ObservableCollection<Message> messages;
+        private ObservableCollection<Message> messages = new ObservableCollection<Message>();
         public ObservableCollection<Message> Messages
         {
             get => messages;
@@ -21,13 +22,58 @@ namespace DigiFyy.ViewModels
                 SetProperty(ref messages, value);
             }
         }
-        private Command<object> itemSelectedCommand;
 
-        public MessagesViewModel(INavigationService navigationService, IAnalyticsService analyticsService) : base(navigationService, analyticsService)
+        private string badgeCount = "";
+        public string BadgeCount
         {
-            LookupMessageInfo();
+            get
+            {
+                return badgeCount;
+            }
+            set
+            {
+                SetProperty(ref badgeCount, value);
+            }
         }
 
+        public Helpers.Command BackButtonCommand { get; set; }
+
+        public MessagesViewModel()
+        {
+            this.BackButtonCommand = new Helpers.Command(this.BackButtonClicked);
+
+            MessagingCenter.Subscribe<MessagesViewModel, int>(this, MessageKeys.UpdateMessageCount, (sender, arg) =>
+            {
+                BadgeCount = arg > 0 ? arg.ToString() : "";
+            });
+        }
+
+        private async void BackButtonClicked(object obj)
+        {
+            await NavigationService.GoBackAsync();
+        }
+
+        // Data from navigation
+        public override async Task InitializeAsync(object navigationData)
+        {
+            if (navigationData is Boolean)
+            {
+                if ((Boolean)navigationData)
+                    LookupMessageInfo();
+
+            }
+        }
+
+        private Command itemSelectedCommand;
+
+        /// <summary>
+        /// Gets or sets the command that will be executed when an item is selected.
+        /// </summary>
+        public Command ItemSelectedCommand
+        {
+            get { return this.itemSelectedCommand ?? (this.itemSelectedCommand = new Command(this.ItemSelected)); }
+        }
+       
         private async void LookupMessageInfo()
         {
             if (IsBusy)
@@ -41,21 +87,27 @@ namespace DigiFyy.ViewModels
             string user = Preferences.Get("Email", "");
             string token = Preferences.Get("Token", "");
 
+     
+
             if (token != "" && user != "" && uuid != "")
             {
                 try
                 {
                     List<Message> messagesFromAPI = await DataStore.GetMessages(user, token, uuid);
                     if (messagesFromAPI != null)
+                    {
+                        messages.Clear();
                         foreach (Message m in messagesFromAPI)
                             messages.Add(m);
+                    }
+                    BadgeCount = messages.Count > 0 ? messages.Count.ToString() : "";
                     IsBusy = false;
                 }
                 catch (Exception e)
                 {
                     AnalyticsService.TrackError(e, new Dictionary<string, string>
                     {
-                        { "Method", "DMessagesViewModel..LookupBikeInfo" }
+                        { "Method", "MessagesViewModel.LookupMessageInfo" }
                     });
                 }
 
@@ -63,26 +115,19 @@ namespace DigiFyy.ViewModels
             IsBusy = false;
         }
 
-        /// <summary>
-        /// Gets the command that will be executed when an item is selected.
-        /// </summary>
-        public Command<object> ItemSelectedCommand
+        private async void ItemSelected(object attachedObject)
         {
-            get
+            if (attachedObject == null)
+                return;
+
+            if (attachedObject is Message message)
             {
-                return this.itemSelectedCommand ?? (this.itemSelectedCommand = new Command<object>(this.NavigateToNextPage));
+                // await NavigationService.NavigateToAsync<PdfViewerViewModel>(message);
+                await DialogService.Show(message.SenderName, message.MessageText, "Ok");
             }
+
         }
 
-
-        /// <summary>
-        /// Invoked when an item is selected from the Songs play list.
-        /// </summary>
-        /// <param name="selectedItem">Selected item from the list view.</param>
-        private void NavigateToNextPage(object selectedItem)
-        {
-            // Do something
-        }
 
     }
 }

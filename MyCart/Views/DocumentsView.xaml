@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="DigiFyy.Views.DocumentsView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behavior="clr-namespace:DigiFyy.Behaviors"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:controls="clr-namespace:DigiFyy.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:trans="clr-namespace:DigiFyy.Helpers"
+    xmlns:viewModels="clr-namespace:DigiFyy.ViewModels;assembly=DigiFyy"
+    xmlns:xforms="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+    x:Name="documentsview"
+    viewModels:ViewModelLocator.AutoWireViewModel="True"
+    NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <Grid ColumnSpacing="0" RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="1" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <StackLayout
+                x:Name="TitleView"
+                Grid.Row="0"
+                Margin="{OnPlatform Android='0,0,0,0',
+                                    iOS='0,40,0,0'}"
+                Padding="4,4"
+                BackgroundColor="{DynamicResource PrimaryLight}"
+                HeightRequest="40"
+                HorizontalOptions="FillAndExpand"
+                Orientation="Horizontal"
+                Spacing="0">
+
+                <StackLayout
+                    x:Name="Title"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="True"
+                    Orientation="Horizontal"
+                    Spacing="0"
+                    VerticalOptions="FillAndExpand">
+
+                    <!--  Back button command  -->
+                    <buttons:SfButton
+                        x:Name="backButton"
+                        BackgroundColor="Transparent"
+                        Command="{Binding BackButtonCommand}"
+                        CommandParameter="{x:Reference backButton}"
+                        ImageSource="back.png"
+                        ShowIcon="True"
+                        Text=""
+                        VerticalTextAlignment="Center" />
+
+                    <Label Style="{DynamicResource LabelStylePageTitle}" Text="{trans:Translate Documents}" />
+
+                </StackLayout>
+            </StackLayout>
+
+            <BoxView Grid.Row="1" Style="{DynamicResource SeparatorStyle}" />
+
+            <StackLayout Grid.Row="2" Spacing="0">
+
+                <xforms:SfListView
+                    x:Name="DocumentsList"
+                    AllowSwiping="True"
+                    AutoFitMode="Height"
+                    IsScrollBarVisible="False"
+                    ItemSpacing="3"
+                    ItemsSource="{Binding Documents}"
+                    SelectionBackgroundColor="{DynamicResource PrimaryDarkenColor}"
+                    VerticalOptions="FillAndExpand">
+
+                    <xforms:SfListView.Behaviors>
+                        <behavior:SfListViewTapBehavior Command="{Binding Path=BindingContext.ItemSelectedCommand, Source={x:Reference documentsview}}" />
+                    </xforms:SfListView.Behaviors>
+
+                    <xforms:SfListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Spacing="0">
+
+                                    <Grid
+                                        ColumnSpacing="0"
+                                        HeightRequest="72"
+                                        RowSpacing="0">
+
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <!--  Account Icon  -->
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.RowSpan="2"
+                                            Grid.Column="0"
+                                            Margin="15,0"
+                                            FontFamily="{StaticResource FontIcons}"
+                                            FontSize="20"
+                                            Text="{StaticResource PdfIcon}"
+                                            TextColor="{DynamicResource Gray-600}"
+                                            VerticalOptions="CenterAndExpand" />
+
+                                        <!--  Document Name  -->
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            Grid.ColumnSpan="3"
+                                            Margin="0,14,0,0"
+                                            FontFamily="{StaticResource CenturyGothic-Bold}"
+                                            FontSize="20"
+                                            HeightRequest="24"
+                                            Text="{Binding DocumentTitle}"
+                                            TextColor="{DynamicResource Gray-900}" />
+
+                                        <!--  Link  -->
+                                        <Label
+                                            Grid.Row="1"
+                                            Grid.Column="1"
+                                            Grid.ColumnSpan="2"
+                                            Margin="0,0,0,0"
+                                            FontFamily="{StaticResource CenturyGothic-Bold}"
+                                            FontSize="1"
+                                            HeightRequest="12"
+                                            Text="{Binding DocumentUrl}"
+                                            TextColor="Transparent" />
+
+
+
+                                        <!--  More Button  -->
+                                        <buttons:SfButton
+                                            Grid.Row="0"
+                                            Grid.RowSpan="2"
+                                            Grid.Column="3"
+                                            Margin="15,0,15,0"
+                                            BackgroundColor="{DynamicResource Transparent}"
+                                            FontFamily="{StaticResource FontIcons}"
+                                            FontSize="18"
+                                            HeightRequest="38"
+                                            HorizontalOptions="End"
+                                            HorizontalTextAlignment="End"
+                                            Text="{StaticResource MoreIcon}"
+                                            TextColor="{DynamicResource Gray-600}"
+                                            VerticalOptions="Center"
+                                            WidthRequest="38" />
+
+                                        <!--  Seperator  -->
+                                        <BoxView
+                                            Grid.Row="2"
+                                            Grid.ColumnSpan="4"
+                                            Style="{DynamicResource SeparatorStyle}" />
+
+                                    </Grid>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </xforms:SfListView.ItemTemplate>
+                </xforms:SfListView>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

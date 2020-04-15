@@ -16,6 +16,7 @@ namespace DigiFyy.Models.AWS
         public string CompanyNo { get; set; } = "";
         public string ContactPhone { get; set; } = "";
         public string ContactEmail { get; set; } = "";
+	public string WWW { get; set; } = "";
 
     }
 

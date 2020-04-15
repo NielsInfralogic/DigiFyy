@@ -18,7 +18,6 @@ namespace DigiFyy.Converters
         /// <summary>
         /// Identifies the simple and gradient login pages.
         /// </summary>
-        public string PageVariantParameter { get; set; }
 
         /// <summary>
         /// This method is used to convert the bool to color.
@@ -30,45 +29,23 @@ namespace DigiFyy.Converters
         /// <returns>Returns the color.</returns>
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            // For Gradient login page 
-            if (PageVariantParameter == "0")
+            
+            var emailEntry = parameter as BorderlessEntry;
+
+            if (!(emailEntry.BindingContext is LoginViewModel bindingContext)) 
+               return Color.FromHex("#ced2d9");
+
+            var isFocused1 = (bool)value;
+            bindingContext.IsInvalidEmail = !isFocused1 && !CheckValidEmail(bindingContext.Email);
+
+            if (isFocused1)
             {
-                var emailEntry = parameter as BorderlessEntry;
-
-                if (!(emailEntry.BindingContext is LoginViewModelBase bindingContext))
-                {
-                    return Color.Transparent;
-                }
-
-                var isFocused = (bool)value;
-                bindingContext.IsInvalidEmail = !isFocused && !CheckValidEmail(bindingContext.Email);
-
-                if (isFocused)
-                {
-                    return Color.FromRgba(255, 255, 255, 0.6);
-                }
-
-                return bindingContext.IsInvalidEmail ? Color.FromHex("#FF4A4A") : Color.Transparent;
-
+                return Color.FromHex("#959eac");
             }
-            // For Simple login page
-            else
-            {
-                var emailEntry = parameter as BorderlessEntry;
 
-                if (!(emailEntry.BindingContext is LoginViewModelBase bindingContext)) return Color.FromHex("#ced2d9");
+            return bindingContext.IsInvalidEmail ? Color.FromHex("#FF4A4A") : Color.FromHex("#ced2d9");
 
-                var isFocused1 = (bool)value;
-                bindingContext.IsInvalidEmail = !isFocused1 && !CheckValidEmail(bindingContext.Email);
-
-                if (isFocused1)
-                {
-                    return Color.FromHex("#959eac");
-                }
-
-                return bindingContext.IsInvalidEmail ? Color.FromHex("#FF4A4A") : Color.FromHex("#ced2d9");
-
-            }
+            
         }
 
         /// <summary>

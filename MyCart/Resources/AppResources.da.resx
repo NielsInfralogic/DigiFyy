@@ -117,14 +117,44 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Accept" xml:space="preserve">
+    <value>Ja</value>
+  </data>
+  <data name="AddExtra" xml:space="preserve">
+    <value>Registrér ekstraudstyr for min cykel</value>
+  </data>
+  <data name="AddProfileImage" xml:space="preserve">
+    <value>Tilføj profilbillede</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Tilbage</value>
+  </data>
+  <data name="Bike" xml:space="preserve">
+    <value>Cykel</value>
+  </data>
   <data name="BikeDetails" xml:space="preserve">
     <value>Detaljer om min cykel</value>
+  </data>
+  <data name="BikeIDColon" xml:space="preserve">
+    <value>Cykel-ID:</value>
+  </data>
+  <data name="BikePosition" xml:space="preserve">
+    <value>Sidst registerede position</value>
   </data>
   <data name="Brand" xml:space="preserve">
     <value>Fabrikat</value>
   </data>
+  <data name="BrandColon" xml:space="preserve">
+    <value>Mærke:</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Afbryd</value>
+  </data>
   <data name="ChangeLanguage" xml:space="preserve">
     <value>Skift sprog</value>
+  </data>
+  <data name="ChangeStatus" xml:space="preserve">
+    <value>Skift status</value>
   </data>
   <data name="ContentHeader" xml:space="preserve">
     <value>Digifyy A/S (C) 2020</value>
@@ -132,8 +162,26 @@
   <data name="CreateSocialMediaAccount" xml:space="preserve">
     <value>Eller opret konto ud fra sociale medier</value>
   </data>
+  <data name="CurrentLoginStatus" xml:space="preserve">
+    <value>Status for indlogning</value>
+  </data>
+  <data name="CurrentRegistrationStatus" xml:space="preserve">
+    <value>Status for registrering</value>
+  </data>
+  <data name="Deny" xml:space="preserve">
+    <value>Nej</value>
+  </data>
+  <data name="Deregister" xml:space="preserve">
+    <value>Afregistrer</value>
+  </data>
   <data name="DigitalBikeFrameNumber" xml:space="preserve">
     <value>Digitalt stelnummer</value>
+  </data>
+  <data name="DocsButton" xml:space="preserve">
+    <value>Dok</value>
+  </data>
+  <data name="Document" xml:space="preserve">
+    <value>Dokument</value>
   </data>
   <data name="Documents" xml:space="preserve">
     <value>Dokumenter</value>
@@ -142,13 +190,16 @@
     <value>Har du ingen konto?</value>
   </data>
   <data name="Extras" xml:space="preserve">
-    <value>Ektra</value>
+    <value>Udstyr</value>
   </data>
   <data name="ForgotPassword" xml:space="preserve">
-    <value>GLEMT PASSWORD?</value>
+    <value>Glemt password?</value>
   </data>
   <data name="Frame" xml:space="preserve">
     <value>Stel</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Hjem</value>
   </data>
   <data name="LoggingIn" xml:space="preserve">
     <value>Logger på..</value>
@@ -162,17 +213,74 @@
   <data name="LoginWithGoogle" xml:space="preserve">
     <value>Login med Google</value>
   </data>
-  <data name="Messsages" xml:space="preserve">
+  <data name="Logout" xml:space="preserve">
+    <value>Log ud</value>
+  </data>
+  <data name="Messages" xml:space="preserve">
     <value>Beskeder</value>
   </data>
   <data name="Model" xml:space="preserve">
     <value>Model</value>
   </data>
+  <data name="ModelColon" xml:space="preserve">
+    <value>Model:</value>
+  </data>
+  <data name="NotLoggedIn" xml:space="preserve">
+    <value>Ikke logget ind</value>
+  </data>
+  <data name="OnSignupWith" xml:space="preserve">
+    <value>Eller registrér med</value>
+  </data>
+  <data name="OrLoginWith" xml:space="preserve">
+    <value>Eller login med</value>
+  </data>
+  <data name="Parts" xml:space="preserve">
+    <value>Udstyrsdele</value>
+  </data>
+  <data name="PartsButton" xml:space="preserve">
+    <value>Udstyr</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password:</value>
+  </data>
+  <data name="PickPhoto" xml:space="preserve">
+    <value>Vælg foto</value>
+  </data>
   <data name="PickUpMyBike" xml:space="preserve">
     <value>Afhent min cykel</value>
   </data>
+  <data name="Pictures" xml:space="preserve">
+    <value>Billeder</value>
+  </data>
   <data name="PoliceEnsurance" xml:space="preserve">
     <value>Politi/forsikring</value>
+  </data>
+  <data name="Position" xml:space="preserve">
+    <value>Position</value>
+  </data>
+  <data name="ProductionYearColon" xml:space="preserve">
+    <value>År:</value>
+  </data>
+  <data name="Reclaim" xml:space="preserve">
+    <value>Genregistrér</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Registrér</value>
+  </data>
+  <data name="RegisterBike" xml:space="preserve">
+    <value>Registrér cykel</value>
+  </data>
+  <data name="RepeatPassword" xml:space="preserve">
+    <value>Gentag:</value>
+  </data>
+  <data name="ReportLocation" xml:space="preserve">
+    <value>Meld position</value>
+  </data>
+  <data name="ReportStolen" xml:space="preserve">
+    <value>Rapportér stjålet</value>
+  </data>
+  <data name="ReportStolenFound" xml:space="preserve">
+    <value>Meld fundet</value>
   </data>
   <data name="ReportTheft" xml:space="preserve">
     <value>Anmeld tyveri</value>
@@ -180,22 +288,124 @@
   <data name="Save" xml:space="preserve">
     <value>Gem</value>
   </data>
+  <data name="Scan" xml:space="preserve">
+    <value>Skan</value>
+  </data>
+  <data name="ScanAgain" xml:space="preserve">
+    <value>Skan igen</value>
+  </data>
   <data name="ScanMyBike" xml:space="preserve">
     <value>Skan min cykel</value>
   </data>
-  <data name="Sign Up" xml:space="preserve">
-    <value>Registrer dig</value>
+  <data name="SeeMyBike" xml:space="preserve">
+    <value>Se mine cykler</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="SerialNumber" xml:space="preserve">
+    <value>Serienummer</value>
+  </data>
+  <data name="SetPositionHere" xml:space="preserve">
+    <value>Opdatér position til her</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Indstilling</value>
+  </data>
+  <data name="ShareButton" xml:space="preserve">
+    <value>Del</value>
+  </data>
+  <data name="ShowPosition" xml:space="preserve">
+    <value>Vis position</value>
   </data>
   <data name="SignIn" xml:space="preserve">
     <value>Log ind</value>
   </data>
+  <data name="SignUp" xml:space="preserve">
+    <value>Registrér dig</value>
+  </data>
+  <data name="Specifications" xml:space="preserve">
+    <value>Specifikationer</value>
+  </data>
+  <data name="SpecsButton" xml:space="preserve">
+    <value>Detaljer</value>
+  </data>
   <data name="Status" xml:space="preserve">
     <value>Status</value>
   </data>
+  <data name="StatusColon" xml:space="preserve">
+    <value>Status:</value>
+  </data>
+  <data name="StatusFound" xml:space="preserve">
+    <value>Fundet</value>
+  </data>
+  <data name="StatusNotRegistered" xml:space="preserve">
+    <value>Ikke registreret</value>
+  </data>
+  <data name="StatusRegistered" xml:space="preserve">
+    <value>Registreret</value>
+  </data>
+  <data name="StatusStolen" xml:space="preserve">
+    <value>Meldt stjålet!</value>
+  </data>
+  <data name="StatusUnknown" xml:space="preserve">
+    <value>Ukendt</value>
+  </data>
+  <data name="TakePhoto" xml:space="preserve">
+    <value>Tag foto nu</value>
+  </data>
+  <data name="TakePhotoOfInvoice" xml:space="preserve">
+    <value>Tag billede af faktura</value>
+  </data>
+  <data name="TakePhotoOrSelect" xml:space="preserve">
+    <value>Tag billede eller vælg fra bibliotek</value>
+  </data>
+  <data name="TakePhotoToRegisterText" xml:space="preserve">
+    <value>Tag venligst et billede af din købskvittering for at registrerer din cykel</value>
+  </data>
+  <data name="ThisCodeEmail" xml:space="preserve">
+    <value>Denne kode er også sendt til din email</value>
+  </data>
+  <data name="ToRegisterTakePhoto" xml:space="preserve">
+    <value>Tag et billede af din købskvittering for at registrerer din cykel</value>
+  </data>
+  <data name="ToSellYourBike" xml:space="preserve">
+    <value>Du må afregisterer dit ejerskab ved salg af cyklen. Du vil få tilsendt en kode der kan bruges af den nye ejer for registrering</value>
+  </data>
+  <data name="TryAgain" xml:space="preserve">
+    <value>Prøv igen</value>
+  </data>
+  <data name="Unregister" xml:space="preserve">
+    <value>Afregistrér</value>
+  </data>
+  <data name="Unregistred" xml:space="preserve">
+    <value>Ikke registreret</value>
+  </data>
+  <data name="UpdateDate" xml:space="preserve">
+    <value>Sidst opdateret</value>
+  </data>
+  <data name="Uploading" xml:space="preserve">
+    <value>Oploader..</value>
+  </data>
+  <data name="UsePhoto" xml:space="preserve">
+    <value>Brug billede</value>
+  </data>
   <data name="UseScannedUUID" xml:space="preserve">
-    <value>Use scanned UUID</value>
+    <value>Brug denne UUID</value>
+  </data>
+  <data name="UUIDNotRegistered" xml:space="preserve">
+    <value>UUID ikke skannet endnu</value>
   </data>
   <data name="WaitingForScan" xml:space="preserve">
     <value>Venter på skan..</value>
+  </data>
+  <data name="WeLikeToReportLocation" xml:space="preserve">
+    <value>Vi vil gerne melde om positionen for cyklen. Må vi sende disse detailjer?</value>
+  </data>
+  <data name="WillSendInstructions" xml:space="preserve">
+    <value>Vi sender instruktioner om ændring af password til den email du har registreret</value>
+  </data>
+  <data name="YourBikeHasBeenDeregistered" xml:space="preserve">
+    <value>Din cykel er nu blevet afregisteret. Brug koden nedenfor for at gen-registrere eller giv kode til den nye ejer. Koden er gyldig i 10 dage.</value>
   </data>
 </root>

@@ -61,11 +61,74 @@ namespace DigiFyy.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Accept.
+        /// </summary>
+        internal static string Accept {
+            get {
+                return ResourceManager.GetString("Accept", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Register part(s) for my bike.
+        /// </summary>
+        internal static string AddExtra {
+            get {
+                return ResourceManager.GetString("AddExtra", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add profile image.
+        /// </summary>
+        internal static string AddProfileImage {
+            get {
+                return ResourceManager.GetString("AddProfileImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Back.
+        /// </summary>
+        internal static string Back {
+            get {
+                return ResourceManager.GetString("Back", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bike.
+        /// </summary>
+        internal static string Bike {
+            get {
+                return ResourceManager.GetString("Bike", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bike details.
         /// </summary>
         internal static string BikeDetails {
             get {
                 return ResourceManager.GetString("BikeDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bike ID:.
+        /// </summary>
+        internal static string BikeIDColon {
+            get {
+                return ResourceManager.GetString("BikeIDColon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last registered position.
+        /// </summary>
+        internal static string BikePosition {
+            get {
+                return ResourceManager.GetString("BikePosition", resourceCulture);
             }
         }
         
@@ -79,11 +142,38 @@ namespace DigiFyy.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Brand:.
+        /// </summary>
+        internal static string BrandColon {
+            get {
+                return ResourceManager.GetString("BrandColon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        internal static string Cancel {
+            get {
+                return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Change language.
         /// </summary>
         internal static string ChangeLanguage {
             get {
                 return ResourceManager.GetString("ChangeLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change status.
+        /// </summary>
+        internal static string ChangeStatus {
+            get {
+                return ResourceManager.GetString("ChangeStatus", resourceCulture);
             }
         }
         
@@ -106,11 +196,65 @@ namespace DigiFyy.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Login state.
+        /// </summary>
+        internal static string CurrentLoginStatus {
+            get {
+                return ResourceManager.GetString("CurrentLoginStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registration state.
+        /// </summary>
+        internal static string CurrentRegistrationStatus {
+            get {
+                return ResourceManager.GetString("CurrentRegistrationStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deny.
+        /// </summary>
+        internal static string Deny {
+            get {
+                return ResourceManager.GetString("Deny", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deregister.
+        /// </summary>
+        internal static string Deregister {
+            get {
+                return ResourceManager.GetString("Deregister", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Digital Bike Frame Number.
         /// </summary>
         internal static string DigitalBikeFrameNumber {
             get {
                 return ResourceManager.GetString("DigitalBikeFrameNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Docs.
+        /// </summary>
+        internal static string DocsButton {
+            get {
+                return ResourceManager.GetString("DocsButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Document.
+        /// </summary>
+        internal static string Document {
+            get {
+                return ResourceManager.GetString("Document", resourceCulture);
             }
         }
         
@@ -142,7 +286,7 @@ namespace DigiFyy.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to FORGOT PASSWORD?.
+        ///   Looks up a localized string similar to Forgot password?.
         /// </summary>
         internal static string ForgotPassword {
             get {
@@ -156,6 +300,15 @@ namespace DigiFyy.Resources {
         internal static string Frame {
             get {
                 return ResourceManager.GetString("Frame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Home.
+        /// </summary>
+        internal static string Home {
+            get {
+                return ResourceManager.GetString("Home", resourceCulture);
             }
         }
         
@@ -196,11 +349,20 @@ namespace DigiFyy.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Messsages.
+        ///   Looks up a localized string similar to Log out.
         /// </summary>
-        internal static string Messsages {
+        internal static string Logout {
             get {
-                return ResourceManager.GetString("Messsages", resourceCulture);
+                return ResourceManager.GetString("Logout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Messages.
+        /// </summary>
+        internal static string Messages {
+            get {
+                return ResourceManager.GetString("Messages", resourceCulture);
             }
         }
         
@@ -214,6 +376,78 @@ namespace DigiFyy.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Model:.
+        /// </summary>
+        internal static string ModelColon {
+            get {
+                return ResourceManager.GetString("ModelColon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not logged in.
+        /// </summary>
+        internal static string NotLoggedIn {
+            get {
+                return ResourceManager.GetString("NotLoggedIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to On sign up with.
+        /// </summary>
+        internal static string OnSignupWith {
+            get {
+                return ResourceManager.GetString("OnSignupWith", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Or login with.
+        /// </summary>
+        internal static string OrLoginWith {
+            get {
+                return ResourceManager.GetString("OrLoginWith", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parts.
+        /// </summary>
+        internal static string Parts {
+            get {
+                return ResourceManager.GetString("Parts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parts.
+        /// </summary>
+        internal static string PartsButton {
+            get {
+                return ResourceManager.GetString("PartsButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password:.
+        /// </summary>
+        internal static string Password {
+            get {
+                return ResourceManager.GetString("Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pick photo.
+        /// </summary>
+        internal static string PickPhoto {
+            get {
+                return ResourceManager.GetString("PickPhoto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pick up my bike.
         /// </summary>
         internal static string PickUpMyBike {
@@ -223,11 +457,101 @@ namespace DigiFyy.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Pictures.
+        /// </summary>
+        internal static string Pictures {
+            get {
+                return ResourceManager.GetString("Pictures", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Police/Ensurance.
         /// </summary>
         internal static string PoliceEnsurance {
             get {
                 return ResourceManager.GetString("PoliceEnsurance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Position.
+        /// </summary>
+        internal static string Position {
+            get {
+                return ResourceManager.GetString("Position", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Year:.
+        /// </summary>
+        internal static string ProductionYearColon {
+            get {
+                return ResourceManager.GetString("ProductionYearColon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reclaim.
+        /// </summary>
+        internal static string Reclaim {
+            get {
+                return ResourceManager.GetString("Reclaim", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Register.
+        /// </summary>
+        internal static string Register {
+            get {
+                return ResourceManager.GetString("Register", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Register bike.
+        /// </summary>
+        internal static string RegisterBike {
+            get {
+                return ResourceManager.GetString("RegisterBike", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Repeat:.
+        /// </summary>
+        internal static string RepeatPassword {
+            get {
+                return ResourceManager.GetString("RepeatPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Report location.
+        /// </summary>
+        internal static string ReportLocation {
+            get {
+                return ResourceManager.GetString("ReportLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Report stolen.
+        /// </summary>
+        internal static string ReportStolen {
+            get {
+                return ResourceManager.GetString("ReportStolen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Report found.
+        /// </summary>
+        internal static string ReportStolenFound {
+            get {
+                return ResourceManager.GetString("ReportStolenFound", resourceCulture);
             }
         }
         
@@ -250,11 +574,92 @@ namespace DigiFyy.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Scan my bike.
+        ///   Looks up a localized string similar to Scan.
+        /// </summary>
+        internal static string Scan {
+            get {
+                return ResourceManager.GetString("Scan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scan again.
+        /// </summary>
+        internal static string ScanAgain {
+            get {
+                return ResourceManager.GetString("ScanAgain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scan bike.
         /// </summary>
         internal static string ScanMyBike {
             get {
                 return ResourceManager.GetString("ScanMyBike", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to See my bikes.
+        /// </summary>
+        internal static string SeeMyBike {
+            get {
+                return ResourceManager.GetString("SeeMyBike", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send.
+        /// </summary>
+        internal static string Send {
+            get {
+                return ResourceManager.GetString("Send", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Serial number.
+        /// </summary>
+        internal static string SerialNumber {
+            get {
+                return ResourceManager.GetString("SerialNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Store present position.
+        /// </summary>
+        internal static string SetPositionHere {
+            get {
+                return ResourceManager.GetString("SetPositionHere", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        internal static string Settings {
+            get {
+                return ResourceManager.GetString("Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Share.
+        /// </summary>
+        internal static string ShareButton {
+            get {
+                return ResourceManager.GetString("ShareButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show position.
+        /// </summary>
+        internal static string ShowPosition {
+            get {
+                return ResourceManager.GetString("ShowPosition", resourceCulture);
             }
         }
         
@@ -268,11 +673,29 @@ namespace DigiFyy.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sign Up.
+        ///   Looks up a localized string similar to Sign up.
         /// </summary>
         internal static string SignUp {
             get {
                 return ResourceManager.GetString("SignUp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Specifications.
+        /// </summary>
+        internal static string Specifications {
+            get {
+                return ResourceManager.GetString("Specifications", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Specs.
+        /// </summary>
+        internal static string SpecsButton {
+            get {
+                return ResourceManager.GetString("SpecsButton", resourceCulture);
             }
         }
         
@@ -286,6 +709,177 @@ namespace DigiFyy.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Status:.
+        /// </summary>
+        internal static string StatusColon {
+            get {
+                return ResourceManager.GetString("StatusColon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Found.
+        /// </summary>
+        internal static string StatusFound {
+            get {
+                return ResourceManager.GetString("StatusFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not registered.
+        /// </summary>
+        internal static string StatusNotRegistered {
+            get {
+                return ResourceManager.GetString("StatusNotRegistered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registered.
+        /// </summary>
+        internal static string StatusRegistered {
+            get {
+                return ResourceManager.GetString("StatusRegistered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reported stolen!.
+        /// </summary>
+        internal static string StatusStolen {
+            get {
+                return ResourceManager.GetString("StatusStolen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unknown.
+        /// </summary>
+        internal static string StatusUnknown {
+            get {
+                return ResourceManager.GetString("StatusUnknown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Take photo.
+        /// </summary>
+        internal static string TakePhoto {
+            get {
+                return ResourceManager.GetString("TakePhoto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Take invoice photo.
+        /// </summary>
+        internal static string TakePhotoOfInvoice {
+            get {
+                return ResourceManager.GetString("TakePhotoOfInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please take photo or select from picture library.
+        /// </summary>
+        internal static string TakePhotoOrSelect {
+            get {
+                return ResourceManager.GetString("TakePhotoOrSelect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To register your bike, please take a photo of your purchase receipt..
+        /// </summary>
+        internal static string TakePhotoToRegisterText {
+            get {
+                return ResourceManager.GetString("TakePhotoToRegisterText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This code has also been sent to your email.
+        /// </summary>
+        internal static string ThisCodeEmail {
+            get {
+                return ResourceManager.GetString("ThisCodeEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To register your bike, please take a photo of your purchase receipt.
+        /// </summary>
+        internal static string ToRegisterTakePhoto {
+            get {
+                return ResourceManager.GetString("ToRegisterTakePhoto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To sell your bike, you need to deregister your ownership. Upon deregistration, you will be provided with a token that can be used by the buyer to register themselves as the owner..
+        /// </summary>
+        internal static string ToSellYourBike {
+            get {
+                return ResourceManager.GetString("ToSellYourBike", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Try again.
+        /// </summary>
+        internal static string TryAgain {
+            get {
+                return ResourceManager.GetString("TryAgain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unregister.
+        /// </summary>
+        internal static string Unregister {
+            get {
+                return ResourceManager.GetString("Unregister", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unregistred.
+        /// </summary>
+        internal static string Unregistred {
+            get {
+                return ResourceManager.GetString("Unregistred", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updated.
+        /// </summary>
+        internal static string UpdateDate {
+            get {
+                return ResourceManager.GetString("UpdateDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uploading...
+        /// </summary>
+        internal static string Uploading {
+            get {
+                return ResourceManager.GetString("Uploading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use photo.
+        /// </summary>
+        internal static string UsePhoto {
+            get {
+                return ResourceManager.GetString("UsePhoto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Use scanned UUID.
         /// </summary>
         internal static string UseScannedUUID {
@@ -295,11 +889,47 @@ namespace DigiFyy.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to UUID not scanned yet.
+        /// </summary>
+        internal static string UUIDNotRegistered {
+            get {
+                return ResourceManager.GetString("UUIDNotRegistered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Waiting for scan...
         /// </summary>
         internal static string WaitingForScan {
             get {
                 return ResourceManager.GetString("WaitingForScan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to We like to report the location of the bike. May se send your locationdetails?.
+        /// </summary>
+        internal static string WeLikeToReportLocation {
+            get {
+                return ResourceManager.GetString("WeLikeToReportLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to We&apos;ll send instructions on how to reset your password to the email address you have registered with us.
+        /// </summary>
+        internal static string WillSendInstructions {
+            get {
+                return ResourceManager.GetString("WillSendInstructions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your bike has now been deregistered. Use the code below to register again or provide to the new owner. The code is valid for 10 days..
+        /// </summary>
+        internal static string YourBikeHasBeenDeregistered {
+            get {
+                return ResourceManager.GetString("YourBikeHasBeenDeregistered", resourceCulture);
             }
         }
     }

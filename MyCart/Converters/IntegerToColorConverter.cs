@@ -22,27 +22,23 @@ namespace DigiFyy.Converters
         /// <returns>Returns the color.</returns>
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (parameter == null)
+            if (value == null)
                 return Color.Default;
 
-            switch (parameter.ToString())
+            switch (value.ToString())
             {
-                case "0" when (bool)value:
-                    return Color.FromRgba(255, 255, 255, 0.6);
-                case "1" when (bool)value:
-                    return Color.FromHex("#FF4A4A");
-                case "2" when (bool)value:
-                    return Color.FromHex("#FF4A4A");
+                case "0":
+                    return Color.FromHex("#606060");    // Unregistered
+                case "1":
+                    return Color.FromHex("#0DD125");    // OK
                 case "2":
-                    return Color.FromHex("#ced2d9");
-                case "3" when (bool)value:
-                    return Color.FromHex("#959eac");
+                    return Color.FromHex("#FF3F6F");    // Stolen
                 case "3":
-                    return Color.FromHex("#ced2d9");
-                case "4" when (bool)value:
+                    return Color.FromHex("#3251FF");    // Found
+                case "4":
                     Application.Current.Resources.TryGetValue("PrimaryColor", out var retVal);
                     return (Color)retVal;
-                case "4":
+                case "5":
                     Application.Current.Resources.TryGetValue("Gray-AB", out var outVal);
                     return (Color)outVal;
                 default:

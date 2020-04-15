@@ -20,6 +20,10 @@ namespace DigiFyy.Models.AWS
         public FrameNumberStatus FrameNumberStatus { get; set; } =  null;
         public List<FrameNumberExtra> FrameNumberExtras { get; set; } =  null;
         public List<FrameNumberDocument> FrameNumberDocuments { get; set; } = null;
+
+        public int NumberOfMessages { get; set; } = 0;
+
+        public string ProfileImage { get; set; } = "";
     }
 
     public class UIDInfoResponse

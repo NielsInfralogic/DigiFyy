@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using DigiFyy.Models;
 using DigiFyy.Helpers;
 using DigiFyy.Services;
+using Xamarin.Forms;
 
 namespace DigiFyy.ViewModels
 {
@@ -29,7 +30,7 @@ namespace DigiFyy.ViewModels
         /// <summary>
         /// Initializes a new instance for the <see cref="T:DigiFyy.ViewModels.About.AboutUsViewModel"/> class.
         /// </summary>
-        public AboutUsViewModel(INavigationService navigationService, IAnalyticsService analyticsService) : base(navigationService, analyticsService)
+        public AboutUsViewModel()
         {
             ProductDescription =
                 "Situated in the heard of Smith-town, Acme Products, Inc., has a long-standing tradition of selling the best products while providing the fastest service on the market. Since 1952, we’ve helped our customers identify their needs, understand their wants, and capture their dreams.";
@@ -37,19 +38,12 @@ namespace DigiFyy.ViewModels
             ProductVersion = "1.0";
             CardsTopImage = "xamarin.jpg";
 
-            this.ItemSelectedCommand = new Command(this.ItemSelected);
+            this.ItemSelectedCommand = new Helpers.Command(this.ItemSelected);
         }
 
         #endregion
 
-        #region Event handler
 
-        /// <summary>
-        /// Occurs when the property is changed.
-        /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        #endregion
 
         #region Properties
 
@@ -118,20 +112,13 @@ namespace DigiFyy.ViewModels
         /// <summary>
         /// Gets or sets the command that will be executed when an item is selected.
         /// </summary>
-        public Command ItemSelectedCommand { get; set; }
+        public Helpers.Command ItemSelectedCommand { get; set; }
 
         #endregion
 
         #region Methods
 
-        /// <summary>
-        /// The PropertyChanged event occurs when changing the value of property.
-        /// </summary>
-        /// <param name="propertyName">The PropertyName</param>
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+       
 
         /// <summary>
         /// Invoked when an item is selected.

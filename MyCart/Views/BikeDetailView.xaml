@@ -3,206 +3,358 @@
     x:Class="DigiFyy.Views.BikeDetailView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
-    xmlns:converters="clr-namespace:DigiFyy.Converters"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:converters="clr-namespace:DigiFyy.Converters;assembly=DigiFyy"
     xmlns:core="clr-namespace:Syncfusion.XForms.Core;assembly=Syncfusion.Core.XForms"
-    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-    xmlns:ffsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
     xmlns:helper="clr-namespace:DigiFyy.Helpers"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:trans="clr-namespace:DigiFyy.Helpers"
-    Title="{trans:Translate BikeDetails}"
-    BackgroundColor="{DynamicResource PrimaryLight}"
-    NavigationPage.HasNavigationBar="False"
-    Shell.NavBarIsVisible="True">
+    xmlns:viewModels="clr-namespace:DigiFyy.ViewModels;assembly=DigiFyy"
+    Title="Details"
+    viewModels:ViewModelLocator.AutoWireViewModel="True"
+    IconImageSource="tab_feed.png">
 
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Styles.xaml" />
-
             </ResourceDictionary.MergedDictionaries>
             <converters:StatusIntegerToString x:Key="StatusConverter" />
+            <converters:IntegerToColorConverter x:Key="StatusColorConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
+
     <ContentPage.Content>
         <RefreshView
+            Margin="{OnPlatform Android='0,10,0,0',
+                                iOS='0,20,0,0'}"
             Command="{Binding RefreshCommand}"
             IsRefreshing="{Binding IsBusy, Mode=OneWay}"
             RefreshColor="Teal">
             <ScrollView>
                 <StackLayout>
-                    <ffsvg:SvgCachedImage
-                        Margin="{x:OnIdiom Phone='0,0,0,0',
-                                           Desktop='0',
-                                           Tablet='0'}"
-                        BackgroundColor="White"
-                        HeightRequest="{core:OnPlatformOrientationDoubleValue Default=300,
-                                                                              AndroidPhonePortrait=200,
+                    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+                        <Image
+                            Margin="{OnPlatform Android='0,0,0,0',
+                                                iOS='0,0,0,0'}"
+                            BackgroundColor="Transparent"
+                            HeightRequest="{core:OnPlatformOrientationDoubleValue Default=100,
+                                                                                  AndroidPhonePortrait=70,
+                                                                                  AndroidPhoneLandscape=70,
+                                                                                  iOSPhonePortrait=70,
+                                                                                  iOSPhoneLandscape=70}"
+                            Source="DigifyyLogo.png"
+                            VerticalOptions="Center" />
+                        <Image
+                            Margin="0,0,0,0"
+                            BackgroundColor="Transparent"
+                            HeightRequest="{core:OnPlatformOrientationDoubleValue Default=20,
+                                                                                  AndroidPhonePortrait=20,
+                                                                                  AndroidPhoneLandscape=7,
+                                                                                  iOSPhonePortrait=20,
+                                                                                  iOSPhoneLandscape=7}"
+                            Source="digifyyline.png"
+                            VerticalOptions="Center" />
+                    </StackLayout>
+                    <ffimageloading:CachedImage
+                        Margin="{OnPlatform Android='0,0,0,0',
+                                            iOS='0,0,0,0'}"
+                        BackgroundColor="{Binding White}"
+                        HeightRequest="{core:OnPlatformOrientationDoubleValue Default=180,
+                                                                              AndroidPhonePortrait=180,
                                                                               AndroidPhoneLandscape=140,
-                                                                              iOSPhonePortrait=200,
+                                                                              iOSPhonePortrait=180,
                                                                               iOSPhoneLandscape=140}"
-                        Source="Digifyy.png"
+                        Source="{Binding ImagePath}"
                         VerticalOptions="Center"
-                        WidthRequest="{x:OnIdiom Phone=200,
+                        WidthRequest="{x:OnIdiom Phone=180,
                                                  Desktop=300,
-                                                 Tablet=300}" />
+                                                 Tablet=300}">
+                        <ffimageloading:CachedImage.Transformations>
+                            <fftransformations:CircleTransformation />
+                        </ffimageloading:CachedImage.Transformations>
+
+                    </ffimageloading:CachedImage>
+
+                    <Label
+                        Margin="0,-15,15,0"
+                        FontFamily="{StaticResource CenturyGothic-Bold}"
+                        FontSize="12"
+                        HorizontalOptions="End"
+                        IsVisible="{Binding Registered}"
+                        Text="{trans:Translate AddProfileImage}"
+                        TextColor="{DynamicResource Gray-6F}"
+                        TextDecorations="Underline">
+
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding AddImageCommand}" NumberOfTapsRequired="1" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Grid Margin="0,5,10,0" Padding="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Style="{StaticResource LabelStyleInfoHeader}"
+                            Text="{trans:Translate BikeIDColon}" />
+                        <border:SfBorder
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Style="{StaticResource SfBorderStyle}">
+                            <Label
+                                FontSize="16"
+                                Style="{StaticResource LabelStyleInfo}"
+                                Text="{Binding UUID, Mode=OneWay}" />
+                        </border:SfBorder>
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Style="{StaticResource LabelStyleInfoHeader}"
+                            Text="{trans:Translate BrandColon}" />
+                        <border:SfBorder
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Style="{StaticResource SfBorderStyle}">
+                            <Label Style="{StaticResource LabelStyleInfo}" Text="{Binding Brand, Mode=OneWay}" />
+                        </border:SfBorder>
+
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            Style="{StaticResource LabelStyleInfoHeader}"
+                            Text="{trans:Translate ModelColon}" />
+                        <border:SfBorder
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Style="{StaticResource SfBorderStyle}">
+                            <Label Style="{StaticResource LabelStyleInfo}" Text="{Binding Model, Mode=OneWay}" />
+                        </border:SfBorder>
+                        <Label
+                            Grid.Row="3"
+                            Grid.Column="0"
+                            Style="{StaticResource LabelStyleInfoHeader}"
+                            Text="{trans:Translate ProductionYearColon}" />
+
+                        <border:SfBorder
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            Style="{StaticResource SfBorderStyle}">
+                            <Label Style="{StaticResource LabelStyleInfo}" Text="{Binding ProductionYear}" />
+                        </border:SfBorder>
+
+                        <Label
+                            Grid.Row="4"
+                            Grid.Column="0"
+                            Style="{StaticResource LabelStyleInfoHeader}"
+                            Text="{trans:Translate StatusColon}" />
+                        <StackLayout
+                            Grid.Row="4"
+                            Grid.Column="1"
+                            Orientation="Horizontal">
+                            <border:SfBorder HorizontalOptions="FillAndExpand" Style="{StaticResource SfBorderStyle}">
+                                <Label
+                                    Margin="0,5,0,0"
+                                    HorizontalOptions="StartAndExpand"
+                                    Style="{StaticResource LabelStyleInfo}"
+                                    Text="{Binding Status, Converter={StaticResource StatusConverter}}"
+                                    TextColor="{Binding Status, Converter={StaticResource StatusColorConverter}}" />
+                            </border:SfBorder>
+                            <button:SfButton
+                                x:Name="ChangeStatus"
+                                BackgroundColor="{DynamicResource RoundButtonBlue}"
+                                Command="{Binding ChangeStatusCommand}"
+                                CornerRadius="5"
+                                FontSize="18"
+                                HorizontalOptions="End"
+                                IsVisible="{Binding LoggedIn}"
+                                Text="{trans:Translate ChangeStatus}" />
+                        </StackLayout>
+                    </Grid>
+                    <StackLayout Margin="0" Orientation="Horizontal">
+                        <StackLayout
+                            Margin="0"
+                            HorizontalOptions="CenterAndExpand"
+                            IsVisible="{Binding NotRegistered}"
+                            Orientation="Horizontal"
+                            VerticalOptions="CenterAndExpand">
+
+                            <button:SfButton
+                                Command="{Binding RegisterCommand}"
+                                FontSize="20"
+                                Style="{StaticResource SfButtonRoundStyle}">
+                                <button:SfButton.Content>
+
+                                    <Label
+                                        FontSize="26"
+                                        HorizontalOptions="CenterAndExpand"
+                                        HorizontalTextAlignment="Center"
+                                        LineBreakMode="WordWrap"
+                                        Text="{trans:Translate RegisterBike}"
+                                        TextColor="White"
+                                        VerticalOptions="Center"
+                                        WidthRequest="{OnPlatform Android='130',
+                                                                  iOS='130',
+                                                                  UWP='100'}" />
+
+                                </button:SfButton.Content>
+
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="CommonStates">
+                                        <VisualState x:Name="Normal">
+                                            <VisualState.Setters>
+                                                <Setter Property="BackgroundColor" Value="{DynamicResource RoundButtonBlue}" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+
+                                        <VisualState x:Name="Pressed">
+                                            <VisualState.Setters>
+                                                <Setter Property="BackgroundColor" Value="{DynamicResource RoundButtonGreen}" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                            </button:SfButton>
+                        </StackLayout>
+                        <StackLayout
+                            Margin="0"
+                            HorizontalOptions="CenterAndExpand"
+                            IsVisible="{Binding Stolen}"
+                            Orientation="Horizontal"
+                            VerticalOptions="CenterAndExpand">
+
+                            <button:SfButton
+                                Command="{Binding ReportStolenCommand}"
+                                FontSize="20"
+                                Style="{StaticResource SfButtonRoundStyle}"
+                                Text="{trans:Translate ReportStolenFound}">
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="CommonStates">
+                                        <VisualState x:Name="Normal">
+                                            <VisualState.Setters>
+                                                <Setter Property="BackgroundColor" Value="{DynamicResource RoundButtonRed}" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+
+                                        <VisualState x:Name="Pressed">
+                                            <VisualState.Setters>
+                                                <Setter Property="BackgroundColor" Value="{DynamicResource RoundButtonGreen}" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                            </button:SfButton>
+                        </StackLayout>
+                    </StackLayout>
+
                     <StackLayout
-                        Margin="{core:OnPlatformOrientationThickness PhonePortrait='20,12',
-                                                                     PhoneLandscape='150,12',
-                                                                     TabletPortrait='200,20',
-                                                                     TabletLandscape='300,20',
-                                                                     Desktop='20'}"
-                        Spacing="0"
-                        VerticalOptions="FillAndExpand"
-                        WidthRequest="{OnPlatform Default='-1',
-                                                  UWP='350'}">
-                        <Grid>
+                        Margin="0"
+                        HorizontalOptions="CenterAndExpand"
+                        IsVisible="{Binding Registered}"
+                        Orientation="Horizontal"
+                        VerticalOptions="CenterAndExpand">
+                        <button:SfButton
+                            Margin="6,0,3,5"
+                            Command="{Binding SpecCommand}"
+                            Style="{StaticResource SfButtonRoundSmallStyle}"
+                            Text="{trans:Translate SpecsButton}">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal">
+                                        <VisualState.Setters>
+                                            <Setter Property="BackgroundColor" Value="{DynamicResource RoundButtonBlue}" />
+                                        </VisualState.Setters>
+                                    </VisualState>
 
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
+                                    <VisualState x:Name="Pressed">
+                                        <VisualState.Setters>
+                                            <Setter Property="BackgroundColor" Value="{DynamicResource RoundButtonGreen}" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </button:SfButton>
 
 
-                            <Grid Padding="5">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="Auto" />
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="5*" />
-                                </Grid.ColumnDefinitions>
+                        <button:SfButton
+                            Margin="3,0,3,5"
+                            Command="{Binding PartsCommand}"
+                            Style="{StaticResource SfButtonRoundSmallStyle}"
+                            Text="{trans:Translate PartsButton}">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal">
+                                        <VisualState.Setters>
+                                            <Setter Property="BackgroundColor" Value="{DynamicResource RoundButtonBlue}" />
+                                        </VisualState.Setters>
+                                    </VisualState>
 
-                                <Label
-                                    Grid.Row="0"
-                                    Grid.Column="0"
-                                    Style="{StaticResource LabelStyleInfoHeader}"
-                                    Text="UUID" />
-                                <Label
-                                    Grid.Row="0"
-                                    Grid.Column="1"
-                                    Style="{StaticResource LabelStyleInfo}"
-                                    Text="{Binding UUID, Mode=OneWay}" />
+                                    <VisualState x:Name="Pressed">
+                                        <VisualState.Setters>
+                                            <Setter Property="BackgroundColor" Value="{DynamicResource RoundButtonGreen}" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </button:SfButton>
 
-                                <Label
-                                    Grid.Row="1"
-                                    Grid.Column="0"
-                                    Style="{StaticResource LabelStyleInfoHeader}"
-                                    Text="{trans:Translate Brand}" />
-                                <Label
-                                    Grid.Row="1"
-                                    Grid.Column="1"
-                                    Style="{StaticResource LabelStyleInfo}"
-                                    Text="{Binding Brand, Mode=OneWay}" />
 
-                                <Label
-                                    Grid.Row="2"
-                                    Grid.Column="0"
-                                    Style="{StaticResource LabelStyleInfoHeader}"
-                                    Text="{trans:Translate Model}" />
-                                <Label
-                                    Grid.Row="2"
-                                    Grid.Column="1"
-                                    Style="{StaticResource LabelStyleInfo}"
-                                    Text="{Binding Model, Mode=OneWay}" />
+                        <button:SfButton
+                            Margin="3,0,3,5"
+                            Command="{Binding DocsCommand}"
+                            Style="{StaticResource SfButtonRoundSmallStyle}"
+                            Text="{trans:Translate DocsButton}">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal">
+                                        <VisualState.Setters>
+                                            <Setter Property="BackgroundColor" Value="{DynamicResource RoundButtonBlue}" />
+                                        </VisualState.Setters>
+                                    </VisualState>
 
-                                <Label
-                                    Grid.Row="3"
-                                    Grid.Column="0"
-                                    Style="{StaticResource LabelStyleInfoHeader}"
-                                    Text="{trans:Translate Frame}" />
-                                <Label
-                                    Grid.Row="3"
-                                    Grid.Column="1"
-                                    Style="{StaticResource LabelStyleInfo}"
-                                    Text="{Binding Frame, Mode=OneWay}" />
+                                    <VisualState x:Name="Pressed">
+                                        <VisualState.Setters>
+                                            <Setter Property="BackgroundColor" Value="{DynamicResource RoundButtonGreen}" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </button:SfButton>
 
-                                <Label
-                                    Grid.Row="4"
-                                    Grid.Column="0"
-                                    Style="{StaticResource LabelStyleInfoHeader}"
-                                    Text="{trans:Translate Status}" />
-                                <Label
-                                    Grid.Row="4"
-                                    Grid.Column="1"
-                                    Style="{StaticResource LabelStyleInfo}"
-                                    Text="{Binding Status, Converter={StaticResource StatusConverter}}" />
+                        <button:SfButton
+                            Margin="3,0,6,5"
+                            Command="{Binding ShareCommand}"
+                            Style="{StaticResource SfButtonRoundSmallStyle}"
+                            Text="{trans:Translate ShareButton}">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal">
+                                        <VisualState.Setters>
+                                            <Setter Property="BackgroundColor" Value="{DynamicResource RoundButtonBlue}" />
+                                        </VisualState.Setters>
+                                    </VisualState>
 
-                            </Grid>
-
-                            <StackLayout
-                                Grid.Row="1"
-                                Padding="10,0,0,0"
-                                Orientation="Horizontal">
-
-                                <Label
-                                    Margin="0,16"
-                                    FontFamily="{StaticResource Montserrat-SemiBold}"
-                                    FontSize="12"
-                                    HorizontalOptions="Start"
-                                    Text="Documents"
-                                    TextColor="{DynamicResource Gray-6F}" />
-                                <buttons:SfButton
-                                    Margin="0,16"
-                                    Command="{Binding DocumentCommand}"
-                                    CornerRadius="4"
-                                    Style="{StaticResource SfFlatButtonStyle}"
-                                    Text="{Binding DocumentCount}" />
-
-                            </StackLayout>
-
-                            <StackLayout
-                                Grid.Row="2"
-                                Padding="10,0,0,0"
-                                Orientation="Horizontal">
-                                <Label
-                                    Margin="0,16"
-                                    FontFamily="{StaticResource Montserrat-SemiBold}"
-                                    FontSize="12"
-                                    HorizontalOptions="Start"
-                                    Text="Messsages"
-                                    TextColor="{DynamicResource Gray-6F}" />
-
-                                <buttons:SfButton
-                                    Margin="0,16"
-                                    Command="{Binding MessageCommand}"
-                                    CornerRadius="4"
-                                    Style="{StaticResource SfFlatButtonStyle}"
-                                    Text="{Binding MessageCount}" />
-                            </StackLayout>
-
-                            <StackLayout Grid.Row="3">
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto" />
-                                        <RowDefinition Height="Auto" />
-                                        <RowDefinition Height="Auto" />
-                                    </Grid.RowDefinitions>
-                                    <buttons:SfButton
-                                        Grid.Row="0"
-                                        Command="{Binding ReportCommand}"
-                                        Style="{StaticResource SfButtonStyle}"
-                                        Text="Report theft" />
-                                    <buttons:SfButton
-                                        Grid.Row="1"
-                                        Command="{Binding PoliceCommand}"
-                                        Style="{StaticResource SfButtonStyle}"
-                                        Text="Police/Ensurance" />
-                                    <buttons:SfButton
-                                        Grid.Row="2"
-                                        Command="{Binding PickupCommand}"
-                                        Style="{StaticResource SfButtonStyle}"
-                                        Text="Pick up my bike" />
-                                </Grid>
-                            </StackLayout>
-                        </Grid>
+                                    <VisualState x:Name="Pressed">
+                                        <VisualState.Setters>
+                                            <Setter Property="BackgroundColor" Value="{DynamicResource RoundButtonGreen}" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </button:SfButton>
                     </StackLayout>
                 </StackLayout>
             </ScrollView>

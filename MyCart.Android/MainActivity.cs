@@ -6,11 +6,10 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
-
 using Android.Content;
 using Android.Nfc;
 using Plugin.NFC;
-using DigiFyy.Data;
+using Android;
 
 namespace DigiFyy.Droid
 {
@@ -19,23 +18,31 @@ namespace DigiFyy.Droid
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
 
+        const int RequestLocationId = 0;
+
+        readonly string[] LocationPermissions =
+        {
+            Manifest.Permission.AccessCoarseLocation,
+            Manifest.Permission.AccessFineLocation
+        };
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
-            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjAzMTIzQDMxMzcyZTM0MmUzMFBqOXYxWmNWc1VNVHBFUjZGQ1VMZGdkRGFKR3ZxUWNFbnFaTUFHVUtYenM9");
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjMyNTM4QDMxMzgyZTMxMmUzMGk5SnZMR3JhaWRBSzY0cEFCaDhQVGI0WDQ2ZDcrbTVYQVJWMmRyR0dybjA9");
 
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(savedInstanceState);
-            CrossNFC.Init(this);
+        
             global::Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
-            
+
+            CrossNFC.Init(this);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-
+            Xamarin.FormsMaps.Init(this, savedInstanceState);
             CachedImageRenderer.Init(true);
-
+       
             global::Xamarin.Auth.Presenters.XamarinAndroid.AuthenticationConfiguration.Init(this, savedInstanceState);
 
             LoadApplication(new App());          
@@ -59,5 +66,22 @@ namespace DigiFyy.Droid
             base.OnResume();
         }
 
+/*        protected override void OnStart()
+        {
+            base.OnStart();
+
+            if ((int)Build.VERSION.SdkInt >= 23)
+            {
+                if (CheckSelfPermission(Manifest.Permission.AccessFineLocation) != Permission.Granted)
+                {
+                    RequestPermissions(LocationPermissions, RequestLocationId);
+                }
+         //       else
+           //     {
+                    // Permissions already granted - display a message.
+             //   }
+            }
+        }
+        */
     }
 }

@@ -10,6 +10,14 @@ namespace DigiFyy.Models.AWS
         public string Username { get; set; } = "";
         public string Password { get; set; } = "";
         public string Token { get; set; } = "";
+        public int OwnerID { get; set; } = 0;
+
+        public List<string> UIDs { get; set; }
+
+        public User()
+        {
+            UIDs = new List<string>();
+        }
     }
 
     public class UserResponse

@@ -8,15 +8,69 @@ namespace DigiFyy.ViewModels
     /// <summary>
     /// ViewModel for reset password page.
     /// </summary>
-    public class ResetPasswordViewModel : LoginViewModelBase
+    public class ResetPasswordViewModel : ViewModelBase
     {
 
-        readonly IDialogService DialogService;
+
         #region Fields
 
         private string newPassword;
+        public string NewPassword
+        {
+            get
+            {
+                return this.newPassword;
+            }
+
+            set
+            {
+                SetProperty(ref newPassword, value);
+            }
+        }
+
+        private string email;
+        public string Email
+        {
+            get
+            {
+                return this.email;
+            }
+
+            set
+            {
+                SetProperty(ref email, value);
+            }
+        }
+
+
+        private bool isInvalidEmail;
+        public bool IsInvalidEmail
+        {
+            get
+            {
+                return this.isInvalidEmail;
+            }
+
+            set
+            {
+                SetProperty(ref isInvalidEmail, value);
+            }
+        }
 
         private string confirmPassword;
+
+        public string ConfirmPassword
+        {
+            get
+            {
+                return this.confirmPassword;
+            }
+
+            set
+            {
+                SetProperty(ref confirmPassword, value);
+            }
+        }
 
         #endregion
 
@@ -25,10 +79,8 @@ namespace DigiFyy.ViewModels
         /// <summary>
         /// Initializes a new instance of the <see cref="ResetPasswordViewModel" /> class.
         /// </summary>
-        public ResetPasswordViewModel(INavigationService navigationService, IAnalyticsService analyticsService, IDialogService dialogService) : base(navigationService, analyticsService)
+        public ResetPasswordViewModel()
         {
-            DialogService = dialogService;
-  
             this.SubmitCommand = new Command(this.SubmitClicked);
             this.SignUpCommand = new Command(this.SignUpClicked);
         }
@@ -40,7 +92,7 @@ namespace DigiFyy.ViewModels
         /// <summary>
         /// The declaration of the property changed event.
         /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
+        //public event PropertyChangedEventHandler PropertyChanged;
 
         #endregion
 
@@ -58,41 +110,6 @@ namespace DigiFyy.ViewModels
 
         #endregion
 
-        #region Public property
-
-        /// <summary>
-        /// Gets or sets the property that bounds with an entry that gets the new password from user in the reset password page.
-        /// </summary>
-        public string NewPassword
-        {
-            get
-            {
-                return this.newPassword;
-            }
-
-            set
-            {
-                SetProperty(ref newPassword, value);
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets the property that bounds with an entry that gets the new password confirmation from the user in the reset password page.
-        /// </summary>
-        public string ConfirmPassword
-        {
-            get
-            {
-                return this.confirmPassword;
-            }
-
-            set
-            {
-                SetProperty(ref confirmPassword, value);
-            }
-        }
-
-        #endregion
 
         #region Methods
 

@@ -1,7 +1,6 @@
-﻿using System;
+﻿using Syncfusion.XForms.ComboBox;
+using System;
 using System.Windows.Input;
-using DigiFyy.Models;
-using Syncfusion.XForms.ComboBox;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 
@@ -81,18 +80,17 @@ namespace DigiFyy.Behaviors
         /// <param name="e">The selection changed event args</param>
         private void SelectionChanged(object sender, Syncfusion.XForms.ComboBox.SelectionChangedEventArgs e)
         {
-            int totalQuantity;
-            int.TryParse(e.Value.ToString(), out totalQuantity);
-         /*   ((sender as SfComboBox).BindingContext as Product).TotalQuantity = totalQuantity;
+            int.TryParse(e.Value.ToString(), out int totalQuantity);
+            /*   ((sender as SfComboBox).BindingContext as Product).TotalQuantity = totalQuantity;
 
-            if (isCheckboxLoaded)
-            {
-                if (this.Command == null)
-                    return;
+               if (isCheckboxLoaded)
+               {
+                   if (this.Command == null)
+                       return;
 
-                if (this.Command.CanExecute(((sender as SfComboBox).BindingContext as Product)))
-                    this.Command.Execute(((sender as SfComboBox).BindingContext as Product));
-            }*/
+                   if (this.Command.CanExecute(((sender as SfComboBox).BindingContext as Product)))
+                       this.Command.Execute(((sender as SfComboBox).BindingContext as Product));
+               }*/
 
             isCheckboxLoaded = true;
         }

@@ -17,44 +17,43 @@
     <x:String x:Key="DropDownButtonIcon">&#xe70b;</x:String>
 
     <Color x:Key="Transparent">Transparent</Color>
-    <x:String x:Key="Back">&#xe709;</x:String>
+    <x:String x:Key="BackIcon">&#xe709;</x:String>
     <x:String x:Key="Search">&#xe705;</x:String>
     <x:String x:Key="Share">&#xe704;</x:String>
     <x:String x:Key="Next">&#xe71a;</x:String>
-    <x:String x:Key="Account">&#xe70e;</x:String>
+    <x:String x:Key="AccountIcon">&#xe70e;</x:String>
     <x:String x:Key="Bell">&#xe700;</x:String>
     <x:String x:Key="Mail">&#xe70e;</x:String>
     <x:String x:Key="Help">&#xe72c;</x:String>
-
-
+    <x:String x:Key="MoreIcon">&#xe719;</x:String>
+    <x:String x:Key="More2Icon">&#xe715;</x:String>
+    <x:String x:Key="PdfIcon">&#xe731;</x:String>
+    <x:String x:Key="AddIcon">&#xe730;</x:String>
 
     <converter:DynamicResourceToColorConverter x:Key="DynamicResourceToColorConverter" />
 
-
     <!--  Common style for content pages  -->
     <Style x:Key="ContentPageStyle" TargetType="ContentPage">
-        <Setter Property="BackgroundImageSource">
-            <OnPlatform
-                x:TypeArguments="ImageSource"
-                Android="LoginBackground.png"
-                WinPhone="LoginBackground.png" />
-        </Setter>
-        <Setter Property="BackgroundColor" Value="{OnIdiom Default={DynamicResource Gray-White}, Desktop={DynamicResource Gray-F4}, Converter={StaticResource DynamicResourceToColorConverter}}" />
-
+        <Setter Property="BackgroundColor" Value="{DynamicResource White}" />
     </Style>
 
     <!--  Common style for labels  -->
     <Style x:Key="LabelStyle" TargetType="Label">
         <Setter Property="TextColor" Value="{DynamicResource Gray-White}" />
         <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontFamily" Value="{StaticResource CenturyGothic-Bold}" />
         <Setter Property="LineHeight" Value="1.25" />
     </Style>
+
+
 
     <Style x:Key="LabelStyleDark" TargetType="Label">
         <Setter Property="VerticalOptions" Value="Center" />
         <Setter Property="HorizontalTextAlignment" Value="Center" />
         <Setter Property="LineHeight" Value="{OnPlatform Android=1.25, Default=-1}" />
-        <Setter Property="TextColor" Value="{DynamicResource Black}" />
+        <Setter Property="TextColor" Value="{DynamicResource Gray-800}" />
+        <Setter Property="FontFamily" Value="{StaticResource CenturyGothic-Bold}" />
+        <Setter Property="FontSize" Value="14" />
     </Style>
 
     <Style x:Key="LabelStyleInfo" TargetType="Label">
@@ -63,39 +62,55 @@
         <Setter Property="HorizontalOptions" Value="FillAndExpand" />
         <Setter Property="LineHeight" Value="{OnPlatform Android=1.25, Default=-1}" />
         <Setter Property="TextColor" Value="{DynamicResource Black}" />
-        <Setter Property="FontSize" Value="14" />
-        <Setter Property="HeightRequest" Value="35" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="HeightRequest" Value="30" />
+        <Setter Property="FontFamily" Value="{StaticResource CenturyGothic-Bold}" />
+        <Setter Property="Margin" Value="0,0,0,0" />
+        <Setter Property="Padding" Value="5,0,5,0" />
+    </Style>
 
-        <Setter Property="BackgroundColor" Value="White" />
-        <Setter Property="Margin" Value="0,5,0,5" />
-        <Setter Property="Padding" Value="5,8,5,5" />
+    <Style x:Key="LabelStylePageTitle" TargetType="Label">
+        <Setter Property="TextColor" Value="{DynamicResource Gray-900}" />
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="FontFamily" Value="{StaticResource CenturyGothic-Bold}" />
+        <Setter Property="LineHeight" Value="1.25" />
+        <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="VerticalTextAlignment" Value="Center" />
+    </Style>
+
+    <Style x:Key="FrameStyleInfo" TargetType="Frame">
+        <Setter Property="CornerRadius" Value="5" />
+        <Setter Property="OutlineColor" Value="{DynamicResource LabelFrameGreen}" />
+        <Setter Property="HeightRequest" Value="30" />
+        <Setter Property="Margin" Value="1,0,1,0" />
+        <Setter Property="Padding" Value="2,2,2,2" />
+
     </Style>
 
     <Style x:Key="LabelStyleInfoHeader" TargetType="Label">
         <Setter Property="VerticalOptions" Value="Center" />
-        <Setter Property="HorizontalTextAlignment" Value="Start" />
+        <Setter Property="HorizontalTextAlignment" Value="End" />
         <Setter Property="HorizontalOptions" Value="FillAndExpand" />
         <Setter Property="LineHeight" Value="{OnPlatform Android=1.25, Default=-1}" />
-        <Setter Property="TextColor" Value="{DynamicResource Gray-AB}" />
-        <Setter Property="FontSize" Value="14" />
-        <Setter Property="HeightRequest" Value="35" />
-
-        <Setter Property="BackgroundColor" Value="{DynamicResource Gray-F4}" />
-        <Setter Property="Margin" Value="0,5,0,5" />
-        <Setter Property="Padding" Value="5,8,5,5" />
+        <Setter Property="TextColor" Value="{DynamicResource Gray-800}" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="FontFamily" Value="{StaticResource CenturyGothic-Bold}" />
+        <Setter Property="Margin" Value="1,1,1,1" />
+        <Setter Property="Padding" Value="5,0,5,0" />
     </Style>
-
-
 
     <!--  Common style for entries  -->
     <Style x:Key="EntryStyle" TargetType="control:BorderlessEntry">
         <Setter Property="PlaceholderColor" Value="{StaticResource EntryPlaceholderColor}" />
         <Setter Property="BackgroundColor" Value="Transparent" />
         <Setter Property="TextColor" Value="{DynamicResource Gray-White}" />
-        <Setter Property="FontSize" Value="16" />
-        <Setter Property="Margin" Value="15,0" />
-        <Setter Property="HeightRequest" Value="40" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="Margin" Value="5,0" />
+        <Setter Property="HeightRequest" Value="30" />
+        <Setter Property="FontFamily" Value="{StaticResource CenturyGothic-Bold}" />
         <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+        <Setter Property="HorizontalOptions" Value="FillAndExpand" />
         <Setter Property="ReturnType" Value="Done" />
     </Style>
 
@@ -110,19 +125,50 @@
         <Setter Property="FontSize" Value="16" />
         <Setter Property="WidthRequest" Value="245" />
         <Setter Property="HeightRequest" Value="50" />
-        <Setter Property="FontFamily" Value="{StaticResource Montserrat-SemiBold}" />
+        <Setter Property="FontFamily" Value="{StaticResource CenturyGothic-Bold}" />
         <Setter Property="BackgroundColor" Value="{DynamicResource PrimaryDarkColor}" />
         <Setter Property="TextColor" Value="{DynamicResource White}" />
+        <Setter Property="PressedBackgroundColor" Value="{DynamicResource PrimaryDarkenColor}" />
     </Style>
 
+    <!--  Common round button style  -->
+    <Style x:Key="SfButtonRoundStyle" TargetType="buttons:SfButton">
+        <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+        <Setter Property="VerticalOptions" Value="EndAndExpand" />
+        <Setter Property="Margin" Value="10,10,10,10" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="CornerRadius" Value="75" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="WidthRequest" Value="150" />
+        <Setter Property="HeightRequest" Value="150" />
+        <Setter Property="FontFamily" Value="{StaticResource CenturyGothic-Bold}" />
+        <Setter Property="TextColor" Value="White" />
+    </Style>
+
+
+    <Style x:Key="SfButtonRoundSmallStyle" TargetType="buttons:SfButton">
+        <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+        <Setter Property="VerticalOptions" Value="EndAndExpand" />
+        <Setter Property="Margin" Value="5,5,5,5" />
+        <Setter Property="Padding" Value="0,0,0,0" />
+        <Setter Property="CornerRadius" Value="40" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="17" />
+        <Setter Property="WidthRequest" Value="80" />
+        <Setter Property="HeightRequest" Value="80" />
+        <Setter Property="FontFamily" Value="{StaticResource CenturyGothic-Bold}" />
+        <Setter Property="TextColor" Value="White" />
+    </Style>
 
     <!--  Common style for flat buttons  -->
     <Style x:Key="SfFlatButtonStyle" TargetType="buttons:SfButton">
         <Setter Property="BackgroundColor" Value="Transparent" />
         <Setter Property="TextColor" Value="{DynamicResource Gray-6F}" />
-        <Setter Property="FontFamily" Value="{StaticResource Montserrat-SemiBold}" />
+        <Setter Property="FontFamily" Value="{StaticResource CenturyGothic-Bold}" />
         <Setter Property="FontSize" Value="14" />
         <Setter Property="VerticalTextAlignment" Value="Center" />
+        <Setter Property="PressedBackgroundColor" Value="{DynamicResource PrimaryDarkenColor}" />
     </Style>
 
     <!--  Common style for flat buttons  -->
@@ -130,7 +176,8 @@
         <Setter Property="BackgroundColor" Value="Transparent" />
         <Setter Property="TextColor" Value="{DynamicResource Gray-6F}" />
         <Setter Property="BackgroundColor" Value="{DynamicResource PrimaryDarkColor}" />
-        <Setter Property="FontFamily" Value="{StaticResource Montserrat-SemiBold}" />
+        <Setter Property="PressedBackgroundColor" Value="{DynamicResource PrimaryDarkenColor}" />
+        <Setter Property="FontFamily" Value="{StaticResource CenturyGothic-Bold}" />
         <Setter Property="FontSize" Value="14" />
         <Setter Property="CornerRadius" Value="12" />
         <Setter Property="VerticalTextAlignment" Value="Center" />
@@ -141,27 +188,13 @@
     <!--  Common style for borders  -->
     <Style x:Key="SfBorderStyle" TargetType="border:SfBorder">
         <Setter Property="BackgroundColor" Value="{StaticResource BorderBackgroundColor}" />
-        <Setter Property="BorderColor" Value="Transparent" />
-        <Setter Property="CornerRadius" Value="20" />
-        <Setter Property="BorderWidth" Value="1" />
+        <Setter Property="BorderColor" Value="{StaticResource LabelFrameGreen}" />
+        <Setter Property="CornerRadius" Value="5" />
+        <Setter Property="BorderWidth" Value="2" />
     </Style>
 
     <!--  Common style for gradient view  -->
-    <Style x:Key="SfGradientViewStyle" TargetType="gradient:SfGradientView">
-        <Setter Property="Opacity" Value="0.82" />
-        <Setter Property="VerticalOptions" Value="FillAndExpand" />
-        <Setter Property="HorizontalOptions" Value="FillAndExpand" />
-        <Setter Property="BackgroundBrush">
-            <Setter.Value>
-                <graphics:SfLinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <graphics:SfLinearGradientBrush.GradientStops>
-                        <graphics:SfGradientStop Offset="0.0" Color="{StaticResource GradientEndColor}" />
-                        <graphics:SfGradientStop Offset="1.0" Color="{StaticResource GradientStartColor}" />
-                    </graphics:SfLinearGradientBrush.GradientStops>
-                </graphics:SfLinearGradientBrush>
-            </Setter.Value>
-        </Setter>
-    </Style>
+
 
     <!--  Common style for BoxView  -->
     <Style x:Key="BoxViewStyle" TargetType="BoxView">
@@ -206,6 +239,21 @@
         <Setter Property="WidthRequest" Value="40" />
     </Style>
 
+    <Style x:Key="TabButtonStyle" TargetType="buttons:SfButton">
+        <Setter Property="TextColor" Value="{DynamicResource Gray-600}" />
+        <Setter Property="BackgroundColor" Value="{DynamicResource PrimaryColor}" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="VerticalTextAlignment" Value="Center" />
+        <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+        <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+        <Setter Property="HeightRequest" Value="60" />
+        <Setter Property="ShowIcon" Value="True" />
+        <Setter Property="ImageAlignment" Value="Top" />
+
+    </Style>
+
     <!--  Common style for icon label  -->
     <Style x:Key="IconLabelStyle" TargetType="Label">
         <Setter Property="Margin" Value="16,8" />
@@ -216,5 +264,39 @@
         <Setter Property="HorizontalTextAlignment" Value="Center" />
         <Setter Property="FontFamily" Value="{StaticResource FontIcons}" />
     </Style>
+
+
+    <Style x:Key="SettingsStackLayoutStyle" TargetType="StackLayout">
+        <Setter Property="Margin" Value="6" />
+    </Style>
+
+    <!--  Common style for header labels  -->
+    <Style x:Key="HeaderLabelStyle" TargetType="Label">
+        <Setter Property="Margin" Value="0,0" />
+        <Setter Property="Padding" Value="16,0,0,0" />
+        <Setter Property="FontFamily" Value="{DynamicResource CenturyGothic-Bold}" />
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="HeightRequest" Value="40" />
+
+        <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+        <Setter Property="LineHeight" Value="{OnPlatform Default=-1, Android=1.25}" />
+        <Setter Property="TextColor" Value="{DynamicResource Gray-900}" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="VerticalTextAlignment" Value="Center" />
+    </Style>
+
+    <!--  Common style for setting labels  -->
+    <Style x:Key="SettingsLabelStyle" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource Gray-900}" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="FontFamily" Value="{StaticResource CenturyGothic-Bold}" />
+        <Setter Property="HorizontalOptions" Value="Start" />
+        <Setter Property="HeightRequest" Value="48" />
+        <Setter Property="Margin" Value="12,0,0,0" />
+        <Setter Property="VerticalTextAlignment" Value="Center" />
+    </Style>
+
+
 
 </ResourceDictionary>

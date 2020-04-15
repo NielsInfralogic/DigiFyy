@@ -22,6 +22,13 @@
     <Color x:Key="FacebookBlue">#4267B2</Color>
     <Color x:Key="GoogleRed">#dd5145</Color>
 
+    <Color x:Key="RoundButtonBlue">#63A1D7</Color>
+    <Color x:Key="RoundButtonGreen">#7BB35E</Color>
+    <Color x:Key="LabelFrameGreen">#7BB35E</Color>
+    <Color x:Key="RoundButtonRed">#ff4a4a</Color>
+    <Color x:Key="RoundButtonGray">#788396</Color>
+
+
     <Color x:Key="Gray-F4">#f6f7f8</Color>
     <Color x:Key="Gray-F0">#ebecef</Color>
     <Color x:Key="Gray-E4">#ced2d9</Color>
@@ -80,6 +87,22 @@
             <On Platform="Android" Value="Montserrat-Bold.ttf#Montserrat-Bold" />
             <On Platform="iOS" Value="Montserrat-Bold" />
             <On Platform="UWP" Value="Assets/Montserrat-Bold.ttf#Montserrat-Bold" />
+        </OnPlatform.Platforms>
+    </OnPlatform>
+
+    <OnPlatform x:Key="CenturyGothic-Regular" x:TypeArguments="x:String">
+        <OnPlatform.Platforms>
+            <On Platform="Android" Value="CenturyGothic-Regular.TTF#CenturyGothic-Regular" />
+            <On Platform="iOS" Value="CenturyGothic-Regular" />
+            <On Platform="UWP" Value="Assets/CenturyGothic-Regular.TTF#CenturyGothic-Regular" />
+        </OnPlatform.Platforms>
+    </OnPlatform>
+
+    <OnPlatform x:Key="CenturyGothic-Bold" x:TypeArguments="x:String">
+        <OnPlatform.Platforms>
+            <On Platform="Android" Value="CenturyGothic-Bold.TTF#CenturyGothic-Bold" />
+            <On Platform="iOS" Value="CenturyGothic-Bold" />
+            <On Platform="UWP" Value="Assets/CenturyGothic-Bold.TTF#CenturyGothic-Bold" />
         </OnPlatform.Platforms>
     </OnPlatform>
 
