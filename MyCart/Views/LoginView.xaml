@@ -31,15 +31,13 @@
 
         <Grid BackgroundColor="{DynamicResource White}">
             <Grid.RowDefinitions>
-
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
@@ -210,29 +208,38 @@
                 </Label>
             </Grid>
             <!--  Login button  -->
-            <buttons:SfButton
-                Grid.Row="4"
-                Margin="0,5"
-                Command="{Binding LoginCommand}"
-                FontSize="20"
-                Style="{StaticResource SfButtonRoundSmallStyle}"
-                Text="{trans:Translate Login}">
-                <VisualStateManager.VisualStateGroups>
-                    <VisualStateGroup x:Name="CommonStates">
-                        <VisualState x:Name="Normal">
-                            <VisualState.Setters>
-                                <Setter Property="BackgroundColor" Value="{DynamicResource RoundButtonBlue}" />
-                            </VisualState.Setters>
-                        </VisualState>
+            <StackLayout Grid.Row="4">
+                <Label
+                    Margin="1,-5,0,0"
+                    FontSize="16"
+                    HorizontalOptions="Center"
+                    IsVisible="{Binding WrongPassword}"
+                    Text="{trans:Translate WrongPassword}"
+                    TextColor="{DynamicResource Red}"
+                    VerticalOptions="FillAndExpand" />
+                <buttons:SfButton
+                    Margin="0,5"
+                    Command="{Binding LoginCommand}"
+                    FontSize="20"
+                    Style="{StaticResource SfButtonRoundSmallStyle}"
+                    Text="{trans:Translate Login}">
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{DynamicResource RoundButtonBlue}" />
+                                </VisualState.Setters>
+                            </VisualState>
 
-                        <VisualState x:Name="Pressed">
-                            <VisualState.Setters>
-                                <Setter Property="BackgroundColor" Value="{DynamicResource RoundButtonGreen}" />
-                            </VisualState.Setters>
-                        </VisualState>
-                    </VisualStateGroup>
-                </VisualStateManager.VisualStateGroups>
-            </buttons:SfButton>
+                            <VisualState x:Name="Pressed">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{DynamicResource RoundButtonGreen}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                </buttons:SfButton>
+            </StackLayout>
 
             <Label
                 Grid.Row="5"
@@ -275,25 +282,27 @@
             <StackLayout
                 Grid.Row="7"
                 HorizontalOptions="Center"
-                IsVisible="{Binding IsBusy}"
                 Orientation="Vertical"
-                VerticalOptions="Center">
+                 IsVisible="{Binding IsBusy}"
+                VerticalOptions="End">
                 <ActivityIndicator IsRunning="True" />
+
                 <Label Text="{trans:Translate LoggingIn}" />
+
+                <Image
+                    Margin="{x:OnIdiom Phone='0,0,0,0',
+                                       Desktop='0',
+                                       Tablet='0'}"
+                    BackgroundColor="Transparent"
+                    HeightRequest="{core:OnPlatformOrientationDoubleValue Default=20,
+                                                                          AndroidPhonePortrait=20,
+                                                                          AndroidPhoneLandscape=7,
+                                                                          iOSPhonePortrait=20,
+                                                                          iOSPhoneLandscape=7}"
+                    Source="digifyyline.png"
+                    VerticalOptions="End" />
             </StackLayout>
-            <Image
-                Grid.Row="8"
-                Margin="{x:OnIdiom Phone='0,0,0,0',
-                                   Desktop='0',
-                                   Tablet='0'}"
-                BackgroundColor="Transparent"
-                HeightRequest="{core:OnPlatformOrientationDoubleValue Default=20,
-                                                                      AndroidPhonePortrait=20,
-                                                                      AndroidPhoneLandscape=7,
-                                                                      iOSPhonePortrait=20,
-                                                                      iOSPhoneLandscape=7}"
-                Source="digifyyline.png"
-                VerticalOptions="End" />
+
 
         </Grid>
 

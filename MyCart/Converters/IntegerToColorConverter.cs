@@ -41,6 +41,8 @@ namespace DigiFyy.Converters
                 case "5":
                     Application.Current.Resources.TryGetValue("Gray-AB", out var outVal);
                     return (Color)outVal;
+                case "-1":
+                    return Color.FromHex("#FF7A14");    // Unknown = orange
                 default:
                     return Color.Transparent;
             }

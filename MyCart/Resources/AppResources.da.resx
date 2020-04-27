@@ -252,6 +252,9 @@
   <data name="Pictures" xml:space="preserve">
     <value>Billeder</value>
   </data>
+  <data name="PointPhoneOnTag" xml:space="preserve">
+    <value>Peg top/bagside mod NFC-tag'en på cyklen</value>
+  </data>
   <data name="PoliceEnsurance" xml:space="preserve">
     <value>Politi/forsikring</value>
   </data>
@@ -269,6 +272,9 @@
   </data>
   <data name="RegisterBike" xml:space="preserve">
     <value>Registrér cykel</value>
+  </data>
+  <data name="Registration" xml:space="preserve">
+    <value>Registrering</value>
   </data>
   <data name="RepeatPassword" xml:space="preserve">
     <value>Gentag:</value>
@@ -404,6 +410,9 @@
   </data>
   <data name="WillSendInstructions" xml:space="preserve">
     <value>Vi sender instruktioner om ændring af password til den email du har registreret</value>
+  </data>
+  <data name="WrongPassword" xml:space="preserve">
+    <value>Forkert e-mail eller password</value>
   </data>
   <data name="YourBikeHasBeenDeregistered" xml:space="preserve">
     <value>Din cykel er nu blevet afregisteret. Brug koden nedenfor for at gen-registrere eller giv kode til den nye ejer. Koden er gyldig i 10 dage.</value>

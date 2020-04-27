@@ -183,7 +183,12 @@
                     FontSize="10"
                     HorizontalOptions="End"
                     Style="{DynamicResource LabelStyleDark}"
-                    Text="{Binding UserStateText}" />
+                    Text="{Binding UserStateText}" >
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer 
+	    		            Command="{Binding LoginCommand}"  />
+                    </Label.GestureRecognizers>
+                </Label>
                 <Image
                     Margin="{x:OnIdiom Phone='0,0,0,0',
                                        Desktop='0',

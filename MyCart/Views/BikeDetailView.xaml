@@ -228,6 +228,44 @@
                                     </VisualStateGroup>
                                 </VisualStateManager.VisualStateGroups>
                             </button:SfButton>
+
+                            <button:SfButton
+                                Command="{Binding LoginCommand}"
+                                FontSize="20"
+                                IsVisible="{Binding NotLoggedIn}"
+                                Style="{StaticResource SfButtonRoundStyle}">
+                                <button:SfButton.Content>
+
+                                    <Label
+                                        FontSize="26"
+                                        HorizontalOptions="CenterAndExpand"
+                                        HorizontalTextAlignment="Center"
+                                        LineBreakMode="WordWrap"
+                                        Text="{trans:Translate Login}"
+                                        TextColor="White"
+                                        VerticalOptions="Center"
+                                        WidthRequest="{OnPlatform Android='130',
+                                                                  iOS='130',
+                                                                  UWP='100'}" />
+
+                                </button:SfButton.Content>
+
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="CommonStates">
+                                        <VisualState x:Name="Normal">
+                                            <VisualState.Setters>
+                                                <Setter Property="BackgroundColor" Value="{DynamicResource RoundButtonBlue}" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+
+                                        <VisualState x:Name="Pressed">
+                                            <VisualState.Setters>
+                                                <Setter Property="BackgroundColor" Value="{DynamicResource RoundButtonGreen}" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                            </button:SfButton>
                         </StackLayout>
                         <StackLayout
                             Margin="0"
@@ -343,7 +381,7 @@
                                 <VisualStateGroup x:Name="CommonStates">
                                     <VisualState x:Name="Normal">
                                         <VisualState.Setters>
-                                            <Setter Property="BackgroundColor" Value="{DynamicResource RoundButtonBlue}" />
+                                            <Setter Property="BackgroundColor" Value="{DynamicResource RoundButtonGray}" />
                                         </VisualState.Setters>
                                     </VisualState>
 

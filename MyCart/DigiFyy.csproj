@@ -15,8 +15,9 @@
     <Warning Text="$(MSBuildProjectFile) is Multilingual build enabled, but the Multilingual App Toolkit is unavailable during the build. If building with Visual Studio, please check to ensure that toolkit is properly installed." />
   </Target>
   <ItemGroup>
-    <PackageReference Include="AWSSDK.CognitoIdentity" Version="3.3.101.62" />
-    <PackageReference Include="AWSSDK.S3" Version="3.3.110.50" />
+    <PackageReference Include="AWSSDK.CognitoIdentity" Version="3.3.101.63" />
+    <PackageReference Include="AWSSDK.S3" Version="3.3.110.51" />
+    <PackageReference Include="Ideine.ModernHttpClient" Version="3.2.2" />
     <PackageReference Include="Microsoft.AppCenter" Version="3.1.0" />
     <PackageReference Include="Microsoft.AppCenter.Analytics" Version="3.1.0" />
     <PackageReference Include="Microsoft.AppCenter.Crashes" Version="3.1.0" />

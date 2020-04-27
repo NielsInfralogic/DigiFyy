@@ -104,6 +104,13 @@
                     TextColor="{DynamicResource Gray-700}" />
             </StackLayout>
             <StackLayout Grid.Row="2">
+                <StackLayout
+                    HorizontalOptions="Center"
+                    IsVisible="{Binding IsBusy}"
+                    Orientation="Vertical"
+                    VerticalOptions="Center">
+                    <ActivityIndicator IsRunning="True" />
+                </StackLayout>
                 <xforms:SfListView
                     x:Name="ExtrasList"
                     AllowSwiping="True"

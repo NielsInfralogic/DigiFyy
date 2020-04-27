@@ -26,14 +26,15 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="1" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
+      
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="1" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
 
-            <StackLayout
+                <StackLayout
                 x:Name="TitleView"
                 Grid.Row="0"
                 Margin="{OnPlatform Android='0,0,0,0',
@@ -44,22 +45,28 @@
                 Orientation="Horizontal"
                 Spacing="0">
 
-                <StackLayout
+                    <StackLayout
                     x:Name="Title"
                     HorizontalOptions="FillAndExpand"
                     IsVisible="True"
                     Orientation="Horizontal"
                     Spacing="0"
                     VerticalOptions="FillAndExpand">
-                    <Label Style="{DynamicResource LabelStylePageTitle}" Text="{trans:Translate Messages}" />
+                        <Label Style="{DynamicResource LabelStylePageTitle}" Text="{trans:Translate Messages}" />
 
+                    </StackLayout>
                 </StackLayout>
-            </StackLayout>
-            <BoxView Grid.Row="1" Style="{DynamicResource SeparatorStyle}" />
+                <BoxView Grid.Row="1" Style="{DynamicResource SeparatorStyle}" />
 
-            <StackLayout Grid.Row="2" Spacing="0">
-
-                <xforms:SfListView
+                <StackLayout Grid.Row="2" Spacing="0">
+                    <StackLayout
+                    HorizontalOptions="Center"
+                    IsVisible="{Binding IsBusy}"
+                    Orientation="Vertical"
+                    VerticalOptions="Center">
+                        <ActivityIndicator IsRunning="True" />
+                    </StackLayout>
+                    <xforms:SfListView
                     x:Name="MessagePageList"
                     AllowSwiping="True"
                     AutoFitMode="Height"
@@ -71,17 +78,17 @@
                     SelectionBackgroundColor="{DynamicResource TappedBackgroundColor}"
                     VerticalOptions="FillAndExpand">
 
-                    <xforms:SfListView.Behaviors>
-                        <behavior:SfListViewTapBehavior Command="{Binding Path=BindingContext.ItemSelectedCommand, Source={x:Reference messagesview}}" />
-                    </xforms:SfListView.Behaviors>
-                    <xforms:SfListView.RightSwipeTemplate>
-                        <DataTemplate x:Name="RightSwipeTemplate">
-                            <Grid
+                        <xforms:SfListView.Behaviors>
+                            <behavior:SfListViewTapBehavior Command="{Binding Path=BindingContext.ItemSelectedCommand, Source={x:Reference messagesview}}" />
+                        </xforms:SfListView.Behaviors>
+                        <xforms:SfListView.RightSwipeTemplate>
+                            <DataTemplate x:Name="RightSwipeTemplate">
+                                <Grid
                                 BackgroundColor="CadetBlue"
                                 HorizontalOptions="Fill"
                                 VerticalOptions="Fill">
-                                <Grid HorizontalOptions="Center" VerticalOptions="Center">
-                                    <Label
+                                    <Grid HorizontalOptions="Center" VerticalOptions="Center">
+                                        <Label
                                         Grid.Column="0"
                                         Margin="0,5,0,0"
                                         BackgroundColor="Transparent"
@@ -90,35 +97,35 @@
                                         Text="Mark as Read"
                                         TextColor="White"
                                         WidthRequest="78" />
+                                    </Grid>
                                 </Grid>
-                            </Grid>
-                        </DataTemplate>
-                    </xforms:SfListView.RightSwipeTemplate>
+                            </DataTemplate>
+                        </xforms:SfListView.RightSwipeTemplate>
 
-                    <xforms:SfListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <StackLayout>
-                                    <Grid
+                        <xforms:SfListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout>
+                                        <Grid
                                         ColumnSpacing="0"
                                         HeightRequest="72"
                                         RowSpacing="0">
 
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto" />
-                                            <RowDefinition Height="Auto" />
-                                            <RowDefinition Height="Auto" />
-                                            <RowDefinition Height="*" />
-                                        </Grid.RowDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
 
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto" />
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="Auto" />
-                                        </Grid.ColumnDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
 
-                                        <!--  Account Icon  -->
-                                        <Label
+                                            <!--  Account Icon  -->
+                                            <Label
                                             Grid.RowSpan="3"
                                             Margin="17,0"
                                             FontFamily="{StaticResource FontIcons}"
@@ -127,7 +134,7 @@
                                             TextColor="{DynamicResource Gray-600}"
                                             VerticalOptions="CenterAndExpand" />
 
-                                        <Label
+                                            <Label
                                             Grid.Row="0"
                                             Grid.Column="1"
                                             Margin="0,5,0,0"
@@ -138,7 +145,7 @@
                                             Text="{Binding SenderName}"
                                             TextColor="{DynamicResource Gray-900}" />
 
-                                        <Label
+                                            <Label
                                             Grid.Row="1"
                                             Grid.Column="1"
                                             Margin="0,5,0,0"
@@ -148,7 +155,7 @@
                                             HorizontalOptions="FillAndExpand"
                                             Text="{Binding MessageText}"
                                             TextColor="{DynamicResource Gray-900}" />
-                                        <Label
+                                            <Label
                                             Grid.Row="2"
                                             Grid.Column="1"
                                             Grid.ColumnSpan="2"
@@ -161,8 +168,8 @@
                                             Text="{Binding MessageTime, StringFormat='{0:G}'}"
                                             TextColor="{DynamicResource Gray-700}" />
 
-                                        <!--  More Button  -->
-                                        <buttons:SfButton
+                                            <!--  More Button  -->
+                                            <buttons:SfButton
                                             Grid.RowSpan="3"
                                             Grid.Column="2"
                                             Margin="15,0,15,0"
@@ -177,15 +184,16 @@
                                             VerticalOptions="Center"
                                             WidthRequest="38" />
 
-                                    </Grid>
-                                    <!--  Seperator  -->
-                                    <BoxView Style="{StaticResource BoxViewStyle}" />
-                                </StackLayout>
-                            </ViewCell>
-                        </DataTemplate>
-                    </xforms:SfListView.ItemTemplate>
-                </xforms:SfListView>
-            </StackLayout>
-        </Grid>
+                                        </Grid>
+                                        <!--  Seperator  -->
+                                        <BoxView Style="{StaticResource BoxViewStyle}" />
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </xforms:SfListView.ItemTemplate>
+                    </xforms:SfListView>
+                </StackLayout>
+            </Grid>
+
     </ContentPage.Content>
 </ContentPage>

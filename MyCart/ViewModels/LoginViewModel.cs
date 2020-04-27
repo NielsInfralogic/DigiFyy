@@ -42,6 +42,19 @@ namespace DigiFyy.ViewModels
             }
         }
 
+        private bool wrongPassword;
+        public bool WrongPassword
+        {
+            get
+            {
+                return wrongPassword;
+            }
+
+            set
+            {
+                SetProperty(ref wrongPassword, value);
+            }
+        }
 
         private bool isInvalidEmail;
         public bool IsInvalidEmail
@@ -90,6 +103,7 @@ namespace DigiFyy.ViewModels
 
             Email = Preferences.Get("Email", "");
             Password = Preferences.Get("Password", "");
+            WrongPassword = false;
 
         }
 
@@ -108,6 +122,7 @@ namespace DigiFyy.ViewModels
             if (navigationData is Boolean)
                 firstTimeRegister = (Boolean)navigationData;
 
+            WrongPassword = false;
             return base.InitializeAsync(navigationData);
         }
 
@@ -189,13 +204,30 @@ namespace DigiFyy.ViewModels
 
             var result = await DataStore.LoginUser(Email, Password);
 
+
+
             if (result.Token != "")
             {
+                WrongPassword = false; 
                 Preferences.Set("Token", result.Token);
                 Preferences.Set("Email", Email);
                 Preferences.Set("Password", Password);
                 Preferences.Set("IsLoggedIn", "1");
+
                 IsBusy = false;
+
+                if (result.UIDs != null && Preferences.Get("UUID", "") != "")
+                {
+                    foreach(string uuid in result.UIDs)
+                    {
+                        if (uuid.Trim() == Preferences.Get("UUID", "").Trim())
+                        {
+                            Preferences.Set("RegisteredToBike", "1");
+                            break;
+                        }
+                    }
+                }
+
                 if (Preferences.Get("RegisteredToBike", "0") != "1" && Preferences.Get("UUID","") != "")
                 {
                     int imageType = (int)ImageTypes.Invoice;
@@ -205,6 +237,8 @@ namespace DigiFyy.ViewModels
                     await NavigationService.NavigateToAsync<MainViewModel>(2);
            
             }
+            else
+                WrongPassword = true;
             IsBusy = false;
         }        
 

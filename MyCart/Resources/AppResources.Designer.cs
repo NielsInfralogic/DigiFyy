@@ -466,6 +466,15 @@ namespace DigiFyy.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Point top-back of iPhone toward the NFC tag on your bike.
+        /// </summary>
+        internal static string PointPhoneOnTag {
+            get {
+                return ResourceManager.GetString("PointPhoneOnTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Police/Ensurance.
         /// </summary>
         internal static string PoliceEnsurance {
@@ -516,6 +525,15 @@ namespace DigiFyy.Resources {
         internal static string RegisterBike {
             get {
                 return ResourceManager.GetString("RegisterBike", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registration.
+        /// </summary>
+        internal static string Registration {
+            get {
+                return ResourceManager.GetString("Registration", resourceCulture);
             }
         }
         
@@ -921,6 +939,15 @@ namespace DigiFyy.Resources {
         internal static string WillSendInstructions {
             get {
                 return ResourceManager.GetString("WillSendInstructions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wrong username or password.
+        /// </summary>
+        internal static string WrongPassword {
+            get {
+                return ResourceManager.GetString("WrongPassword", resourceCulture);
             }
         }
         

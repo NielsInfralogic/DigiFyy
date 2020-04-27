@@ -3,6 +3,8 @@
     x:Class="DigiFyy.Views.ScanView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviors="clr-namespace:DigiFyy.Behaviors;assembly=DigiFyy"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
     xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     xmlns:core="clr-namespace:Syncfusion.XForms.Core;assembly=Syncfusion.Core.XForms"
     xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
@@ -15,6 +17,11 @@
     BackgroundColor="{DynamicResource White}"
     IconImageSource="tab_scan.png"
     NavigationPage.HasNavigationBar="False">
+
+    <!-- <ContentPage.Behaviors>
+        <behaviors:EventToCommandBehavior  EventName="Appearing"  Command="{Binding OnAppearingCommand}" />
+        <behaviors:EventToCommandBehavior EventName="Disappearing" Command="{Binding OnDisappearingCommand}" />
+    </ContentPage.Behaviors>-->
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -99,8 +106,78 @@
                 </ffimageloading:CachedImage.Transformations>-->
                 </ffimageloading:CachedImage>
             </StackLayout>
+            <StackLayout Grid.Row="2">
+                <Label
+                    x:Name="WaitingForScanLabel"
+                    Margin="0,10,0,0"
+                    FontFamily="CenturyGothic-Bold"
+                    FontSize="24"
+                    HorizontalTextAlignment="Center"
+                    IsVisible="{Binding WaitingForScanVisible}"
+                    Text="{trans:Translate WaitingForScan}" />
+
+            </StackLayout>
+
+            <StackLayout x:Name="ScanInfo" Grid.Row="3">
+
+                <Grid Margin="20,0,20,0" Padding="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Label
+                        x:Name="MessageLabel2"
+                        Grid.Row="0"
+                        HorizontalOptions="Start"
+                        Style="{StaticResource LabelStyleInfoHeader}"
+                        Text="UUID" />
+                    <border:SfBorder Grid.Row="1" Style="{StaticResource SfBorderStyle}">
+                        <Label
+                            x:Name="MessageLabel"
+                            Style="{StaticResource LabelStyleInfo}"
+                            Text="{Binding Message}" />
+                    </border:SfBorder>
+
+
+
+
+                    <Label
+                        x:Name="SerialNumberLabel2"
+                        Grid.Row="2"
+                        HorizontalOptions="Start"
+                        Style="{StaticResource LabelStyleInfoHeader}"
+                        Text="{trans:Translate SerialNumber}" />
+
+
+                    <border:SfBorder Grid.Row="3" Style="{StaticResource SfBorderStyle}">
+                        <Label
+                            x:Name="SerialNumberLabel"
+                            Grid.Row="3"
+                            Style="{StaticResource LabelStyleInfo}"
+                            Text="{Binding SerialNumber}" />
+                    </border:SfBorder>
+                    <Label
+                        x:Name="NFCModelLabel2"
+                        Grid.Row="4"
+                        HorizontalOptions="Start"
+                        Style="{StaticResource LabelStyleInfoHeader}"
+                        Text="Type" />
+                    <border:SfBorder Grid.Row="5" Style="{StaticResource SfBorderStyle}">
+                        <Label
+                            x:Name="NFCModelLabel"
+                            HorizontalOptions="Start"
+                            Style="{StaticResource LabelStyleInfo}"
+                            Text="{Binding NFCModel}" />
+                    </border:SfBorder>
+                </Grid>
+            </StackLayout>
             <StackLayout
-                Grid.Row="2"
+                Grid.Row="4"
                 Margin="0"
                 HorizontalOptions="CenterAndExpand"
                 Orientation="Horizontal">
@@ -108,19 +185,19 @@
                 <button:SfButton
                     x:Name="UseScanButton"
                     Command="{Binding UseCommand}"
-                    IsEnabled="False"
-                    Style="{StaticResource SfButtonRoundSmallStyle}">
+                    IsVisible="{Binding UseScanEnabled}"
+                    Style="{StaticResource SfButtonRoundStyle}">
                     <button:SfButton.Content>
                         <Label
-                            FontSize="18"
+                            FontSize="22"
                             HorizontalOptions="CenterAndExpand"
                             HorizontalTextAlignment="Center"
                             LineBreakMode="WordWrap"
                             Text="{trans:Translate UseScannedUUID}"
                             TextColor="White"
                             VerticalOptions="Center"
-                            WidthRequest="{OnPlatform Android='96',
-                                                      iOS='80',
+                            WidthRequest="{OnPlatform Android='120',
+                                                      iOS='120',
                                                       UWP='70'}" />
                     </button:SfButton.Content>
                     <VisualStateManager.VisualStateGroups>
@@ -142,18 +219,20 @@
                 <button:SfButton
                     x:Name="ScanAgainButton"
                     Clicked="ScanButton_Clicked"
-                    Style="{StaticResource SfButtonRoundSmallStyle}">
+                    Command="{Binding ScanAgainCommand}"
+                    IsVisible="{Binding ScanAgainEnabled}"
+                    Style="{StaticResource SfButtonRoundStyle}">
                     <button:SfButton.Content>
                         <Label
-                            FontSize="18"
+                            FontSize="22"
                             HorizontalOptions="CenterAndExpand"
                             HorizontalTextAlignment="Center"
                             LineBreakMode="WordWrap"
                             Text="{trans:Translate ScanAgain}"
                             TextColor="White"
                             VerticalOptions="Center"
-                            WidthRequest="{OnPlatform Android='90',
-                                                      iOS='75',
+                            WidthRequest="{OnPlatform Android='120',
+                                                      iOS='120',
                                                       UWP='70'}" />
                     </button:SfButton.Content>
                     <VisualStateManager.VisualStateGroups>
@@ -172,62 +251,6 @@
                         </VisualStateGroup>
                     </VisualStateManager.VisualStateGroups>
                 </button:SfButton>
-            </StackLayout>
-            <StackLayout Grid.Row="3">
-                <Label
-                    x:Name="WaitingForScanLabel"
-                    Margin="0,10,0,0"
-                    FontFamily="CenturyGothic-Bold"
-                    FontSize="24"
-                    HorizontalTextAlignment="Center"
-                    Text="{trans:Translate WaitingForScan}" />
-
-            </StackLayout>
-
-            <StackLayout x:Name="ScanInfo" Grid.Row="4">
-                <Grid Margin="20,0,20,0" Padding="10">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-
-                    <Label
-                        x:Name="MessageLabel2"
-                        Grid.Row="0"
-                        Style="{StaticResource LabelScanInfoHeader}"
-                        Text="UUID" />
-
-                    <Label
-                        x:Name="MessageLabel"
-                        Grid.Row="1"
-                        Style="{StaticResource LabelScanInfo}"
-                        Text="{Binding Message, Mode=OneWayToSource}" />
-                    <Label
-                        x:Name="SerialNumberLabel2"
-                        Grid.Row="2"
-                        Style="{StaticResource LabelScanInfoHeader}"
-                        Text="{trans:Translate SerialNumber}" />
-
-                    <Label
-                        x:Name="SerialNumberLabel"
-                        Grid.Row="3"
-                        Style="{StaticResource LabelScanInfo}"
-                        Text="{Binding SerialNumber, Mode=OneWayToSource}" />
-                    <Label
-                        x:Name="NFCModelLabel2"
-                        Grid.Row="4"
-                        Style="{StaticResource LabelScanInfoHeader}"
-                        Text="Type" />
-                    <Label
-                        x:Name="NFCModelLabel"
-                        Grid.Row="5"
-                        Style="{StaticResource LabelScanInfo}"
-                        Text="{Binding NFCModel}" />
-                </Grid>
             </StackLayout>
 
             <StackLayout

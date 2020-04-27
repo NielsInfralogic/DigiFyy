@@ -37,11 +37,9 @@ namespace DigiFyy.ViewModels
 
         public HomeViewModel()
         {
-
-           
-
             this.ScanCommand = new Helpers.Command(this.ScanNFC);
             this.SeeBikesCommand = new Helpers.Command(this.ToBikeDetailsPage);
+            this.LoginCommand = new Helpers.Command(this.ToLogin);
 
             Registered = Preferences.Get("RegisteredToBike", "0") == "1";
 
@@ -110,7 +108,16 @@ namespace DigiFyy.ViewModels
         /// </summary>
         public ICommand SeeBikesCommand { get; set; }
 
+        public ICommand LoginCommand { get; set; }
+        
+
         #endregion
+
+
+        private async void ToLogin()
+        {
+            await NavigationService.NavigateToAsync<LoginSignupViewModel>(true); // True : first time register
+        }
 
         private async void ToBikeDetailsPage()
         {

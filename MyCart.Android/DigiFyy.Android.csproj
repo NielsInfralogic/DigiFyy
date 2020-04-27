@@ -69,6 +69,7 @@
     <AndroidSigningStorePass>Infra2Logic</AndroidSigningStorePass>
     <AndroidSigningKeyAlias>digifyyandroid</AndroidSigningKeyAlias>
     <AndroidSigningKeyPass>Infra2Logic</AndroidSigningKeyPass>
+    <MandroidI18n />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
@@ -81,10 +82,13 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AWSSDK.CognitoIdentity">
-      <Version>3.3.101.62</Version>
+      <Version>3.3.101.63</Version>
     </PackageReference>
     <PackageReference Include="AWSSDK.S3">
-      <Version>3.3.110.50</Version>
+      <Version>3.3.110.51</Version>
+    </PackageReference>
+    <PackageReference Include="Ideine.ModernHttpClient">
+      <Version>3.2.2</Version>
     </PackageReference>
     <PackageReference Include="Plugin.Badge">
       <Version>2.2.1</Version>
@@ -150,6 +154,14 @@
   <ItemGroup>
     <Compile Include="CustomUrlSchemeInterceptorActivity.cs" />
     <Compile Include="MainActivity.cs" />
+    <Compile Include="NFC\IParsedNdefRecord.cs" />
+    <Compile Include="NFC\NdefMessageParser.cs" />
+    <Compile Include="NFC\NFCHelpers.cs" />
+    <Compile Include="NFC\Payload.cs" />
+    <Compile Include="NFC\SmartPoster.cs" />
+    <Compile Include="NFC\TextRecord.cs" />
+    <Compile Include="NFC\UriRecord.cs" />
+    <Compile Include="NFC\Utillity.cs" />
     <Compile Include="Renderers\BorderlessEntryRenderer.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -194,10 +206,6 @@
     <Folder Include="Resources\drawable-ldpi\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\LocalNugets\Plugin.NFC\src\Plugin.NFC\Plugin.NFC.csproj">
-      <Project>{bd0323c5-5957-4f26-a1e4-8fa6854e6646}</Project>
-      <Name>Plugin.NFC</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MyCart\DigiFyy.csproj">
       <Project>{0624931D-CC09-4040-AB00-6DA884599BDF}</Project>
       <Name>DigiFyy</Name>

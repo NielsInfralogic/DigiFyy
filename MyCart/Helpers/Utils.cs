@@ -78,11 +78,7 @@ namespace DigiFyy.Helpers
                 Debug.WriteLine(ex.Message);
                 return "";
             }
-
-
         }
-
-
 
         public async static Task<string> UploadPhoto(string fileName)
         {

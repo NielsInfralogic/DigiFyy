@@ -19,6 +19,8 @@ namespace DigiFyy.ViewModels
     {
         #region Fields
 
+        private bool hasShowWarning = false;
+
         private string _imagePath = "digifyy_bikelogo.png";
         public string ImagePath
         {
@@ -192,8 +194,8 @@ namespace DigiFyy.ViewModels
             }
         }
 
-        int _productionYear;
-        public int ProductionYear
+        private string _productionYear;
+        public string ProductionYear
         {
             get
             {
@@ -231,6 +233,7 @@ namespace DigiFyy.ViewModels
             this.SpecCommand = new Helpers.Command(this.ShowSpecsClicked);
             this.RegisterCommand = new Helpers.Command(this.RegisterClicked);
             this.ReportStolenCommand = new Helpers.Command(this.ReportStolenClicked);
+            this.LoginCommand = new Helpers.Command(this.LoginClicked);
 
             MessagingCenter.Subscribe<BikeDetailViewModel, int>(this, MessageKeys.UpdateState, async (sender, arg) =>
             {
@@ -266,6 +269,7 @@ namespace DigiFyy.ViewModels
 
         public override async Task InitializeAsync(object navigationData)
         {
+            hasShowWarning = false;
             Registered = Preferences.Get("RegisteredToBike", "0") == "1";
             NotRegistered = !Registered;
             LoggedIn = Preferences.Get("IsLoggedIn", "0") == "1";
@@ -299,9 +303,10 @@ namespace DigiFyy.ViewModels
 
         public Helpers.Command ReportStolenCommand { get; set; }
 
+        public Helpers.Command LoginCommand { get; set; }
         #endregion
 
-    
+
 
         private async void ChangeStatusClicked(object obj)
         {
@@ -401,7 +406,13 @@ namespace DigiFyy.ViewModels
                 await NavigationService.NavigateToAsync<LoginSignupViewModel>(true); // True : first time register
 
         }
-        
+
+        private async void LoginClicked(object obj)
+        {
+            await NavigationService.NavigateToAsync<LoginViewModel>();
+        }
+
+
         private async void AddImageClicked(object obj)
         {
             await NavigationService.NavigateToAsync<AddPictureViewModel>((int)ImageTypes.ProfileImage);
@@ -473,8 +484,15 @@ namespace DigiFyy.ViewModels
                     UIDInfo result = await DataStore.GetInfo(user, token, uuid);
 
                     if (result.FrameNumber == null)
-                    {
+                    {                     
                         await DialogService.Show("UUID unknown", $"The scanned UUID {uuid} is unknown", "Ok");
+                        Status = (int)FrameNumberStatusType.UIDNotRegistered;
+                        Preferences.Set("UUID", "");
+                        UUID = uuid;
+                        Brand = "";
+                        Model = "";
+                        ProductionYear = "";
+
                     }
                     else
                     {
@@ -509,7 +527,7 @@ namespace DigiFyy.ViewModels
 
 
                         FrameNumberStatus = result.FrameNumberStatus;
-                        ProductionYear = result.FrameNumber.ProductionDate.Year;
+                        ProductionYear = result.FrameNumber.ProductionDate.Year > 0 ? result.FrameNumber.ProductionDate.Year.ToString() : "";
 
                         if (result.FrameNumberExtras != null)
                             FrameNumberExtras = result.FrameNumberExtras;
@@ -565,7 +583,13 @@ namespace DigiFyy.ViewModels
             }
             else
             {
-                await DialogService.Show("No scans", "No bike has been scanned. Please scan a bike..", "Ok");
+                if (hasShowWarning == false)
+                    await DialogService.Show("No scans", "No bike has been scanned. Please scan a bike..", "Ok");
+                hasShowWarning = true;
+                Status = (int)FrameNumberStatusType.UIDNotRegistered;
+                UUID = uuid;
+                Brand = "";
+                Model = "";
 
                 TabParameter tabParameter = new TabParameter() { TabIndex = 1 };
                 await NavigationService.NavigateToAsync<MainViewModel>(tabParameter);

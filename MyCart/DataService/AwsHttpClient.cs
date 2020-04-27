@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using DigiFyy.Models.AWS;
 using DigiFyy.Services;
+using ModernHttpClient;
 
 namespace DigiFyy.DataService
 {
@@ -21,15 +22,17 @@ namespace DigiFyy.DataService
         {
             AnalyticsService = analyticsService;
 
-            HttpClientHandler handler = new HttpClientHandler()
+           /* HttpClientHandler handler = new HttpClientHandler()
             {
                 AutomaticDecompression = System.Net.DecompressionMethods.GZip
                 //      Proxy = new System.Net.WebProxy("http://127.0.0.1:8888"),
                 //      UseProxy = false,
-            };
+            };*/
+
+            NativeMessageHandler handler = new NativeMessageHandler();
 
 
-            client = new HttpClient(handler)
+           client = new HttpClient(handler)
             {
                 Timeout = new TimeSpan(0, 10, 0),
                 BaseAddress = new Uri(Constants.RestUrl)

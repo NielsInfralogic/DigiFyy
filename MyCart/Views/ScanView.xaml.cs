@@ -1,4 +1,5 @@
-﻿using DigiFyy.DataService;
+﻿using Amazon.S3.Model.Internal.MarshallTransformations;
+using DigiFyy.DataService;
 using Plugin.NFC;
 using System;
 using System.Collections.Generic;
@@ -37,11 +38,15 @@ namespace DigiFyy.Views
             InitializeComponent();
 			IsInitialized = false;
 			iOSFirstAppear = true;
-			ScanInfo.IsVisible = false;
+			//ScanInfo.IsVisible = false;
 		}
+		public string TagId { get; set; }
 
+		private List<string> _arg;
+		public string ReceivedAt { get; set; }
 		protected async override void OnAppearing()
 		{
+			
 			if (IsInitialized)
 			{
 				if (Device.RuntimePlatform == Device.iOS && iOSFirstAppear == false)
@@ -49,26 +54,26 @@ namespace DigiFyy.Views
 				return;
 			}
 
-			UseScanButton.IsEnabled = false;
-			UseScanButton.IsVisible = false;
+		//	UseScanButton.IsEnabled = false;
+		//	UseScanButton.IsVisible = false;
 			base.OnAppearing();
 
 			
-			CrossNFC.Current.StopListening();
-			UnsubscribeEvents();
+		//	CrossNFC.Current.StopListening();
+		//	UnsubscribeEvents();
 
 			// TEST ONLY
-			if (Preferences.Get("UseFakeUUID", "0") == "1")
-			{
-				UseScanButton.IsEnabled = true;
-				UseScanButton.IsVisible = true;
-				ScanInfo.IsVisible = true;
-				MessageLabel.Text = Constants.FakeUUID;
-			}
+			//if (Preferences.Get("UseFakeUUID", "0") == "1")
+			//{
+			//	UseScanButton.IsEnabled = true;
+			//	UseScanButton.IsVisible = true;
+			//	ScanInfo.IsVisible = true;
+			//	MessageLabel.Text = Constants.FakeUUID;
+			//}
 
 
-		
 
+			/*
 			if (CrossNFC.IsSupported)
 			{
 				bool nfcOK = true;
@@ -109,8 +114,8 @@ namespace DigiFyy.Views
 
 					}
 				}
-			}
-
+			}*/
+			SubscribeEvents();
 			IsInitialized = true;
 		}
 
@@ -124,29 +129,59 @@ namespace DigiFyy.Views
 		protected  override  void OnDisappearing()
 		{
 			base.OnDisappearing();
-//			if (IsInitialized)
-				return;
+			//UnsubscribeEvents();
+			//	if (IsInitialized)
+			//return;
 
 //			CrossNFC.Current.StopListening();
-//			UnsubscribeEvents();
+		
 		}
 
 		void SubscribeEvents()
 		{
-			
-			CrossNFC.Current.OnMessageReceived += Current_OnMessageReceived;
-			CrossNFC.Current.OnNfcStatusChanged += Current_OnNfcStatusChanged;
+			return;
+			MessagingCenter.Subscribe<App, List<string>>(this, "Tag", (sender, arg) =>
+			{
+				TagId = arg[0]; // Pos 0 = TagID
+				_arg = arg;
+				DateTime dateTime = DateTime.Now;
+				ReceivedAt = dateTime.ToLongDateString() + "\n" + dateTime.ToLongTimeString();
 
-			if (Device.RuntimePlatform == Device.iOS)
-				CrossNFC.Current.OniOSReadingSessionCancelled += Current_OniOSReadingSessionCancelled;			
+				//
+
+				ScanInfo.IsVisible = true;
+				if (arg.Count > 2)
+				{
+					MessageLabel.Text = arg[2];
+				}
+				else
+				{
+					MessageLabel.Text = "(Empty)";
+					//	await ShowAlert("Empty tag", title);
+				}
+
+				NFCModelLabel.Text = arg[1];
+				SerialNumberLabel.Text = arg[0];
+				UseScanButton.IsEnabled = true;
+				UseScanButton.IsVisible = true;
+
+				//
+			});
+		//	CrossNFC.Current.OnMessageReceived += Current_OnMessageReceived;
+		//	CrossNFC.Current.OnNfcStatusChanged += Current_OnNfcStatusChanged;
+
+		//	if (Device.RuntimePlatform == Device.iOS)
+		//	CrossNFC.Current.OniOSReadingSessionCancelled += Current_OniOSReadingSessionCancelled;			
 		}
 
 		void UnsubscribeEvents()
-		{			
-			CrossNFC.Current.OnMessageReceived -= Current_OnMessageReceived;
-			CrossNFC.Current.OnNfcStatusChanged -= Current_OnNfcStatusChanged;
-			if (Device.RuntimePlatform == Device.iOS)
-				CrossNFC.Current.OniOSReadingSessionCancelled -= Current_OniOSReadingSessionCancelled;			
+		{
+			return; ;
+			MessagingCenter.Unsubscribe<App, List<string>>(this, "Tag");
+			//CrossNFC.Current.OnMessageReceived -= Current_OnMessageReceived;
+			//CrossNFC.Current.OnNfcStatusChanged -= Current_OnNfcStatusChanged;
+			//if (Device.RuntimePlatform == Device.iOS)
+			//	CrossNFC.Current.OniOSReadingSessionCancelled -= Current_OniOSReadingSessionCancelled;			
 		}
 
 		async void Current_OnNfcStatusChanged(bool isEnabled)
@@ -240,7 +275,7 @@ namespace DigiFyy.Views
 		private void ScanButton_Clicked(object sender, EventArgs e)
 		{
 			//CrossNFC.Current.StopListening();
-			CrossNFC.Current.StartListening();
+			//CrossNFC.Current.StartListening();
 		}
 	}
 }

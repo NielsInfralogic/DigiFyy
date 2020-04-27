@@ -252,6 +252,9 @@
   <data name="Pictures" xml:space="preserve">
     <value>Pictures</value>
   </data>
+  <data name="PointPhoneOnTag" xml:space="preserve">
+    <value>Point top-back of iPhone toward the NFC tag on your bike</value>
+  </data>
   <data name="PoliceEnsurance" xml:space="preserve">
     <value>Police/Ensurance</value>
   </data>
@@ -269,6 +272,9 @@
   </data>
   <data name="RegisterBike" xml:space="preserve">
     <value>Register bike</value>
+  </data>
+  <data name="Registration" xml:space="preserve">
+    <value>Registration</value>
   </data>
   <data name="RepeatPassword" xml:space="preserve">
     <value>Repeat:</value>
@@ -404,6 +410,9 @@
   </data>
   <data name="WillSendInstructions" xml:space="preserve">
     <value>We'll send instructions on how to reset your password to the email address you have registered with us</value>
+  </data>
+  <data name="WrongPassword" xml:space="preserve">
+    <value>Wrong username or password</value>
   </data>
   <data name="YourBikeHasBeenDeregistered" xml:space="preserve">
     <value>Your bike has now been deregistered. Use the code below to register again or provide to the new owner. The code is valid for 10 days.</value>
