@@ -1,4 +1,5 @@
-﻿using DigiFyy.Helpers;
+﻿using DigiFyy.DataService;
+using DigiFyy.Helpers;
 using DigiFyy.Models.AWS;
 using Plugin.Multilingual;
 using System;
@@ -127,7 +128,10 @@ namespace DigiFyy.ViewModels
 
                 DeregisterToken = "ANH123YX";
                 Helpers.EmailSender emailSender = new EmailSender();
-                await emailSender.SendEmail("DIGIFYY Unregistration token", "Token = " + DeregisterToken, new List<string> { user });
+
+                string body = Constants.EmailhtmlBodyActivationCode.Replace("#1#", DeregisterToken);
+
+                emailSender.SendEmailSMTP("DIGIFYY Unregistration token", body, new List<string> { user });
                 Stage1 = false;
                 Stage2 = true;
                 IsBusy = false;

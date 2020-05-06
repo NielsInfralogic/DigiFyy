@@ -6,6 +6,50 @@ namespace DigiFyy.DataService
 {
     public static class Constants
     {
+        public const string  EmailhtmlBodyResetPassword = @"<html>
+<head></head>
+<body>
+  <h1>Digifyy Account Password Reset</h1>
+  <p>This email was sent to you for resetting your password.
+    </p>
+  <p>Click the following link to reset your password:
+    </p>
+    <p><a href='https://aws.amazon.com/ses/#1#'>Reset password</a></p>
+</body>
+</html>";
+
+        public const string EmailhtmlBodyVerifyYourAccount = @"<html>
+<head></head>
+<body>
+  <h1>Digifyy Account Verification</h1>
+  <p>This email was sent to you for verifying your account email addrss.
+    </p>
+<p>Click the following link to verify your account:
+    </p>
+    <p><a href='https://aws.amazon.com/ses/#1#'>Verify email</a></p>
+</body>
+</html>";
+
+        public const string EmailhtmlBodyActivationCode = @"<html>
+<head></head>
+<body>
+  <h1>Digifyy Bike owner Activation code</h1>
+  <p>This email was sent to you for registering the bike ownership to you</p>
+<p>The registration token is: #1#
+    </p>
+</body>
+</html>";
+
+        public const string SmtpUsername = "AKIAVDQTIQUA5BCTA7YB";
+        public const string SmtpPassword = "BEKMmT7ECLgld436Gcfh54LRxD5u9VzsWuCqnZLK1oX3";
+        public const string SmtpHost = "email-smtp.eu-central-1.amazonaws.com";
+        public const int    SmtpPort = 587;
+
+        public const string AWSAccessKey = "AKIAJERXTLCW4EJJYQVQ";
+        public const string AWSSecretKey = "3GY5TvFft10anckOGdau67jTqIbzpIQNnh3kHKLC";
+
+        public const string EmailSenderAddress = "support@infralogic.dk";
+
 
         public const string FakeUUID = "1234567654323456765432-aasdfgfdsa";
 

@@ -243,6 +243,12 @@
   <data name="Password" xml:space="preserve">
     <value>Password:</value>
   </data>
+  <data name="PasswordMismatch" xml:space="preserve">
+    <value>Password matcher ikke</value>
+  </data>
+  <data name="PasswordTooShort" xml:space="preserve">
+    <value>Password for kort (min 8 karakterer)</value>
+  </data>
   <data name="PickPhoto" xml:space="preserve">
     <value>Vælg foto</value>
   </data>
@@ -328,7 +334,7 @@
     <value>Log ind</value>
   </data>
   <data name="SignUp" xml:space="preserve">
-    <value>Registrér dig</value>
+    <value>Registrér</value>
   </data>
   <data name="Specifications" xml:space="preserve">
     <value>Specifikationer</value>

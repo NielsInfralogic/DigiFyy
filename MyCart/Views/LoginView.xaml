@@ -37,7 +37,7 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
@@ -76,10 +76,10 @@
                                        Desktop='0',
                                        Tablet='0'}"
                     BackgroundColor="Transparent"
-                    HeightRequest="{core:OnPlatformOrientationDoubleValue Default=20,
-                                                                          AndroidPhonePortrait=20,
+                    HeightRequest="{core:OnPlatformOrientationDoubleValue Default=10,
+                                                                          AndroidPhonePortrait=10,
                                                                           AndroidPhoneLandscape=7,
-                                                                          iOSPhonePortrait=20,
+                                                                          iOSPhonePortrait=10,
                                                                           iOSPhoneLandscape=7}"
                     Source="digifyyline.png"
                     VerticalOptions="Center" />
@@ -90,21 +90,21 @@
                                    Desktop='0',
                                    Tablet='0'}"
                 BackgroundColor="Transparent"
-                HeightRequest="{core:OnPlatformOrientationDoubleValue Default=175,
-                                                                      AndroidPhonePortrait=175,
+                HeightRequest="{core:OnPlatformOrientationDoubleValue Default=140,
+                                                                      AndroidPhonePortrait=140,
                                                                       AndroidPhoneLandscape=140,
-                                                                      iOSPhonePortrait=225,
+                                                                      iOSPhonePortrait=140,
                                                                       iOSPhoneLandscape=140}"
                 Source="digifyy_bikelogo.png"
                 VerticalOptions="Center"
-                WidthRequest="{x:OnIdiom Phone=200,
+                WidthRequest="{x:OnIdiom Phone=140,
                                          Desktop=300,
                                          Tablet=300}" />
 
             <!--  Label to display the description of this page  -->
             <Label
                 Grid.Row="2"
-                Margin="0,5,0,0"
+                Margin="0,0,0,0"
                 FontFamily="{StaticResource CenturyGothic-Bold}"
                 FontSize="22"
                 HorizontalOptions="CenterAndExpand"
@@ -116,8 +116,9 @@
 
             <Grid
                 Grid.Row="3"
-                Margin="0,10,0,10"
-                Padding="0">
+                Margin="0,5,0,5"
+                Padding="0"
+                RowSpacing="5">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
@@ -198,7 +199,7 @@
                     Grid.ColumnSpan="2"
                     Margin="0,0,10,0"
                     FontFamily="{StaticResource CenturyGothic-Bold}"
-                    FontSize="14"
+                    FontSize="16"
                     HorizontalOptions="End"
                     Text="{trans:Translate ForgotPassword}"
                     TextColor="{DynamicResource Gray-6F}">
@@ -210,7 +211,7 @@
             <!--  Login button  -->
             <StackLayout Grid.Row="4">
                 <Label
-                    Margin="1,-5,0,0"
+                    Margin="1,-10,0,0"
                     FontSize="16"
                     HorizontalOptions="Center"
                     IsVisible="{Binding WrongPassword}"
@@ -220,8 +221,8 @@
                 <buttons:SfButton
                     Margin="0,5"
                     Command="{Binding LoginCommand}"
-                    FontSize="20"
-                    Style="{StaticResource SfButtonRoundSmallStyle}"
+                    FontSize="22"
+                    Style="{DynamicResource SfButtonRoundMediumStyle}"
                     Text="{trans:Translate Login}">
                     <VisualStateManager.VisualStateGroups>
                         <VisualStateGroup x:Name="CommonStates">
@@ -243,9 +244,9 @@
 
             <Label
                 Grid.Row="5"
-                Margin="0,15,0,0"
+                Margin="0,0,0,0"
                 FontFamily="{StaticResource CenturyGothic-Bold}"
-                FontSize="14"
+                FontSize="16"
                 HorizontalTextAlignment="Center"
                 Style="{StaticResource LabelStyle}"
                 Text="{trans:Translate OrLoginWith}"
@@ -253,55 +254,62 @@
 
             <StackLayout
                 Grid.Row="6"
-                Margin="0,0,0,0"
-                HorizontalOptions="Center"
+                Margin="0,-5,0,0"
+                HorizontalOptions="CenterAndExpand"
                 Orientation="Horizontal">
                 <!--  Login through facebook account  -->
                 <buttons:SfButton
                     Margin="0,0,0,0"
                     BackgroundColor="Transparent"
                     Command="{Binding SocialMediaLoginCommand}"
+                    HeightRequest="100"
                     ImageSource="facebooklogo.png"
                     ImageWidth="100"
                     ShowIcon="True"
-                    TextColor="Transparent" />
+                    TextColor="Transparent"
+                    WidthRequest="100" />
 
+                <StackLayout
+                    HorizontalOptions="Center"
+                    IsVisible="{Binding IsBusy}"
+                    Orientation="Vertical"
+                    VerticalOptions="Center">
+
+                    <ActivityIndicator IsRunning="True" />
+                    <Label Text="{trans:Translate LoggingIn}" />
+                </StackLayout>
                 <!--  Login through google account  -->
                 <buttons:SfButton
                     Margin="0,0,0,0"
                     BackgroundColor="Transparent"
                     Command="{Binding SocialMediaLoginCommand2}"
+                    HeightRequest="100"
                     HorizontalOptions="Center"
                     ImageSource="googlelogo.png"
                     ImageWidth="100"
                     ShowIcon="True"
-                    TextColor="Transparent" />
+                    TextColor="Transparent"
+                    WidthRequest="100" />
 
             </StackLayout>
 
-            <StackLayout
+
+
+
+
+            <Image
                 Grid.Row="7"
-                HorizontalOptions="Center"
-                Orientation="Vertical"
-                 IsVisible="{Binding IsBusy}"
-                VerticalOptions="End">
-                <ActivityIndicator IsRunning="True" />
-
-                <Label Text="{trans:Translate LoggingIn}" />
-
-                <Image
-                    Margin="{x:OnIdiom Phone='0,0,0,0',
-                                       Desktop='0',
-                                       Tablet='0'}"
-                    BackgroundColor="Transparent"
-                    HeightRequest="{core:OnPlatformOrientationDoubleValue Default=20,
-                                                                          AndroidPhonePortrait=20,
-                                                                          AndroidPhoneLandscape=7,
-                                                                          iOSPhonePortrait=20,
-                                                                          iOSPhoneLandscape=7}"
-                    Source="digifyyline.png"
-                    VerticalOptions="End" />
-            </StackLayout>
+                Margin="{x:OnIdiom Phone='0,0,0,0',
+                                   Desktop='0',
+                                   Tablet='0'}"
+                BackgroundColor="Transparent"
+                HeightRequest="{core:OnPlatformOrientationDoubleValue Default=10,
+                                                                      AndroidPhonePortrait=10,
+                                                                      AndroidPhoneLandscape=7,
+                                                                      iOSPhonePortrait=10,
+                                                                      iOSPhoneLandscape=7}"
+                Source="digifyyline.png"
+                VerticalOptions="End" />
 
 
         </Grid>

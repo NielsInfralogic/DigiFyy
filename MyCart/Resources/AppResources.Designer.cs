@@ -439,6 +439,24 @@ namespace DigiFyy.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Passsword mismatch.
+        /// </summary>
+        internal static string PasswordMismatch {
+            get {
+                return ResourceManager.GetString("PasswordMismatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password too short (min 8 chars).
+        /// </summary>
+        internal static string PasswordTooShort {
+            get {
+                return ResourceManager.GetString("PasswordTooShort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pick photo.
         /// </summary>
         internal static string PickPhoto {

@@ -14,7 +14,8 @@
     x:Name="messagesview"
     Title="{trans:Translate Messages}"
     viewModels:ViewModelLocator.AutoWireViewModel="True"
-    IconImageSource="tab_alert.png">
+    IconImageSource="tab_alert.png" 
+    BackgroundColor="{DynamicResource White}">
 
 
     <ContentPage.Resources>

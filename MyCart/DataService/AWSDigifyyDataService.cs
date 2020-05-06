@@ -107,20 +107,20 @@ namespace DigiFyy.DataService
             return response != null;
         }
 
-        public async Task<FrameNumber> RegisterUUID(UniqueID uniqueID)
+        public async Task<(FrameNumber, int)> RegisterUUID(UniqueID uniqueID)
         {
 
             if (uniqueID == null)
-                return new FrameNumber();
+                return (new FrameNumber(), 0);
             if (uniqueID.UID == "" || uniqueID.Username == "" || uniqueID.Password == "")
-                return new FrameNumber();
+                return (new FrameNumber(),0);
 
             FrameNumberResponse response = await awsHttpClient.RegisterUIDAsync(uniqueID);
 
             if (response == null || response?.FrameNumber == null)
-               return new FrameNumber(); // empty
+                return (new FrameNumber(), 0); // empty
 
-            return response.FrameNumber;
+            return (response.FrameNumber, response.Status);
         }
 
         public async Task<FrameNumberExtra> RegisterExtra(string userName, string token, string uuid, FrameNumberExtra frameNumberExtra, bool deleteExtra)

@@ -16,7 +16,8 @@
     xmlns:xforms="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
     x:Name="specsView"
     viewModels:ViewModelLocator.AutoWireViewModel="True"
-    NavigationPage.HasNavigationBar="False">
+    NavigationPage.HasNavigationBar="False" 
+    BackgroundColor="{DynamicResource White}">
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -76,14 +77,14 @@
                                        Desktop='0',
                                        Tablet='0'}"
                     BackgroundColor="{Binding White}"
-                    HeightRequest="{core:OnPlatformOrientationDoubleValue Default=160,
-                                                                          AndroidPhonePortrait=160,
+                    HeightRequest="{core:OnPlatformOrientationDoubleValue Default=150,
+                                                                          AndroidPhonePortrait=150,
                                                                           AndroidPhoneLandscape=140,
-                                                                          iOSPhonePortrait=160,
+                                                                          iOSPhonePortrait=150,
                                                                           iOSPhoneLandscape=140}"
                     Source="{Binding ImagePath}"
                     VerticalOptions="Center"
-                    WidthRequest="{x:OnIdiom Phone=160,
+                    WidthRequest="{x:OnIdiom Phone=150,
                                              Desktop=300,
                                              Tablet=300}">
                     <ffimageloading:CachedImage.Transformations>

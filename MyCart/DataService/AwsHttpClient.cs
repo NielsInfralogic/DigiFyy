@@ -187,7 +187,7 @@ namespace DigiFyy.DataService
                 HttpResponseMessage response = await client.PostAsync(Constants.EndPoint_RegisterUID, new StringContent(postBody, Encoding.UTF8, "application/json"));
       //          AnalyticsService.TrackEvent("Response: " + response.StatusCode.ToString());
 
-                if (response.IsSuccessStatusCode)
+                if (response.IsSuccessStatusCode || response.StatusCode == System.Net.HttpStatusCode.BadRequest)
                 {
                     string str = await response.Content.ReadAsStringAsync();
         //            AnalyticsService.TrackEvent(str);
@@ -198,6 +198,7 @@ namespace DigiFyy.DataService
                     };
                     return JsonConvert.DeserializeObject<Models.AWS.FrameNumberResponse>(str, settings);
                 }
+              
                 else
                 {
                     string str = await response.Content.ReadAsStringAsync();

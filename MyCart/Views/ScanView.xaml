@@ -77,29 +77,29 @@
                 <Image
                     Margin="0,0,0,0"
                     BackgroundColor="Transparent"
-                    HeightRequest="{core:OnPlatformOrientationDoubleValue Default=20,
-                                                                          AndroidPhonePortrait=20,
+                    HeightRequest="{core:OnPlatformOrientationDoubleValue Default=10,
+                                                                          AndroidPhonePortrait=10,
                                                                           AndroidPhoneLandscape=7,
-                                                                          iOSPhonePortrait=20,
+                                                                          iOSPhonePortrait=10,
                                                                           iOSPhoneLandscape=7}"
                     Source="digifyyline.png"
                     VerticalOptions="Center" />
             </StackLayout>
             <StackLayout Grid.Row="1">
                 <ffimageloading:CachedImage
-                    Margin="0,10,0,0"
+                    Margin="0,2,0,0"
                     BackgroundColor="Transparent"
-                    HeightRequest="{core:OnPlatformOrientationDoubleValue Default=200,
-                                                                          AndroidPhonePortrait=200,
-                                                                          AndroidPhoneLandscape=200,
-                                                                          iOSPhonePortrait=200,
-                                                                          iOSPhoneLandscape=200}"
+                    HeightRequest="{core:OnPlatformOrientationDoubleValue Default=140,
+                                                                          AndroidPhonePortrait=140,
+                                                                          AndroidPhoneLandscape=140,
+                                                                          iOSPhonePortrait=140,
+                                                                          iOSPhoneLandscape=140}"
                     HorizontalOptions="Center"
                     Source="{Binding NfcImage}"
-                    WidthRequest="{core:OnPlatformOrientationDoubleValue Default=200,
-                                                                         AndroidPhonePortrait=200,
-                                                                         AndroidPhoneLandscape=200,
-                                                                         iOSPhonePortrait=200,
+                    WidthRequest="{core:OnPlatformOrientationDoubleValue Default=140,
+                                                                         AndroidPhonePortrait=140,
+                                                                         AndroidPhoneLandscape=140,
+                                                                         iOSPhonePortrait=140,
                                                                          iOSPhoneLandscape=140}">
                     <!--  <ffimageloading:CachedImage.Transformations>
                     <fftransformations:CircleTransformation />
@@ -109,7 +109,7 @@
             <StackLayout Grid.Row="2">
                 <Label
                     x:Name="WaitingForScanLabel"
-                    Margin="0,10,0,0"
+                    Margin="0,5,0,0"
                     FontFamily="CenturyGothic-Bold"
                     FontSize="24"
                     HorizontalTextAlignment="Center"
@@ -118,9 +118,15 @@
 
             </StackLayout>
 
-            <StackLayout x:Name="ScanInfo" Grid.Row="3">
+            <StackLayout
+                x:Name="ScanInfo"
+                Grid.Row="3"
+                Margin="0">
 
-                <Grid Margin="20,0,20,0" Padding="10">
+                <Grid
+                    Margin="20,0,20,0"
+                    Padding="5"
+                    RowSpacing="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
@@ -139,12 +145,10 @@
                     <border:SfBorder Grid.Row="1" Style="{StaticResource SfBorderStyle}">
                         <Label
                             x:Name="MessageLabel"
+                            FontSize="15"
                             Style="{StaticResource LabelStyleInfo}"
                             Text="{Binding Message}" />
                     </border:SfBorder>
-
-
-
 
                     <Label
                         x:Name="SerialNumberLabel2"
@@ -178,7 +182,7 @@
             </StackLayout>
             <StackLayout
                 Grid.Row="4"
-                Margin="0"
+                Margin="0,-5,0,0"
                 HorizontalOptions="CenterAndExpand"
                 Orientation="Horizontal">
 
@@ -186,7 +190,7 @@
                     x:Name="UseScanButton"
                     Command="{Binding UseCommand}"
                     IsVisible="{Binding UseScanEnabled}"
-                    Style="{StaticResource SfButtonRoundStyle}">
+                    Style="{StaticResource SfButtonRoundMediumStyle}">
                     <button:SfButton.Content>
                         <Label
                             FontSize="22"
@@ -221,7 +225,7 @@
                     Clicked="ScanButton_Clicked"
                     Command="{Binding ScanAgainCommand}"
                     IsVisible="{Binding ScanAgainEnabled}"
-                    Style="{StaticResource SfButtonRoundStyle}">
+                    Style="{StaticResource SfButtonRoundMediumStyle}">
                     <button:SfButton.Content>
                         <Label
                             FontSize="22"

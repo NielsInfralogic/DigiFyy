@@ -4,9 +4,12 @@ using DigiFyy.Models;
 using DigiFyy.Models.AWS;
 using DigiFyy.Services;
 using Newtonsoft.Json;
+using Plugin.Multilingual;
 using System;
 using System.Diagnostics;
 using System.Net.Http;
+using System.Reflection;
+using System.Resources;
 using System.Threading.Tasks;
 using Xamarin.Auth;
 using Xamarin.Essentials;
@@ -64,7 +67,36 @@ namespace DigiFyy.ViewModels
             }
         }
 
-        private string email;
+        private bool wrongPassword = false;
+        public bool WrongPassword
+        {
+            get
+            {
+                return this.wrongPassword;
+            }
+
+            set
+            {
+                SetProperty(ref wrongPassword, value);
+            }
+        }
+
+        private string passwordError;
+        public string PasswordError
+        {
+            get
+            {
+                return this.passwordError;
+            }
+
+            set
+            {
+                SetProperty(ref passwordError, value);
+            }
+        }
+
+
+        private string email = "";
         public string Email
         {
             get
@@ -106,6 +138,11 @@ namespace DigiFyy.ViewModels
             this.SocialMediaLoginCommand = new Helpers.Command(this.SocialLoggedIn);
             this.SocialMediaLoginCommand2 = new Helpers.Command(this.SocialLoggedInGoogle);
 
+            Email = "";
+            Password = "";
+            ConfirmPassword = "";
+            WrongPassword = false;
+            PasswordError = "";
 
         }
 
@@ -115,10 +152,10 @@ namespace DigiFyy.ViewModels
         {           
             if (navigationData is Boolean)
                 firstTimeRegister = (Boolean)navigationData;
-
+             
             return base.InitializeAsync(navigationData);
         }
-
+         
         #region Command
 
         /// <summary>
@@ -140,6 +177,7 @@ namespace DigiFyy.ViewModels
 
         private async void BackButtonClicked(object obj)
         {
+
             await NavigationService.GoBackAsync();
         }
 
@@ -169,33 +207,60 @@ namespace DigiFyy.ViewModels
 
             Email = Email.Trim();
             Password = Password.Trim();
+            ConfirmPassword = ConfirmPassword.Trim();
+
+            var resmgr = new ResourceManager("DigiFyy.Resources.AppResources", typeof(TranslateExtension).GetTypeInfo().Assembly);
+            var ci = CrossMultilingual.Current.CurrentCultureInfo;
+
+          
 
             string uuid = Preferences.Get("UUID", "");
-
-
-            if (string.IsNullOrEmpty(uuid))
-            {               
-                return;
-            }
 
             if (string.IsNullOrEmpty(Email))
             {
                 IsInvalidEmail = true;
                 return;
             }
-            if (string.IsNullOrEmpty(Password))
+
+            if (Password.Length < 8)
             {
+
+                PasswordError = resmgr.GetString("PasswordTooShort", ci); // "Password too short (8 chars min)";
+                WrongPassword = true;
                 return;
             }
+
+            if (ConfirmPassword != Password)
+            {
+                PasswordError = resmgr.GetString("PasswordMismatch", ci);
+                WrongPassword = true;
+                return;
+
+            }
+
+
             IsBusy = true;
             Owner owner = new Owner() { Email = Email, Name = "anonymous", OwnerID = 0 };
             UniqueID uniqueID = new UniqueID() { Username = Email, Name = Email, Password = Password, UID = uuid, Owner = owner };
 
-            // Step 1 - register new user, link user to owner, link owner to UUID
+            // Step 1 - register new user
+
             var result1 = await DataStore.RegisterUUID(uniqueID);
-            if (result1.Frame != null)
+
+            int registerStatus = result1.Item2;
+
+            if (registerStatus == (int)OwnerRegisterErrorType.UIDDoesNotExist)
+                await DialogService.Show("Error registering", "The UUID does not exist", "Ok");
+            else if (registerStatus == (int)OwnerRegisterErrorType.UIDRegisterToOtherUser)
+                await DialogService.Show("Error registering", "The UUID is registered to another user", "Ok");
+            else if (registerStatus == (int)OwnerRegisterErrorType.UIDReportedStolen)
+                await DialogService.Show("Error registering", "The bike is reported stolen and cannot be registered", "Ok");
+            else
             {
-                // now login user to obtain token,.
+                
+
+                // Step 2: Login user to obtain token
+
                 var result2 = await DataStore.LoginUser(Email, Password);
                 if (result2.Token != "")
                 {
@@ -205,14 +270,18 @@ namespace DigiFyy.ViewModels
                     Preferences.Set("IsLoggedIn", "1");
                     IsBusy = false;
 
-                    // 
-                    if (Preferences.Get("RegisteredToBike", "0") != "1")
+                    if (result1.Item1.UID != "")
                     {
-                       int imageType = (int)ImageTypes.Invoice;
-                       await NavigationService.NavigateToAsync<AddPictureViewModel>(imageType);
+                        // Step 3 - Link user to owner to UUID 
+
+                        if (Preferences.Get("RegisteredToBike", "0") != "1")
+                        {
+                            int imageType = (int)ImageTypes.Invoice;
+                            await NavigationService.NavigateToAsync<AddPictureViewModel>(imageType);
+                        }
+                        else
+                            await NavigationService.NavigateToAsync<MainViewModel>(2);
                     }
-                    else
-                        await NavigationService.NavigateToAsync<MainViewModel>(2);
                 }
             }
 

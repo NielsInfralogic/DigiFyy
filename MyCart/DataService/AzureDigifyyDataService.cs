@@ -545,7 +545,7 @@ namespace DigiFyy.DataService
             return new FrameNumberImage();
         }
 
-        public Task<FrameNumber> RegisterUUID(UniqueID uniqueID)
+        public Task<(FrameNumber,int)> RegisterUUID(UniqueID uniqueID)
         {
             throw new NotImplementedException();
         }

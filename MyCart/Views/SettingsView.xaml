@@ -11,7 +11,7 @@
     xmlns:viewModels="clr-namespace:DigiFyy.ViewModels;assembly=DigiFyy"
     Title="{trans:Translate Settings}"
     viewModels:ViewModelLocator.AutoWireViewModel="True"
-    BackgroundColor="{DynamicResource Gray-White}"
+    BackgroundColor="{DynamicResource White}"
     IconImageSource="tab_settings.png">
 
     <ContentPage.Resources>
@@ -34,6 +34,7 @@
                         HorizontalOptions="CenterAndExpand"
                         LineHeight="{OnPlatform Android=1.5,
                                                 Default=-1}"
+                        Style="{DynamicResource LabelStylePageTitle}"
                         Text="{trans:Translate Settings}"
                         VerticalOptions="Center" />
 

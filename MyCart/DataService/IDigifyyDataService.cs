@@ -25,7 +25,7 @@ namespace DigiFyy.DataService
 
         Task<bool> MarkReadMesages(string userName, string token, string uuid, List<int> massageIDList);
 
-        Task<FrameNumber> RegisterUUID(UniqueID uniqueID);
+        Task<(FrameNumber,int)> RegisterUUID(UniqueID uniqueID);
 
         Task<FrameNumberExtra> RegisterExtra(string userName, string token, string uuid, FrameNumberExtra frameNumberExtra, bool deleteExtra);
 

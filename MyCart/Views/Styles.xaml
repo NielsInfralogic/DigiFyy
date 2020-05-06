@@ -66,7 +66,7 @@
         <Setter Property="HeightRequest" Value="30" />
         <Setter Property="FontFamily" Value="{StaticResource CenturyGothic-Bold}" />
         <Setter Property="Margin" Value="0,0,0,0" />
-        <Setter Property="Padding" Value="5,0,5,0" />
+        <Setter Property="Padding" Value="5,5,5,0" />
     </Style>
 
     <Style x:Key="LabelStylePageTitle" TargetType="Label">
@@ -135,13 +135,13 @@
     <Style x:Key="SfButtonRoundStyle" TargetType="buttons:SfButton">
         <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
         <Setter Property="VerticalOptions" Value="EndAndExpand" />
-        <Setter Property="Margin" Value="10,10,10,10" />
+        <Setter Property="Margin" Value="5,5,5,5" />
         <Setter Property="Padding" Value="0" />
-        <Setter Property="CornerRadius" Value="75" />
+        <Setter Property="CornerRadius" Value="70" />
         <Setter Property="FontAttributes" Value="Bold" />
         <Setter Property="FontSize" Value="18" />
-        <Setter Property="WidthRequest" Value="150" />
-        <Setter Property="HeightRequest" Value="150" />
+        <Setter Property="WidthRequest" Value="140" />
+        <Setter Property="HeightRequest" Value="140" />
         <Setter Property="FontFamily" Value="{StaticResource CenturyGothic-Bold}" />
         <Setter Property="TextColor" Value="White" />
     </Style>
@@ -157,6 +157,20 @@
         <Setter Property="FontSize" Value="17" />
         <Setter Property="WidthRequest" Value="80" />
         <Setter Property="HeightRequest" Value="80" />
+        <Setter Property="FontFamily" Value="{StaticResource CenturyGothic-Bold}" />
+        <Setter Property="TextColor" Value="White" />
+    </Style>
+
+    <Style x:Key="SfButtonRoundMediumStyle" TargetType="buttons:SfButton">
+        <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+        <Setter Property="VerticalOptions" Value="EndAndExpand" />
+        <Setter Property="Margin" Value="5,5,5,5" />
+        <Setter Property="Padding" Value="0,0,0,0" />
+        <Setter Property="CornerRadius" Value="50" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="WidthRequest" Value="100" />
+        <Setter Property="HeightRequest" Value="100" />
         <Setter Property="FontFamily" Value="{StaticResource CenturyGothic-Bold}" />
         <Setter Property="TextColor" Value="White" />
     </Style>

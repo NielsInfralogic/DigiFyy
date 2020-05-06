@@ -243,6 +243,12 @@
   <data name="Password" xml:space="preserve">
     <value>Password:</value>
   </data>
+  <data name="PasswordMismatch" xml:space="preserve">
+    <value>Passsword mismatch</value>
+  </data>
+  <data name="PasswordTooShort" xml:space="preserve">
+    <value>Password too short (min 8 chars)</value>
+  </data>
   <data name="PickPhoto" xml:space="preserve">
     <value>Pick photo</value>
   </data>

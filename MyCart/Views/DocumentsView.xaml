@@ -13,7 +13,8 @@
     xmlns:xforms="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
     x:Name="documentsview"
     viewModels:ViewModelLocator.AutoWireViewModel="True"
-    NavigationPage.HasNavigationBar="False">
+    NavigationPage.HasNavigationBar="False"
+    BackgroundColor="{DynamicResource White}" >
 
     <ContentPage.Resources>
         <ResourceDictionary>

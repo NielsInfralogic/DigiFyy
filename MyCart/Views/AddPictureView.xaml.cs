@@ -53,7 +53,7 @@ namespace DigiFyy.Views
                 return;
 
             //await DisplayAlert("File Location", file.Path, "OK");
-
+          
             PhotoImage.Source = ImageSource.FromStream(() =>
             {
                 var stream = file.GetStream();
@@ -61,8 +61,9 @@ namespace DigiFyy.Views
                 file.Dispose();
                 return stream;
             });
-
+            PhotoImage.Aspect = Aspect.AspectFit;
             UsePhoto.IsVisible = true;
+
         }
 
 
@@ -91,7 +92,7 @@ namespace DigiFyy.Views
             if (file == null)
                 return;
 
-
+            
             PhotoImage.Source = ImageSource.FromStream(() =>
             {
                 var stream = file.GetStream();
@@ -99,8 +100,10 @@ namespace DigiFyy.Views
                 file.Dispose();
                 return stream;
             });
-            UsePhoto.IsVisible = true;
 
+            PhotoImage.Aspect = Aspect.AspectFit;
+
+            UsePhoto.IsVisible = true;
         }
     }
 }

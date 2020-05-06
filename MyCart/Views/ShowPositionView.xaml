@@ -12,7 +12,8 @@
     xmlns:viewModels="clr-namespace:DigiFyy.ViewModels;assembly=DigiFyy"
     Title="Position"
     viewModels:ViewModelLocator.AutoWireViewModel="True"
-    NavigationPage.HasNavigationBar="False">
+    NavigationPage.HasNavigationBar="False" 
+    BackgroundColor="{DynamicResource White}">
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -33,7 +34,7 @@
             <StackLayout
                 x:Name="TitleView"
                 Margin="{OnPlatform Android='0,0,0,0',
-                                    iOS='0,40,0,0'}"
+                                    iOS='0,20,0,0'}"
                 Padding="4,4"
                 BackgroundColor="{DynamicResource PrimaryLight}"
                 HeightRequest="40"
@@ -70,29 +71,29 @@
                                    Desktop='0',
                                    Tablet='0'}"
                 BackgroundColor="Transparent"
-                HeightRequest="{core:OnPlatformOrientationDoubleValue Default=160,
-                                                                      AndroidPhonePortrait=160,
-                                                                      AndroidPhoneLandscape=140,
-                                                                      iOSPhonePortrait=160,
-                                                                      iOSPhoneLandscape=140}"
+                HeightRequest="{core:OnPlatformOrientationDoubleValue Default=130,
+                                                                      AndroidPhonePortrait=130,
+                                                                      AndroidPhoneLandscape=130,
+                                                                      iOSPhonePortrait=130,
+                                                                      iOSPhoneLandscape=130}"
                 Source="digifyy_bikelogo.png"
                 VerticalOptions="Center"
-                WidthRequest="{x:OnIdiom Phone=160,
+                WidthRequest="{x:OnIdiom Phone=130,
                                          Desktop=300,
                                          Tablet=300}" />
             <StackLayout
-                Margin="10,0,10,0"
+                Margin="10,-10,10,0"
                 Spacing="0"
                 VerticalOptions="FillAndExpand"
                 WidthRequest="{OnPlatform Default='-1',
                                           UWP='350'}">
-                <Grid>
+                <Grid RowSpacing="5">
 
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
-                        <RowDefinition Height="300" />
+                        <RowDefinition Height="280" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
@@ -105,30 +106,42 @@
                         Grid.ColumnSpan="2"
                         Margin="0,0,0,0"
                         FontFamily="{StaticResource CenturyGothic-Bold}"
-                        FontSize="24"
+                        FontSize="20"
                         HorizontalTextAlignment="Center"
                         Style="{StaticResource LabelStyleDark}"
                         Text="{trans:Translate BikePosition}"
-                        TextColor="{DynamicResource Gray-900}" />
+                        TextColor="{DynamicResource Gray-700}" />
                     <Label
                         Grid.Row="1"
                         Grid.Column="0"
-                        Style="{StaticResource LabelStyleInfoHeader}"
+                        Margin="0,0,0,0"
+                        FontSize="16"
+                        HorizontalTextAlignment="Start"
+                        Style="{StaticResource LabelStyleInfo}"
                         Text="{trans:Translate Status}" />
                     <Label
                         Grid.Row="1"
                         Grid.Column="1"
+                        Margin="0,0,0,0"
+                        FontSize="16"
+                        HorizontalTextAlignment="Start"
                         Style="{StaticResource LabelStyleInfo}"
                         Text="{Binding FrameNumberStatus.Status, Converter={StaticResource StatusConverter}}"
                         TextColor="{Binding FrameNumberStatus.Status, Converter={StaticResource StatusColorConverter}}" />
                     <Label
                         Grid.Row="2"
                         Grid.Column="0"
-                        Style="{StaticResource LabelStyleInfoHeader}"
+                        Margin="0,0,0,0"
+                        FontSize="16"
+                        HorizontalTextAlignment="Start"
+                        Style="{StaticResource LabelStyleInfo}"
                         Text="{trans:Translate UpdateDate}" />
                     <Label
                         Grid.Row="2"
                         Grid.Column="1"
+                        Margin="0,0,0,0"
+                        FontSize="16"
+                        HorizontalTextAlignment="Start"
                         Style="{StaticResource LabelStyleInfo}"
                         Text="{Binding FrameNumberStatus.LastUpdateTime, StringFormat='{0:G}'}" />
 
@@ -137,16 +150,16 @@
                         Grid.Row="3"
                         Grid.ColumnSpan="2"
                         HorizontalOptions="Fill"
-                        VerticalOptions="Fill" MapType="Hybrid"  IsShowingUser="true">
-
-                    </maps:Map>
+                        IsShowingUser="true"
+                        MapType="Hybrid"
+                        VerticalOptions="Fill" />
 
 
                     <button:SfButton
                         x:Name="UsePhoto"
                         Grid.Row="4"
                         Grid.ColumnSpan="2"
-                        Margin="0,5,0,0"
+                        Margin="0,0,0,0"
                         Command="{Binding UpdatePostionCommand}"
                         Style="{StaticResource SfButtonRoundSmallStyle}">
                         <button:SfButton.Content>

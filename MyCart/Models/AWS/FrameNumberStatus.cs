@@ -6,6 +6,7 @@ namespace DigiFyy.Models.AWS
 {
 
     public enum FrameNumberStatusValue { Unknown= -1, Unregistered=0, Registered=1, Stolen=2, Found=3 };
+
     public class FrameNumberStatus
     {
         public int Status { get; set; } = (int)FrameNumberStatusValue.Unknown;

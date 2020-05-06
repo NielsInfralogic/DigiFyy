@@ -82,14 +82,14 @@
                                        Desktop='0',
                                        Tablet='0'}"
                     BackgroundColor="{Binding White}"
-                    HeightRequest="{core:OnPlatformOrientationDoubleValue Default=180,
-                                                                          AndroidPhonePortrait=180,
+                    HeightRequest="{core:OnPlatformOrientationDoubleValue Default=150,
+                                                                          AndroidPhonePortrait=150,
                                                                           AndroidPhoneLandscape=140,
-                                                                          iOSPhonePortrait=180,
+                                                                          iOSPhonePortrait=150,
                                                                           iOSPhoneLandscape=140}"
                     Source="{Binding ImagePath}"
                     VerticalOptions="Center"
-                    WidthRequest="{x:OnIdiom Phone=180,
+                    WidthRequest="{x:OnIdiom Phone=150,
                                              Desktop=300,
                                              Tablet=300}">
                     <ffimageloading:CachedImage.Transformations>
@@ -99,6 +99,7 @@
                 </ffimageloading:CachedImage>
 
                 <Label
+                    Margin="0,5,0,5"
                     Style="{DynamicResource LabelStylePageTitle}"
                     Text="{Binding BrandModel}"
                     TextColor="{DynamicResource Gray-700}" />

@@ -100,7 +100,7 @@
                     Style="{StaticResource SfButtonRoundStyle}">
                     <button:SfButton.Content>
                         <Label
-                            FontSize="28"
+                            FontSize="24"
                             HorizontalOptions="CenterAndExpand"
                             HorizontalTextAlignment="Center"
                             LineBreakMode="WordWrap"
@@ -135,15 +135,15 @@
                     Style="{StaticResource SfButtonRoundStyle}">
                     <button:SfButton.Content>
                         <Label
-                            FontSize="28"
+                            FontSize="24"
                             HorizontalOptions="CenterAndExpand"
                             HorizontalTextAlignment="Center"
                             LineBreakMode="WordWrap"
                             Text="{trans:Translate SignUp}"
                             TextColor="White"
                             VerticalOptions="Center"
-                            WidthRequest="{OnPlatform Android='96',
-                                                      iOS='80',
+                            WidthRequest="{OnPlatform Android='115',
+                                                      iOS='105',
                                                       UWP='70'}" />
                     </button:SfButton.Content>
 

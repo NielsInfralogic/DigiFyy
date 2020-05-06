@@ -1,4 +1,5 @@
-﻿using DigiFyy.Helpers;
+﻿using DigiFyy.DataService;
+using DigiFyy.Helpers;
 using DigiFyy.Services;
 using System.Collections.Generic;
 using Xamarin.Essentials;
@@ -65,8 +66,11 @@ namespace DigiFyy.ViewModels
             // TODO - send email 
             if (email != "")
             {
-                EmailSender emailSender = new EmailSender();
-                await emailSender.SendEmail("Digifyy reset password", "Test message only...", new List<string> { email });
+                Helpers.EmailSender emailSender = new EmailSender();
+
+                string body = Constants.EmailhtmlBodyResetPassword.Replace("#1#", email);
+
+                emailSender.SendEmailSMTP("DIGIFYY Reset password", body, new List<string> { email });
             }
         }
 

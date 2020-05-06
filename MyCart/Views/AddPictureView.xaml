@@ -27,6 +27,7 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
@@ -64,10 +65,10 @@
                                        Desktop='0',
                                        Tablet='0'}"
                     BackgroundColor="Transparent"
-                    HeightRequest="{core:OnPlatformOrientationDoubleValue Default=20,
-                                                                          AndroidPhonePortrait=20,
+                    HeightRequest="{core:OnPlatformOrientationDoubleValue Default=10,
+                                                                          AndroidPhonePortrait=10,
                                                                           AndroidPhoneLandscape=7,
-                                                                          iOSPhonePortrait=20,
+                                                                          iOSPhonePortrait=10,
                                                                           iOSPhoneLandscape=7}"
                     Source="digifyyline.png"
                     VerticalOptions="Center" />
@@ -78,23 +79,24 @@
                     Margin="{x:OnIdiom Phone='0,0,0,0',
                                        Desktop='0',
                                        Tablet='0'}"
+                    Aspect="AspectFit"
                     BackgroundColor="Transparent"
                     HeightRequest="{core:OnPlatformOrientationDoubleValue Default=175,
                                                                           AndroidPhonePortrait=175,
                                                                           AndroidPhoneLandscape=140,
-                                                                          iOSPhonePortrait=225,
+                                                                          iOSPhonePortrait=175,
                                                                           iOSPhoneLandscape=140}"
                     HorizontalOptions="CenterAndExpand"
                     Source="imageplaceholder.png"
                     VerticalOptions="Center"
-                    WidthRequest="{x:OnIdiom Phone=200,
+                    WidthRequest="{x:OnIdiom Phone=175,
                                              Desktop=300,
                                              Tablet=300}" />
 
 
                 <button:SfButton
                     x:Name="UsePhoto"
-                    Margin="5,15,25,15"
+                    Margin="5,15,15,15"
                     Command="{Binding UsePhotoCommand}"
                     IsVisible="True"
                     Style="{StaticResource SfButtonRoundSmallStyle}"
@@ -131,14 +133,7 @@
                         </VisualStateGroup>
                     </VisualStateManager.VisualStateGroups>
                 </button:SfButton>
-                <StackLayout
-                    HorizontalOptions="Center"
-                    IsVisible="{Binding IsBusy}"
-                    Orientation="Vertical"
-                    VerticalOptions="Center">
-                    <ActivityIndicator IsRunning="True" />
-                    <Label Text="{trans:Translate Uploading}" />
-                </StackLayout>
+
             </StackLayout>
             <!--  Label to display the description of this page  -->
             <Label
@@ -246,9 +241,17 @@
                 Grid.Row="4"
                 IsVisible="False"
                 Text="{Binding FileName, Mode=TwoWay}" />
-
             <StackLayout
                 Grid.Row="5"
+                HorizontalOptions="Center"
+                IsVisible="{Binding IsBusy}"
+                Orientation="Vertical"
+                VerticalOptions="Center">
+                <ActivityIndicator IsRunning="True" />
+                <Label Text="{trans:Translate Uploading}" />
+            </StackLayout>
+            <StackLayout
+                Grid.Row="6"
                 HorizontalOptions="CenterAndExpand"
                 VerticalOptions="End">
 

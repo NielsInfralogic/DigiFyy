@@ -50,14 +50,15 @@ namespace DigiFyy.Helpers
 
         public async  static Task<string> UploadFileS3(string fileName)
         {            
-            CognitoAWSCredentials credentials = new CognitoAWSCredentials(               
+          /*  CognitoAWSCredentials credentials = new CognitoAWSCredentials(               
                 "eu-west-2:7c7c1872-0bb0-4802-9de1-355ca7fb121a", // Identity pool ID
                 RegionEndpoint.EUWest2  // Region
-            );
-
+            );*/
+         
             try
-            {           
-                var s3Client = new AmazonS3Client(credentials, RegionEndpoint.EUWest2);
+            {
+                // var s3Client = new AmazonS3Client(credentials, RegionEndpoint.EUWest2);
+                var s3Client = new AmazonS3Client(Constants.AWSAccessKey, Constants.AWSSecretKey, RegionEndpoint.EUWest2);
                 var transferUtility = new TransferUtility(s3Client);
 
                 var uploadRequest = new TransferUtilityUploadRequest

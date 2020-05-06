@@ -11,7 +11,9 @@
     Title="{trans:Translate Home}"
     viewModels:ViewModelLocator.AutoWireViewModel="True"
     IconImageSource="tab_home.png"
-    NavigationPage.HasNavigationBar="False">
+    NavigationPage.HasNavigationBar="False" 
+    BackgroundColor="{DynamicResource White}">
+    
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -21,7 +23,7 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        <Grid BackgroundColor="{DynamicResource White}">
+        <Grid>
             <Grid.RowDefinitions>
 
                 <RowDefinition Height="Auto" />
@@ -183,10 +185,9 @@
                     FontSize="10"
                     HorizontalOptions="End"
                     Style="{DynamicResource LabelStyleDark}"
-                    Text="{Binding UserStateText}" >
+                    Text="{Binding UserStateText}">
                     <Label.GestureRecognizers>
-                        <TapGestureRecognizer 
-	    		            Command="{Binding LoginCommand}"  />
+                        <TapGestureRecognizer Command="{Binding LoginCommand}" />
                     </Label.GestureRecognizers>
                 </Label>
                 <Image
@@ -194,10 +195,10 @@
                                        Desktop='0',
                                        Tablet='0'}"
                     BackgroundColor="Transparent"
-                    HeightRequest="{core:OnPlatformOrientationDoubleValue Default=20,
-                                                                          AndroidPhonePortrait=20,
+                    HeightRequest="{core:OnPlatformOrientationDoubleValue Default=10,
+                                                                          AndroidPhonePortrait=10,
                                                                           AndroidPhoneLandscape=7,
-                                                                          iOSPhonePortrait=20,
+                                                                          iOSPhonePortrait=10,
                                                                           iOSPhoneLandscape=7}"
                     Source="digifyyline.png"
                     VerticalOptions="Center" />

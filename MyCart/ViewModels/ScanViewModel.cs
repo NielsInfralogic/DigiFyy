@@ -187,10 +187,22 @@ namespace DigiFyy.ViewModels
                 DialogService.Show("NFC error", tagRead.ErrorMessage, "Ok");
                 return;
             }
+            bool emptyMessage = false;
+            if (string.IsNullOrEmpty(tagRead.Data))
+                emptyMessage = true;
+            else if (tagRead.Data == "(Empty)")
+                emptyMessage = true;
+
+            if (Preferences.Get("UseFakeUUID", "0") == "1" && emptyMessage)
+            {
+                Message = Constants.FakeUUID;
+            }
+            else
+                Message = string.IsNullOrEmpty(tagRead.Data) ? "(Empty)" : tagRead.Data.Trim();
 
             SerialNumber = string.IsNullOrEmpty(tagRead.SerialNumber) ? "(Unknown)" : tagRead.SerialNumber;
             NFCModel = string.IsNullOrEmpty(tagRead.Model) ? "(Unknown)" : tagRead.Model;
-            Message = string.IsNullOrEmpty(tagRead.Data) ? "(Empty)" : tagRead.Data.Trim();
+           
 
             UseScanEnabled = true;
             ScanAgainEnabled = true;

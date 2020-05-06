@@ -13,6 +13,7 @@
     xmlns:viewModels="clr-namespace:DigiFyy.ViewModels;assembly=DigiFyy"
     Title="{trans:Translate SignUp}"
     viewModels:ViewModelLocator.AutoWireViewModel="True"
+    BackgroundColor="{DynamicResource White}"
     NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Resources>
@@ -34,8 +35,8 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
             <StackLayout
@@ -55,9 +56,8 @@
                         VerticalTextAlignment="Center" />
 
                     <Image
-                        Margin="{x:OnIdiom Phone='0,10,0,0',
-                                           Desktop='0',
-                                           Tablet='0'}"
+                        Margin="{OnPlatform Android='0,10,0,0',
+                                            iOS='0,40,0,0'}"
                         BackgroundColor="Transparent"
                         HeightRequest="{core:OnPlatformOrientationDoubleValue Default=100,
                                                                               AndroidPhonePortrait=70,
@@ -73,10 +73,10 @@
                                        Desktop='0',
                                        Tablet='0'}"
                     BackgroundColor="Transparent"
-                    HeightRequest="{core:OnPlatformOrientationDoubleValue Default=20,
-                                                                          AndroidPhonePortrait=20,
+                    HeightRequest="{core:OnPlatformOrientationDoubleValue Default=10,
+                                                                          AndroidPhonePortrait=10,
                                                                           AndroidPhoneLandscape=7,
-                                                                          iOSPhonePortrait=20,
+                                                                          iOSPhonePortrait=10,
                                                                           iOSPhoneLandscape=7}"
                     Source="digifyyline.png"
                     VerticalOptions="Center" />
@@ -87,20 +87,20 @@
                                    Desktop='0',
                                    Tablet='0'}"
                 BackgroundColor="Transparent"
-                HeightRequest="{core:OnPlatformOrientationDoubleValue Default=175,
-                                                                      AndroidPhonePortrait=175,
+                HeightRequest="{core:OnPlatformOrientationDoubleValue Default=140,
+                                                                      AndroidPhonePortrait=140,
                                                                       AndroidPhoneLandscape=140,
-                                                                      iOSPhonePortrait=225,
+                                                                      iOSPhonePortrait=140,
                                                                       iOSPhoneLandscape=140}"
                 Source="digifyy_bikelogo.png"
                 VerticalOptions="Center"
-                WidthRequest="{x:OnIdiom Phone=200,
+                WidthRequest="{x:OnIdiom Phone=140,
                                          Desktop=300,
                                          Tablet=300}" />
             <!--  Label to display the description of this page  -->
             <Label
                 Grid.Row="2"
-                Margin="80,5,0,0"
+                Margin="0,0,0,0"
                 FontFamily="{StaticResource CenturyGothic-Bold}"
                 FontSize="22"
                 HorizontalOptions="CenterAndExpand"
@@ -112,9 +112,11 @@
 
             <Grid
                 Grid.Row="3"
-                Margin="0,10,0,10"
-                Padding="0">
+                Margin="0,5,0,0"
+                Padding="0"
+                RowSpacing="3">
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
@@ -138,7 +140,6 @@
                     <control:BorderlessEntry
                         x:Name="EmailEntry"
                         Margin="0,0,15,0"
-                        HorizontalOptions="StartAndExpand"
                         Placeholder="Email"
                         PlaceholderColor="{DynamicResource Gray-94}"
                         Style="{StaticResource EntryStyle}"
@@ -157,6 +158,16 @@
                     Text="&#xe707;"
                     TextColor="{DynamicResource Red}"
                     VerticalOptions="Center" />
+                <Label
+                    x:Name="ValidationLabel"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Margin="1,-5,0,0"
+                    FontSize="12"
+                    IsVisible="{Binding Path=IsFocused, Source={x:Reference EmailEntry}, Converter={StaticResource StringToBooleanConverter}, ConverterParameter={x:Reference EmailEntry}}"
+                    Text="Please enter the valid e-mail"
+                    TextColor="{DynamicResource Red}"
+                    VerticalOptions="FillAndExpand" />
 
                 <Label
                     Grid.Row="2"
@@ -181,13 +192,14 @@
                 <Label
                     Grid.Row="3"
                     Grid.Column="0"
+                    Margin="0,3,0,0"
                     Style="{StaticResource LabelStyleInfoHeader}"
                     Text="{trans:Translate RepeatPassword}" />
                 <!--  Entry to get password from user  -->
                 <border:SfBorder
                     Grid.Row="3"
                     Grid.Column="1"
-                    Margin="0,0,15,0"
+                    Margin="0,3,15,0"
                     Style="{StaticResource SfBorderStyle}">
                     <control:BorderlessEntry
                         x:Name="ComfirmPasswordEntry"
@@ -199,24 +211,24 @@
                         TextColor="{DynamicResource Gray-56}" />
                 </border:SfBorder>
                 <Label
-                    x:Name="ValidationLabel"
+                    x:Name="ValidationLabelPassword"
                     Grid.Row="4"
                     Grid.Column="1"
                     Margin="1,-5,0,0"
                     FontSize="12"
-                    IsVisible="{Binding Path=IsFocused, Source={x:Reference EmailEntry}, Converter={StaticResource StringToBooleanConverter}, ConverterParameter={x:Reference EmailEntry}}"
-                    Text="Please enter the valid e-mail"
+                    IsVisible="{Binding WrongPassword}"
+                    Text="{Binding PasswordError}"
                     TextColor="{DynamicResource Red}"
                     VerticalOptions="FillAndExpand" />
 
             </Grid>
             <!--  Signup button  -->
             <buttons:SfButton
-                Grid.Row="4"
-                Margin="0,5"
+                Grid.Row="5"
+                Margin="0,-5,0,0"
                 Command="{Binding SignUpCommand}"
-                FontSize="20"
-                Style="{StaticResource SfButtonRoundSmallStyle}"
+                FontSize="16"
+                Style="{StaticResource SfButtonRoundMediumStyle}"
                 Text="{trans:Translate SignUp}">
                 <VisualStateManager.VisualStateGroups>
                     <VisualStateGroup x:Name="CommonStates">
@@ -236,58 +248,66 @@
             </buttons:SfButton>
 
             <Label
-                Grid.Row="5"
+                Grid.Row="6"
+                Margin="0,5,0,-5"
                 FontFamily="{StaticResource CenturyGothic-Bold}"
+                FontSize="16"
                 HorizontalTextAlignment="Center"
                 Style="{StaticResource LabelStyle}"
                 Text="{trans:Translate OrLoginWith}"
                 TextColor="{DynamicResource Gray-6F}" />
 
-            <StackLayout Grid.Row="6" Orientation="Horizontal">
+            <StackLayout
+                Grid.Row="7"
+                Margin="0,0,0,0"
+                HorizontalOptions="CenterAndExpand"
+                Orientation="Horizontal"
+                VerticalOptions="Center">
                 <!--  Login through facebook account  -->
                 <buttons:SfButton
                     Margin="0,0,0,0"
                     BackgroundColor="Transparent"
                     Command="{Binding SocialMediaLoginCommand}"
+                    HeightRequest="100"
                     ImageSource="facebooklogo.png"
                     ImageWidth="100"
                     ShowIcon="True"
                     Style="{StaticResource SfButtonRoundSmallStyle}"
-                    TextColor="Transparent" />
+                    TextColor="Transparent"
+                    WidthRequest="100" />
 
+                <StackLayout
+                    HorizontalOptions="Center"
+                    IsVisible="{Binding IsBusy}"
+                    Orientation="Vertical"
+                    VerticalOptions="Center">
+                    <ActivityIndicator IsRunning="True" />
+                    <Label Text="{trans:Translate LoggingIn}" />
+                </StackLayout>
 
                 <!--  Login through google account  -->
                 <buttons:SfButton
-                     Margin="0,0,0,0"
+                    Margin="0,0,0,0"
                     BackgroundColor="Transparent"
                     Command="{Binding SocialMediaLoginCommand2}"
+                    HeightRequest="100"
                     ImageSource="googlelogo.png"
                     ImageWidth="100"
                     ShowIcon="True"
                     Style="{StaticResource SfButtonRoundSmallStyle}"
-                    TextColor="Transparent" />
+                    TextColor="Transparent"
+                    WidthRequest="100" />
 
             </StackLayout>
 
-            <StackLayout
-                Grid.Row="7"
-                HorizontalOptions="Center"
-                IsVisible="{Binding IsBusy}"
-                Orientation="Vertical"
-                VerticalOptions="Center">
-                <ActivityIndicator IsRunning="True" />
-                <Label Text="{trans:Translate LoggingIn}" />
-            </StackLayout>
+
             <Image
                 Grid.Row="8"
-                Margin="{x:OnIdiom Phone='0,0,0,0',
-                                   Desktop='0',
-                                   Tablet='0'}"
                 BackgroundColor="Transparent"
-                HeightRequest="{core:OnPlatformOrientationDoubleValue Default=20,
-                                                                      AndroidPhonePortrait=20,
-                                                                      AndroidPhoneLandscape=7,
-                                                                      iOSPhonePortrait=20,
+                HeightRequest="{core:OnPlatformOrientationDoubleValue Default=5,
+                                                                      AndroidPhonePortrait=5,
+                                                                      AndroidPhoneLandscape=5,
+                                                                      iOSPhonePortrait=5,
                                                                       iOSPhoneLandscape=7}"
                 Source="digifyyline.png"
                 VerticalOptions="End" />

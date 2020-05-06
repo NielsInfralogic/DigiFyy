@@ -15,6 +15,7 @@
     xmlns:viewModels="clr-namespace:DigiFyy.ViewModels;assembly=DigiFyy"
     Title="Details"
     viewModels:ViewModelLocator.AutoWireViewModel="True"
+    BackgroundColor="{DynamicResource White}"
     IconImageSource="tab_feed.png">
 
     <ContentPage.Resources>
@@ -51,10 +52,10 @@
                         <Image
                             Margin="0,0,0,0"
                             BackgroundColor="Transparent"
-                            HeightRequest="{core:OnPlatformOrientationDoubleValue Default=20,
-                                                                                  AndroidPhonePortrait=20,
+                            HeightRequest="{core:OnPlatformOrientationDoubleValue Default=10,
+                                                                                  AndroidPhonePortrait=10,
                                                                                   AndroidPhoneLandscape=7,
-                                                                                  iOSPhonePortrait=20,
+                                                                                  iOSPhonePortrait=10,
                                                                                   iOSPhoneLandscape=7}"
                             Source="digifyyline.png"
                             VerticalOptions="Center" />
@@ -63,14 +64,14 @@
                         Margin="{OnPlatform Android='0,0,0,0',
                                             iOS='0,0,0,0'}"
                         BackgroundColor="{Binding White}"
-                        HeightRequest="{core:OnPlatformOrientationDoubleValue Default=180,
-                                                                              AndroidPhonePortrait=180,
+                        HeightRequest="{core:OnPlatformOrientationDoubleValue Default=150,
+                                                                              AndroidPhonePortrait=150,
                                                                               AndroidPhoneLandscape=140,
-                                                                              iOSPhonePortrait=180,
+                                                                              iOSPhonePortrait=150,
                                                                               iOSPhoneLandscape=140}"
                         Source="{Binding ImagePath}"
                         VerticalOptions="Center"
-                        WidthRequest="{x:OnIdiom Phone=180,
+                        WidthRequest="{x:OnIdiom Phone=150,
                                                  Desktop=300,
                                                  Tablet=300}">
                         <ffimageloading:CachedImage.Transformations>
@@ -116,7 +117,8 @@
                             Grid.Column="1"
                             Style="{StaticResource SfBorderStyle}">
                             <Label
-                                FontSize="16"
+                                Padding="5,6,0,0"
+                                FontSize="13"
                                 Style="{StaticResource LabelStyleInfo}"
                                 Text="{Binding UUID, Mode=OneWay}" />
                         </border:SfBorder>
@@ -167,7 +169,7 @@
                             Orientation="Horizontal">
                             <border:SfBorder HorizontalOptions="FillAndExpand" Style="{StaticResource SfBorderStyle}">
                                 <Label
-                                    Margin="0,5,0,0"
+                                    Margin="0,0,0,3"
                                     HorizontalOptions="StartAndExpand"
                                     Style="{StaticResource LabelStyleInfo}"
                                     Text="{Binding Status, Converter={StaticResource StatusConverter}}"
@@ -175,10 +177,12 @@
                             </border:SfBorder>
                             <button:SfButton
                                 x:Name="ChangeStatus"
+                                Margin="0,0,0,0"
+                                Padding="0,0,0,0"
                                 BackgroundColor="{DynamicResource RoundButtonBlue}"
                                 Command="{Binding ChangeStatusCommand}"
                                 CornerRadius="5"
-                                FontSize="18"
+                                FontSize="17"
                                 HorizontalOptions="End"
                                 IsVisible="{Binding LoggedIn}"
                                 Text="{trans:Translate ChangeStatus}" />
@@ -194,20 +198,23 @@
 
                             <button:SfButton
                                 Command="{Binding RegisterCommand}"
+                                CornerRadius="60"
                                 FontSize="20"
-                                Style="{StaticResource SfButtonRoundStyle}">
+                                HeightRequest="120"
+                                Style="{StaticResource SfButtonRoundStyle}"
+                                WidthRequest="120">
                                 <button:SfButton.Content>
 
                                     <Label
-                                        FontSize="26"
+                                        FontSize="24"
                                         HorizontalOptions="CenterAndExpand"
                                         HorizontalTextAlignment="Center"
                                         LineBreakMode="WordWrap"
                                         Text="{trans:Translate RegisterBike}"
                                         TextColor="White"
                                         VerticalOptions="Center"
-                                        WidthRequest="{OnPlatform Android='130',
-                                                                  iOS='130',
+                                        WidthRequest="{OnPlatform Android='110',
+                                                                  iOS='110',
                                                                   UWP='100'}" />
 
                                 </button:SfButton.Content>
@@ -231,21 +238,24 @@
 
                             <button:SfButton
                                 Command="{Binding LoginCommand}"
+                                CornerRadius="60"
                                 FontSize="20"
+                                HeightRequest="120"
                                 IsVisible="{Binding NotLoggedIn}"
-                                Style="{StaticResource SfButtonRoundStyle}">
+                                Style="{StaticResource SfButtonRoundStyle}"
+                                WidthRequest="120">
                                 <button:SfButton.Content>
 
                                     <Label
-                                        FontSize="26"
+                                        FontSize="24"
                                         HorizontalOptions="CenterAndExpand"
                                         HorizontalTextAlignment="Center"
                                         LineBreakMode="WordWrap"
                                         Text="{trans:Translate Login}"
                                         TextColor="White"
                                         VerticalOptions="Center"
-                                        WidthRequest="{OnPlatform Android='130',
-                                                                  iOS='130',
+                                        WidthRequest="{OnPlatform Android='110',
+                                                                  iOS='110',
                                                                   UWP='100'}" />
 
                                 </button:SfButton.Content>
@@ -276,9 +286,26 @@
 
                             <button:SfButton
                                 Command="{Binding ReportStolenCommand}"
+                                CornerRadius="60"
                                 FontSize="20"
+                                HeightRequest="120"
                                 Style="{StaticResource SfButtonRoundStyle}"
-                                Text="{trans:Translate ReportStolenFound}">
+                                WidthRequest="120">
+                                <button:SfButton.Content>
+
+                                    <Label
+                                        FontSize="20"
+                                        HorizontalOptions="CenterAndExpand"
+                                        HorizontalTextAlignment="Center"
+                                        LineBreakMode="WordWrap"
+                                        Text="{trans:Translate ReportStolenFound}"
+                                        TextColor="White"
+                                        VerticalOptions="Center"
+                                        WidthRequest="{OnPlatform Android='110',
+                                                                  iOS='110',
+                                                                  UWP='100'}" />
+
+                                </button:SfButton.Content>
                                 <VisualStateManager.VisualStateGroups>
                                     <VisualStateGroup x:Name="CommonStates">
                                         <VisualState x:Name="Normal">
