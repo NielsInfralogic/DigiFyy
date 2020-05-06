@@ -45,11 +45,12 @@ namespace DigiFyy.DataService
         public const string SmtpHost = "email-smtp.eu-central-1.amazonaws.com";
         public const int    SmtpPort = 587;
 
-        public const string AWSAccessKey = "AKIAJERXTLCW4EJJYQVQ";
-        public const string AWSSecretKey = "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";
-
+    
         public const string EmailSenderAddress = "support@infralogic.dk";
 
+        public const string SomeKey = "AKIAJQVDCN2WWCAKXS6QQUtJQUpRVkRDTjJXV0NBS1hTNlE=";
+
+        public const string SomeOtherKey = "Q2lFU25Sc2owQTVKemd1Q2lPdkFWZU84Q3VqQ0RocGxaT2NCVmlLTQ==";
 
         public const string FakeUUID = "1234567654323456765432-aasdfgfdsa";
 

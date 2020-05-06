@@ -3,6 +3,7 @@ using Amazon.CognitoIdentity;
 using Amazon.S3;
 using Amazon.S3.Transfer;
 using DigiFyy.DataService;
+using Plugin.NFC;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -50,16 +51,18 @@ namespace DigiFyy.Helpers
 
         public async  static Task<string> UploadFileS3(string fileName)
         {            
-          /*  CognitoAWSCredentials credentials = new CognitoAWSCredentials(               
+           /*CognitoAWSCredentials credentials = new CognitoAWSCredentials(               
                 "eu-west-2:7c7c1872-0bb0-4802-9de1-355ca7fb121a", // Identity pool ID
                 RegionEndpoint.EUWest2  // Region
-            );*/
+            ); */
          
             try
             {
+                string k1 = Utils.DecodeBase64(Constants.SomeKey);
+                string k2 = Utils.DecodeBase64(Constants.SomeOtherKey);
                 // var s3Client = new AmazonS3Client(credentials, RegionEndpoint.EUWest2);
-                var s3Client = new AmazonS3Client(Constants.AWSAccessKey, Constants.AWSSecretKey, RegionEndpoint.EUWest2);
-                var transferUtility = new TransferUtility(s3Client);
+                 var s3Client = new AmazonS3Client(k1, k2, RegionEndpoint.EUWest2);
+                 var transferUtility = new TransferUtility(s3Client);
 
                 var uploadRequest = new TransferUtilityUploadRequest
                 {
@@ -134,6 +137,12 @@ namespace DigiFyy.Helpers
 
             return url;
 
+        }
+
+        public static string DecodeBase64(string encodedString)
+        {
+            byte[] data = Convert.FromBase64String(encodedString);
+            return Encoding.UTF8.GetString(data); 
         }
     }
 }
