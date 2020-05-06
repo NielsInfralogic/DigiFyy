@@ -89,7 +89,7 @@ namespace DigiFyy.Views
                 await DisplayAlert("No permission", ":( Permission required", "OK");
             }
 
-            if (file == null)
+            if (file == null) 
                 return;
 
             
